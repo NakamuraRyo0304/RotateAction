@@ -42,9 +42,28 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Block")
+        if (collision.transform.tag == "Block")
         {
             JUMP_NUM = jumpNum;
+
+
+            //Å@âüÇµñﬂÇµ
+            if (transform.position.x < collision.transform.position.x)
+            {
+                transform.Translate(new Vector2(transform.position.x - 0.1f, 0));
+            }
+            if (transform.position.x > collision.transform.position.x)
+            {
+                transform.Translate(new Vector2(transform.position.x + 0.1f, 0));
+            }
+            if (transform.position.y < collision.transform.position.y)
+            {
+                transform.Translate(new Vector2(0, transform.position.y - 0.1f));
+            }
+            if (transform.position.y > collision.transform.position.y)
+            {
+                transform.Translate(new Vector2(0, transform.position.y + 0.1f));
+            }
         }
     }
 }
