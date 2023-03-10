@@ -19,7 +19,7 @@ public class Rotate : MonoBehaviour
             if (!coroutineBool)
             {
                 coroutineBool = true;
-                StartCoroutine("RightMove");
+                StartCoroutine("RightRot");
             }
         }
 
@@ -29,28 +29,30 @@ public class Rotate : MonoBehaviour
             if (!coroutineBool)
             {
                 coroutineBool = true;
-                StartCoroutine("LeftMove");
+                StartCoroutine("LeftRot");
             }
         }
     }
 
     //右にゆっくり回転して90°でストップ
-    IEnumerator RightMove()
+    IEnumerator RightRot()
     {
         for (int turn = 0; turn < 90; turn++)
         {
             transform.Rotate(0, 0, 1);
+            //　コルーチン再開時間
             yield return new WaitForSeconds(0.005f);
         }
         coroutineBool = false;
     }
 
     //左にゆっくり回転して90°でストップ
-    IEnumerator LeftMove()
+    IEnumerator LeftRot()
     {
         for (int turn = 0; turn < 90; turn++)
         {
             transform.Rotate(0, 0, -1);
+            //　コルーチン再開時間
             yield return new WaitForSeconds(0.005f);
         }
         coroutineBool = false;
