@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    bool coroutineBool;
+    public static Rotate instance;
+    public bool coroutineBool;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
