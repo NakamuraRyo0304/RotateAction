@@ -10,25 +10,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpNum;
 
     int JUMP_NUM;
+
+    private bool rotFlag;
    
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         JUMP_NUM = jumpNum;
+        rotFlag = false;
     }
 
     void Update()
     {
         if (!Rotate.instance.coroutineBool)
         {
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
-            }
+            //　移動
+            MoveCtrl();
+
+            rotFlag = false;
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if(JUMP_NUM > 0)
@@ -39,31 +39,74 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            //　回転
+            RotCtrl();
+
+            transform.parent = GameObject.Find("StageFlame").transform;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Block")
         {
             JUMP_NUM = jumpNum;
+        }
+    }
 
+    void MoveCtrl()
+    { 
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+        }
+    }
 
-            //　押し戻し
-            if (transform.position.x < collision.transform.position.x)
+    void RotCtrl()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            //回転中ではない場合は実行 
+            if (!rotFlag)
             {
-                transform.Translate(new Vector2(transform.position.x - 0.1f, 0));
+                rotFlag = true;
+                StartCoroutine("LeftRot");
             }
-            if (transform.position.x > collision.transform.position.x)
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            //回転中ではない場合は実行 
+            if (!rotFlag)
             {
-                transform.Translate(new Vector2(transform.position.x + 0.1f, 0));
-            }
-            if (transform.position.y < collision.transform.position.y)
-            {
-                transform.Translate(new Vector2(0, transform.position.y - 0.1f));
-            }
-            if (transform.position.y > collision.transform.position.y)
-            {
-                transform.Translate(new Vector2(0, transform.position.y + 0.1f));
+                rotFlag = true;
+                StartCoroutine("RightRot");
             }
         }
     }
+    IEnumerator RightRot()
+    {
+        for (int turn = 0; turn < 90; turn++)
+        {
+            transform.Rotate(0, 0, 1);
+            //　コルーチン再開時間
+            yield return new WaitForSeconds(0.005f);
+        }
+        rotFlag = false;
+    }
+    IEnumerator LeftRot()
+    {
+        for (int turn = 0; turn < 90; turn++)
+        {
+            transform.Rotate(0, 0, -1);
+            //　コルーチン再開時間
+            yield return new WaitForSeconds(0.005f);
+        }
+        rotFlag = false;
+    }
 }
+

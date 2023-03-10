@@ -13,6 +13,7 @@ public class Rotate : MonoBehaviour
         {
             instance = this;
         }
+        coroutineBool = false;
     }
 
     private void Start()
@@ -31,8 +32,7 @@ public class Rotate : MonoBehaviour
                 StartCoroutine("RightRot");
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             //âÒì]íÜÇ≈ÇÕÇ»Ç¢èÍçáÇÕé¿çs 
             if (!coroutineBool)
