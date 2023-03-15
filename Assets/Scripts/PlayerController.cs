@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] new Rigidbody2D rigidbody;
-    [SerializeField] int moveSpeed;
     [SerializeField] int jumpForce;
     [SerializeField] int jumpNum;
+    [SerializeField] GameObject warpPoint;
 
     int JUMP_NUM;
 
@@ -53,6 +53,11 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "Block")
         {
             JUMP_NUM = jumpNum;
+        }
+
+        if(collision.transform.tag == "Warp")
+        {
+            transform.position = warpPoint.transform.position;
         }
     }
 
