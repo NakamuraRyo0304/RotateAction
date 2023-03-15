@@ -24,9 +24,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!Rotate.instance.coroutineBool)
         {
-            //Å@à⁄ìÆ
-            MoveCtrl();
-
             rotFlag = false;
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -56,18 +53,6 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "Block")
         {
             JUMP_NUM = jumpNum;
-        }
-    }
-
-    void MoveCtrl()
-    { 
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
         }
     }
 
