@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotateBack : MonoBehaviour
 {
+    [SerializeField] [Header("”{—¦")] double rate;
     void Start()
     {
         
@@ -11,6 +12,6 @@ public class RotateBack : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, -0.05f));
+        transform.Rotate(new Vector3(0, 0, -0.05f * (float)rate));
     }
 }
