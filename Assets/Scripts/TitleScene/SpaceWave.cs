@@ -7,6 +7,6 @@ public class SpaceWave : MonoBehaviour
     void Update()
     {
         float sin = Mathf.Sin(Time.time);
-        this.transform.position = new Vector3(0, sin * 0.2f - 3.5f, 0);
+        this.transform.position = new Vector3(0, sin * 0.25f - 3.5f, 0);
     }
 }
