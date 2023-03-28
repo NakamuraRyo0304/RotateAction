@@ -5,6 +5,10 @@ using UnityEngine;
 public class RotateBack : MonoBehaviour
 {
     [SerializeField] [Header("î{ó¶")] double rate;
+    void Awake()
+    {
+        Application.targetFrameRate = 60; //60FPSÇ…ê›íË
+    }
     void Start()
     {
         
@@ -12,6 +16,6 @@ public class RotateBack : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, -0.05f * (float)rate));
+        transform.Rotate(new Vector3(0, 0, -0.5f * (float)rate));
     }
 }
