@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class ToPlay : MonoBehaviour
 {
     private bool nextFlag;
-    private int count;
+
+    void Awake()
+    {
+        Application.targetFrameRate = 60; //60FPS‚ÉÝ’è
+    }
+
     void Start()
     {
-        count = 0;
         nextFlag = false;
     }
     void Update()
@@ -21,15 +25,7 @@ public class ToPlay : MonoBehaviour
 
         if(nextFlag)
         {
-            count++;
-            if (count > 120)
-            {
-                Change();
-            }
+            SceneManager.LoadScene("PlayScene");
         }
-    }
-    void Change()
-    {
-        SceneManager.LoadScene("PlayScene");
     }
 }
