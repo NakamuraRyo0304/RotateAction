@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ToSelect : MonoBehaviour
 {
     [SerializeField] int max_Move;
     bool to_Select;
     int pos;
+    void Awake()
+    {
+        Application.targetFrameRate = 60; //60FPSに設定
+    }
+
     void Start()
     {
         pos = 0;
@@ -33,6 +39,12 @@ public class ToSelect : MonoBehaviour
         {
             pos--;
             transform.Translate(new Vector3(-1, 0, 0));
+        }
+
+        // FIXED: 仮でSelect且つスペースでプレイシーン
+        if (pos == max_Move && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("PlayScene");
         }
     }
 }
