@@ -46,11 +46,11 @@ public class Rotate : MonoBehaviour
     //右にゆっくり回転して90°でストップ
     IEnumerator RightRot()
     {
-        for (int turn = 0; turn < 90; turn++)
+        for (int turn = 0; turn < 45; turn++)
         {
-            transform.Rotate(0, 0, 1);
+            transform.Rotate(0, 0, 2);
             //　コルーチン再開時間
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.001f);
         }
         coroutineBool = false;
     }
@@ -58,11 +58,11 @@ public class Rotate : MonoBehaviour
     //左にゆっくり回転して90°でストップ
     IEnumerator LeftRot()
     {
-        for (int turn = 0; turn < 90; turn++)
+        for (int turn = 0; turn < 45; turn++)
         {
-            transform.Rotate(0, 0, -1);
+            transform.Rotate(0, 0, -2);
             //　コルーチン再開時間
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.001f);
         }
         coroutineBool = false;
     }
