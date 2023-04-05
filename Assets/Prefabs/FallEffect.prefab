@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4240655142031292954}
   - component: {fileID: 3427514034134489256}
   - component: {fileID: 5171884340236516911}
-  - component: {fileID: -4257775181451894833}
   m_Layer: 0
   m_Name: FallEffect
   m_TagString: Untagged
@@ -49,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -224,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -978,7 +977,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4871,17 +4870,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-4257775181451894833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9069455267255384120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 943895cc6a900d04cb1b244d6707ed66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destoryTime: 1
-  RootObject: {fileID: 7371597046328060658, guid: 1ff2d517e72dcaf40925272d5dca65d3, type: 3}
