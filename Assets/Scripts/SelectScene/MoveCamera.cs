@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    int MoveX;
-    bool MoveFlag;
-    [SerializeField] [Header("エリア数")] int AreaNum;
+    // インスタンス生成
+    public static MoveCamera instance;
 
+    int MoveX;
+    public bool MoveFlag;
+    GameObject StageSelect;
+    StageSelect sl;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
         MoveX = 20;
         MoveFlag = false;
+        StageSelect = GameObject.Find("StageSelect");
+        sl = StageSelect.GetComponent<StageSelect>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        // 右へ遷移
+        if (Input.GetKeyDown(KeyCode.RightArrow) &&
+            (sl.StageNum == 6 || sl.StageNum == 11 || sl.StageNum == 16 || sl.StageNum == 21))
         {
             // 座標が右端の時処理しない
-            if (transform.position.x == MoveX * (AreaNum - 1)) return;
+            if (transform.position.x == MoveX * sl.MaxNum) return;
 
             //移動中ではない場合は実行 
             if (!MoveFlag)
@@ -29,7 +44,9 @@ public class MoveCamera : MonoBehaviour
                 StartCoroutine("RightMove");
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // 左へ遷移
+        if (Input.GetKeyDown(KeyCode.LeftArrow) &&
+           (sl.StageNum == 5 || sl.StageNum == 10 || sl.StageNum == 15 || sl.StageNum == 20))
         {
             // 座標が左端（0,0,0）の時処理しない
             if (transform.position.x == 0) return;

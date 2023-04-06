@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class StageSelect : MonoBehaviour
 {
-    int AreaNum;        // エリア番号        １～５
-    int StageNum;       // ステージ番号      １～５
+    // インスタンス生成
+    public static StageSelect instance;
+
+    public int StageNum;
+    public int MaxNum = 25;
+
+    GameObject Camera;
+    MoveCamera mc;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()    
     {
-        AreaNum = 1;
         StageNum = 1;
+        Camera = GameObject.Find("Main Camera");
+        mc = Camera.GetComponent<MoveCamera>();
     }
 
     // Update is called once per frame
@@ -17,29 +33,21 @@ public class StageSelect : MonoBehaviour
     {
         // brief:右キーを押すと＋/左キーを押すとー　例) 3-1右キー　3-2　/　2-1左キー　1-5　/　2-5右キー　3-1
 
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow) && !mc.MoveFlag)
         {
-            if(StageNum < 5)
+            if(StageNum < MaxNum)
             {
                 StageNum++;
             }
-            else if(AreaNum < 5)
-            {
-                StageNum = 1;
-                AreaNum++;
-            }
+            Debug.Log(StageNum);
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow))
+        else if(Input.GetKeyDown(KeyCode.LeftArrow) && !mc.MoveFlag)
         {
             if(StageNum > 1)
             {
                 StageNum--;
             }
-            else if(AreaNum > 1)
-            {
-                StageNum = 5;
-                AreaNum--;
-            }
+            Debug.Log(StageNum);
         }
     }
 }
