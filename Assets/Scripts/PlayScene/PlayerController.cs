@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject warpPoint;
     [SerializeField] GameObject fallEffect;
     [SerializeField] int effectTimer;
+    public 
     bool effectflag = false;
 
     int JUMP_NUM;
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
             //Å@âÒì]
             RotCtrl();
 
-            transform.parent = GameObject.Find("StageFlame").transform;
+            transform.parent = GameObject.FindGameObjectWithTag("Stage").transform;
         }
 
         if(effectflag == true)

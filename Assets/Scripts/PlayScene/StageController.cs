@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] stage = new GameObject[0];
+    public GameObject[] stage = new GameObject[0];
     [SerializeField]
     Vector3 stagePos = new Vector3(0,0,0);
-    [SerializeField]
-    int stageNum = 1;
+    public int stageNum = 1;
 
     // Start is called before the first frame update
     void Start()
