@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField]GameObject[] PlayerStagePos;
-    GameObject StageSelect;
-    StageSelect sl;
+    GameObject stageSelect;
+    //StageSelect sl;
     void Start()
     {
-        StageSelect = GameObject.Find("StageSelect");
-        sl = StageSelect.GetComponent<StageSelect>();
+        stageSelect = GameObject.Find("StageSelect");
+        //sl = stageSelect.GetComponent<StageSelect>();
     }
 
     void Update()
     {
-        switch (sl.StageNum)
+        switch (StageSelect.StageNum)
         {
             case 1:case 6:case 11:case 16:case 21:
                 transform.position = PlayerStagePos[0].transform.position;
