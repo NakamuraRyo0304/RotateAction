@@ -9,8 +9,8 @@ public class MoveCamera : MonoBehaviour
 
     int MoveX;
     public bool MoveFlag;
-    GameObject StageSelect;
-    StageSelect sl;
+    GameObject stageSelect;
+    //StageSelect sl;
 
     public void Awake()
     {
@@ -23,8 +23,8 @@ public class MoveCamera : MonoBehaviour
     {
         MoveX = 20;
         MoveFlag = false;
-        StageSelect = GameObject.Find("StageSelect");
-        sl = StageSelect.GetComponent<StageSelect>();
+        stageSelect = GameObject.Find("StageSelect");
+        //sl = StageSelect.GetComponent<StageSelect>();
     }
 
     // Update is called once per frame
@@ -32,10 +32,10 @@ public class MoveCamera : MonoBehaviour
     {
         // 右へ遷移
         if (Input.GetKeyDown(KeyCode.RightArrow) &&
-            (sl.StageNum == 6 || sl.StageNum == 11 || sl.StageNum == 16 || sl.StageNum == 21))
+            (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21))
         {
             // 座標が右端の時処理しない
-            if (transform.position.x == MoveX * sl.MaxNum) return;
+            if (transform.position.x == MoveX * StageSelect.MaxNum) return;
 
             //移動中ではない場合は実行 
             if (!MoveFlag)
@@ -46,7 +46,7 @@ public class MoveCamera : MonoBehaviour
         }
         // 左へ遷移
         if (Input.GetKeyDown(KeyCode.LeftArrow) &&
-           (sl.StageNum == 5 || sl.StageNum == 10 || sl.StageNum == 15 || sl.StageNum == 20))
+           (StageSelect.StageNum == 5 || StageSelect.StageNum == 10 || StageSelect.StageNum == 15 || StageSelect.StageNum == 20))
         {
             // 座標が左端（0,0,0）の時処理しない
             if (transform.position.x == 0) return;

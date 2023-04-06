@@ -12,7 +12,7 @@ public class StageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(stage[stageNum], stagePos, Quaternion.identity);
+        Instantiate(stage[StageSelect.StageNum -1], stagePos, Quaternion.identity);
     }
 
     // Update is called once per frame
