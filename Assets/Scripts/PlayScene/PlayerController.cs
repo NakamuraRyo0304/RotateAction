@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpForce;
     [SerializeField] int jumpNum;
     [SerializeField] GameObject warpPoint;
+    [SerializeField] GameObject fallEffect;
+    [SerializeField] int effectTimer;
+    public 
+    bool effectflag = false;
 
     int JUMP_NUM;
 
@@ -45,7 +49,19 @@ public class PlayerController : MonoBehaviour
             //　回転
             RotCtrl();
 
-            transform.parent = GameObject.Find("StageFlame").transform;
+            transform.parent = GameObject.FindGameObjectWithTag("Stage").transform;
+        }
+
+        if(effectflag == true)
+        {
+            fallEffect.SetActive(true);
+            effectTimer += 1;
+        }
+
+        if (effectTimer == 2)
+        {
+            effectTimer = 0;
+            fallEffect.SetActive(false);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,13 +69,23 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "Block")
         {
             JUMP_NUM = jumpNum;
+            fallEffect.SetActive(true);
+
         }
 
-        if(collision.transform.tag == "Warp")
+        if (collision.transform.tag == "Warp")
         {
             transform.position = warpPoint.transform.position;
         }
+
+
+        //エフェクト
+        if (collision.transform.tag == "Block")
+        {
+            effectflag = true;
+        }
     }
+
 
     void RotCtrl()
     {
