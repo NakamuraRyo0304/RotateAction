@@ -10,7 +10,6 @@ public class MoveCamera : MonoBehaviour
     int MoveX;
     public bool MoveFlag;
     GameObject stageSelect;
-    //StageSelect sl;
 
     public void Awake()
     {
@@ -24,7 +23,6 @@ public class MoveCamera : MonoBehaviour
         MoveX = 20;
         MoveFlag = false;
         stageSelect = GameObject.Find("StageSelect");
-        //sl = StageSelect.GetComponent<StageSelect>();
     }
 
     // Update is called once per frame
@@ -81,5 +79,4 @@ public class MoveCamera : MonoBehaviour
         }
         MoveFlag = false;
     }
-
 }

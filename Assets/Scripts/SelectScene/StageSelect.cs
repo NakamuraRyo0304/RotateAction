@@ -41,7 +41,7 @@ public class StageSelect : MonoBehaviour
             }
             Debug.Log(StageNum);
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow) && !mc.MoveFlag)
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && !mc.MoveFlag)
         {
             if(StageNum > 1)
             {
