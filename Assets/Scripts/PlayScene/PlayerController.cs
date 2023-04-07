@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] int jumpForce;
     [SerializeField] int jumpNum;
-    [SerializeField] GameObject warpPoint;
     [SerializeField] GameObject fallEffect;
     [SerializeField] int effectTimer;
     public 
@@ -70,12 +69,16 @@ public class PlayerController : MonoBehaviour
         {
             JUMP_NUM = jumpNum;
             fallEffect.SetActive(true);
-
         }
 
-        if (collision.transform.tag == "Warp")
+        // 針に当たったらプレイヤーを消す
+        if(collision.transform.tag == "Spline")
         {
-            transform.position = warpPoint.transform.position;
+            // ここに死亡エフェクトを記述
+
+
+
+            Destroy(this.gameObject);
         }
 
 
