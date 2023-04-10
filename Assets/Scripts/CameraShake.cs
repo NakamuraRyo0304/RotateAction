@@ -5,49 +5,49 @@ using UnityEngine;
 // 対象オブジェクトの振動を管理するクラス
 public class CameraShake : MonoBehaviour
 {
-    int flag;
-    Vector3 pos;
+    [SerializeField] [Header("継続時間")] float Duration;
+    [SerializeField] [Header("揺れの大きさ")] float Magnitude;
 
+    bool pushFlag;
     private void Start()
     {
-        flag = 0;
+        pushFlag = false;
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow) && StageSelect.StageNum == 1||
-            Input.GetKeyDown(KeyCode.RightArrow) && StageSelect.StageNum == 25)
+        if((Input.GetKeyDown(KeyCode.LeftArrow) && StageSelect.StageNum == 1||
+            Input.GetKeyDown(KeyCode.RightArrow) && StageSelect.StageNum == 25)&&
+            pushFlag == false)
         {
-            if (flag == 0)
-            {
-                pos = transform.position;
-                flag = 1;
-            }
+            //　処理中は押せなくする(制限)
+            pushFlag = true;
+
+            //　コルーチンの呼び出し
+            StartCoroutine(Shake(Duration, Magnitude));
         }
 
-        switch (flag)
-        {
-            case 1:
-                goto case 3;
 
-            case 3:
-                transform.Translate(30 * Time.deltaTime, 0, 0);
-                
-                if (transform.position.x >= pos.x + 1.0f)
-                    flag++;
-                break;
-            case 2:
-                transform.Translate(-30 * Time.deltaTime, 0, 0);
-                if (transform.position.x <= pos.x - 1.0f)
-                    flag++;
-                break;
-            case 4:
-                transform.Translate(-30 * Time.deltaTime, 0, 0);
-                if (transform.position.x <= pos.x)
-                {
-                    gameObject.transform.position = pos;
-                    flag = 0;
-                }
-                break;
+    }
+    //　時間と揺れ幅
+    IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPosition = transform.position;
+        float elapsed = 0f;
+
+        //　設定した時間内だったら揺らす
+        while (elapsed < duration)
+        {
+            //　ランダムで座標を変更し続ける
+            transform.position = originalPosition + Random.insideUnitSphere * magnitude;
+            elapsed += Time.deltaTime;
+
+            //　時間内は抜け出さない
+            yield return null;
         }
+        //　初期位置に戻す
+        transform.position = originalPosition;
+
+        //　処理中は押せなくする(解除)
+        pushFlag = false;
     }
 }
