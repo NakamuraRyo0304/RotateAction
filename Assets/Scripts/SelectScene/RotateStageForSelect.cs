@@ -11,13 +11,25 @@ public class RotateStageForSelect : MonoBehaviour
 
     void Update()
     {
+        //　選んでるときは回転
         Stage[StageSelect.StageNum - 1].transform.Rotate(0, 0, 1);
 
-        if(Input.GetKeyDown(KeyCode.RightArrow)||
-            Input.GetKeyDown(KeyCode.LeftArrow))
+        //　セレクト切り替えで回転量リセット
+        if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Stage[StageSelect.StageNum - 1].transform.rotation = Quaternion.identity;
+            for (int num = 0; num < StageSelect.StageNum; num++)
+            {
+                if (StageSelect.StageNum - 1 == num) return;
+                Stage[num].transform.rotation = Quaternion.identity;
+            }            
         }
-
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            for (int num = StageSelect.StageNum; num > 0; num--)
+            {
+                if (StageSelect.StageNum - 1 == num) return;
+                Stage[num].transform.rotation = Quaternion.identity;
+            }            
+        }
     }
 }
