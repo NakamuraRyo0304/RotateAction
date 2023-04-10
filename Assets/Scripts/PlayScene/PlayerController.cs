@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpForce;
     [SerializeField] int jumpNum;
     [SerializeField] GameObject fallEffect;
+    [SerializeField] GameObject deadEffect;
     [SerializeField] int effectTimer;
     public 
     bool effectflag = false;
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if(collision.transform.tag == "Spline")
         {
             // ここに死亡エフェクトを記述
-
+            Instantiate(deadEffect, transform.position, Quaternion.identity);
 
 
             Destroy(this.gameObject);
