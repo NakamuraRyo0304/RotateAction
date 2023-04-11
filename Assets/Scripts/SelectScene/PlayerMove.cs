@@ -5,12 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField]GameObject[] PlayerStagePos;
-    GameObject stageSelect;
-    //StageSelect sl;
     void Start()
     {
-        stageSelect = GameObject.Find("StageSelect");
-        //sl = stageSelect.GetComponent<StageSelect>();
     }
 
     void Update()
