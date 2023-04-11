@@ -23,8 +23,8 @@ public class Rotate : MonoBehaviour
 
     private void Update()
     {
-        //　プレイヤーが死んでいないときに回転する
-        if (PlayerController.deadFlag == false)
+        //　プレイヤーが死んでいないときかつプレイヤーがアクティブのときに回転する
+        if (PlayerController.deadFlag == false && SpownEffectControl.playerFlag == true)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
