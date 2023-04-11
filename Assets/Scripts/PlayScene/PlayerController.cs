@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpForce;
     [SerializeField] int jumpNum;
     [SerializeField] GameObject fallEffect;
-    [SerializeField] int effectTimer;
-    public 
+    [SerializeField] GameObject deadEffect;
+    int effectTimer;
     bool effectflag = false;
+    public static bool deadFlag;
 
+    Vector2 deadPos = new(100, 0);
     int JUMP_NUM;
 
     private bool rotFlag;
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        deadFlag = false;
         JUMP_NUM = jumpNum;
         rotFlag = false;
     }
@@ -51,6 +55,7 @@ public class PlayerController : MonoBehaviour
             transform.parent = GameObject.FindGameObjectWithTag("Stage").transform;
         }
 
+        //　エフェクトの管理
         if(effectflag == true)
         {
             fallEffect.SetActive(true);
@@ -62,6 +67,11 @@ public class PlayerController : MonoBehaviour
             effectTimer = 0;
             fallEffect.SetActive(false);
         }
+
+        if(deadFlag == true)
+        {
+            deadController();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -72,15 +82,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // 針に当たったらプレイヤーを消す
-        if(collision.transform.tag == "Spline")
+        if (collision.transform.tag == "Spline")
         {
-            // ここに死亡エフェクトを記述
+            deadFlag = true;
 
-
-
-            Destroy(this.gameObject);
         }
-
 
         //エフェクト
         if (collision.transform.tag == "Block")
@@ -89,6 +95,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void deadController()
+    {
+        // 死亡エフェクト
+        Instantiate(deadEffect, transform.position, Quaternion.identity);
+        transform.position = deadPos;
+        StartCoroutine("ReTry");
+
+    }
 
     void RotCtrl()
     {
@@ -131,5 +145,13 @@ public class PlayerController : MonoBehaviour
         }
         rotFlag = false;
     }
+
+    IEnumerator ReTry()
+    {
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene("PlayScene");
+    }
+
 }
 

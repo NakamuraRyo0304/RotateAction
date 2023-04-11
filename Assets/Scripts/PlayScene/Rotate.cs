@@ -23,24 +23,29 @@ public class Rotate : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        //　プレイヤーが死んでいないときに回転する
+        if (PlayerController.deadFlag == false)
         {
-            //回転中ではない場合は実行 
-            if (!coroutineBool)
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                coroutineBool = true;
-                StartCoroutine("RightRot");
+                //回転中ではない場合は実行 
+                if (!coroutineBool)
+                {
+                    coroutineBool = true;
+                    StartCoroutine("RightRot");
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                //回転中ではない場合は実行 
+                if (!coroutineBool)
+                {
+                    coroutineBool = true;
+                    StartCoroutine("LeftRot");
+                }
             }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //回転中ではない場合は実行 
-            if (!coroutineBool)
-            {
-                coroutineBool = true;
-                StartCoroutine("LeftRot");
-            }
-        }
+        
     }
 
     //右にゆっくり回転して90°でストップ
@@ -58,6 +63,7 @@ public class Rotate : MonoBehaviour
     //左にゆっくり回転して90°でストップ
     IEnumerator LeftRot()
     {
+
         for (int turn = 0; turn < 90; turn++)
         {
             transform.Rotate(0, 0, -1);
@@ -65,5 +71,6 @@ public class Rotate : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
         coroutineBool = false;
+
     }
 }
