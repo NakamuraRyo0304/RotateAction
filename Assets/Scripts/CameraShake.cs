@@ -15,8 +15,8 @@ public class CameraShake : MonoBehaviour
     }
     private void Update()
     {
-        if((Input.GetKeyDown(KeyCode.LeftArrow) && StageSelect.StageNum == 1||
-            Input.GetKeyDown(KeyCode.RightArrow) && StageSelect.StageNum == 25)&&
+        if(((Input.GetKeyDown(KeyCode.LeftArrow) && StageSelect.StageNum == 1)||
+            (Input.GetKeyDown(KeyCode.RightArrow) && StageSelect.StageNum == 25))&&
             pushFlag == false)
         {
             //　処理中は押せなくする(制限)
@@ -25,9 +25,7 @@ public class CameraShake : MonoBehaviour
             //　コルーチンの呼び出し
             StartCoroutine(Shake(Duration, Magnitude));
         }
-
-
-    }
+       }
     //　時間と揺れ幅
     IEnumerator Shake(float duration, float magnitude)
     {
