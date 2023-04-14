@@ -6,6 +6,8 @@ public class Rotate : MonoBehaviour
 {
     public static Rotate instance;
     public bool coroutineBool;
+    [SerializeField]
+    float rotSpeed = 0.001f;
 
     public void Awake()
     {
@@ -51,11 +53,17 @@ public class Rotate : MonoBehaviour
     //右にゆっくり回転して90°でストップ
     IEnumerator RightRot()
     {
+        //for (int turn = 0; turn < 90; turn++)
+        //{
+        //    transform.Rotate(0, 0, 1);
+        //    //　コルーチン再開時間
+        //    yield return new WaitForSeconds(0.001f);
+        //}
         for (int turn = 0; turn < 90; turn++)
         {
             transform.Rotate(0, 0, 1);
             //　コルーチン再開時間
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(rotSpeed);
         }
         coroutineBool = false;
     }
@@ -64,11 +72,17 @@ public class Rotate : MonoBehaviour
     IEnumerator LeftRot()
     {
 
+        //for (int turn = 0; turn < 90; turn++)
+        //{
+        //    transform.Rotate(0, 0, -1);
+        //    //　コルーチン再開時間
+        //    yield return new WaitForSeconds(0.001f);
+        //}
         for (int turn = 0; turn < 90; turn++)
         {
             transform.Rotate(0, 0, -1);
             //　コルーチン再開時間
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(rotSpeed);
         }
         coroutineBool = false;
 

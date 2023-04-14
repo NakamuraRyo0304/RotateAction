@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PlayerController : MonoBehaviour
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
+    Vector2 rotBeforPos = new(0, 0);
+    Vector2 rotAfterPos;
+    float posDistance;
+
 
     Vector2 deadPos = new(100, 0);
     int JUMP_NUM;
@@ -58,19 +63,29 @@ public class PlayerController : MonoBehaviour
         //　エフェクトの管理
         if(effectflag == true)
         {
-            fallEffect.SetActive(true);
-            effectTimer += 1;
+
+            GetDistance();
+
+            //if (posDistance <= 3.0f)
+            //{
+            Debug.Log("きちゃ");
+
+                fallEffect.SetActive(true);
+                effectTimer += 1;
+            //}
         }
 
-        if (effectTimer == 2)
+        if (effectTimer >= 2)
         {
-            effectTimer = 0;
+            rotBeforPos = rotAfterPos;
             fallEffect.SetActive(false);
+            effectTimer = 0;
+            effectflag = false;
         }
 
         if(deadFlag == true)
         {
-            deadController();
+            DeadController();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -88,20 +103,37 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //エフェクト
+        // エフェクト
         if (collision.transform.tag == "Block")
         {
-            effectflag = true;
+            effectflag = true; 
         }
+
     }
 
-    void deadController()
+    void DeadController()
     {
         // 死亡エフェクト
         Instantiate(deadEffect, transform.position, Quaternion.identity);
         transform.position = deadPos;
         StartCoroutine("ReTry");
 
+    }
+
+    void GetDistance()
+    {
+        rotAfterPos = this.transform.position;
+
+        if(rotBeforPos.y < 1)
+        {
+            rotBeforPos.y *= -1;
+        }
+        if (rotAfterPos.y < 1)
+        {
+            rotBeforPos.y *= -1;
+        }
+
+        posDistance = rotBeforPos.y + rotAfterPos.y;
     }
 
     void RotCtrl()
