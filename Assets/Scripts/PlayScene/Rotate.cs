@@ -59,9 +59,9 @@ public class Rotate : MonoBehaviour
         //    //　コルーチン再開時間
         //    yield return new WaitForSeconds(0.001f);
         //}
-        for (int turn = 0; turn < 45; turn++)
+        for (int turn = 0; turn < 90; turn++)
         {
-            transform.Rotate(0, 0, 2);
+            transform.Rotate(0, 0, 1);
             //　コルーチン再開時間
             yield return new WaitForSeconds(rotSpeed);
         }
@@ -78,9 +78,9 @@ public class Rotate : MonoBehaviour
         //    //　コルーチン再開時間
         //    yield return new WaitForSeconds(0.001f);
         //}
-        for (int turn = 0; turn < 45; turn++)
+        for (int turn = 0; turn < 90; turn++)
         {
-            transform.Rotate(0, 0, -2);
+            transform.Rotate(0, 0, -1);
             //　コルーチン再開時間
             yield return new WaitForSeconds(rotSpeed);
         }
