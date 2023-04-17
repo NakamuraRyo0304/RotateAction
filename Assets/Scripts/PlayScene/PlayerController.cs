@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] new Rigidbody2D rigidbody;
-    [SerializeField] int jumpForce;
-    [SerializeField] int jumpNum;
     [SerializeField] GameObject fallEffect;
     [SerializeField] GameObject deadEffect;
     int effectTimer;
@@ -20,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
 
     Vector2 deadPos = new(100, 0);
-    int JUMP_NUM;
 
     private bool rotFlag;
    
@@ -28,7 +25,6 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         deadFlag = false;
-        JUMP_NUM = jumpNum;
         rotFlag = false;
     }
 
@@ -37,16 +33,6 @@ public class PlayerController : MonoBehaviour
         if (!Rotate.instance.coroutineBool)
         {
             rotFlag = false;
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if(JUMP_NUM > 0)
-                {
-                    Vector2 force = new Vector2(0, jumpForce); 
-                    rigidbody.AddForce(force);
-                    JUMP_NUM--;
-                }
-            }
 
             //Å@èâä˙âª
             transform.Rotate(Vector3.zero);
@@ -92,7 +78,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.transform.tag == "Block")
         {
-            JUMP_NUM = jumpNum;
             fallEffect.SetActive(true);
         }
 
