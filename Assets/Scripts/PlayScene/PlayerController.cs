@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
-    Vector2 rotBeforPos = new(0, 0);
-    Vector2 rotAfterPos;
-    float posDistance;
+    public Vector2 rotBeforPos = new(0, 0);
+    public Vector2 rotAfterPos;
+    public float posDistance;
 
 
     Vector2 deadPos = new(100, 0);
@@ -63,16 +63,16 @@ public class PlayerController : MonoBehaviour
         //　エフェクトの管理
         if(effectflag == true)
         {
-
             GetDistance();
 
-            //if (posDistance <= 3.0f)
-            //{
+            if (posDistance <= 30.0f)
+            {
             Debug.Log("きちゃ");
 
                 fallEffect.SetActive(true);
-                effectTimer += 1;
-            //}
+            }
+            effectTimer += 1;
+
         }
 
         if (effectTimer >= 2)
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
         }
         if (rotAfterPos.y < 1)
         {
-            rotBeforPos.y *= -1;
+            rotAfterPos.y *= -1;
         }
 
         posDistance = rotBeforPos.y + rotAfterPos.y;
