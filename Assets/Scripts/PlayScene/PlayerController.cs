@@ -12,10 +12,13 @@ public class PlayerController : MonoBehaviour
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
+    bool rGravityFlag;
+
     public Vector2 rotBeforPos = new(0, 0);
     public Vector2 rotAfterPos;
     public float posDistance;
 
+    float gravityTemp;
 
     Vector2 deadPos = new(100, 0);
 
@@ -26,10 +29,12 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         deadFlag = false;
         rotFlag = false;
+        rGravityFlag = false;
     }
 
     void Update()
     {
+
         if (!Rotate.instance.coroutineBool)
         {
             rotFlag = false;
@@ -53,9 +58,7 @@ public class PlayerController : MonoBehaviour
 
             if (posDistance <= 30.0f)
             {
-            Debug.Log("きちゃ");
 
-                fallEffect.SetActive(true);
             }
             effectTimer += 1;
 
@@ -73,12 +76,20 @@ public class PlayerController : MonoBehaviour
         {
             DeadController();
         }
+
+        if (rGravityFlag == true)
+        {
+            Debug.Log("きちゃ");
+            rigidbody.gravityScale = -1;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // エフェクト
         if (collision.transform.tag == "Block")
         {
             fallEffect.SetActive(true);
+            effectflag = true; 
         }
 
         // 針に当たったらプレイヤーを消す
@@ -87,13 +98,14 @@ public class PlayerController : MonoBehaviour
             deadFlag = true;
 
         }
+    }
 
-        // エフェクト
-        if (collision.transform.tag == "Block")
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "RGravity")
         {
-            effectflag = true; 
+            rGravityFlag = true;
         }
-
     }
 
     void DeadController()
