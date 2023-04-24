@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
+    bool rGravityFlag;
+
     public Vector2 rotBeforPos = new(0, 0);
     public Vector2 rotAfterPos;
     public float posDistance;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         deadFlag = false;
         rotFlag = false;
+        rGravityFlag = false;
     }
 
     void Update()
@@ -73,6 +76,12 @@ public class PlayerController : MonoBehaviour
         {
             DeadController();
         }
+
+        if (rGravityFlag == true)
+        {
+            Debug.Log("‚«‚¿‚á");
+            rigidbody.gravityScale = -1;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -89,14 +98,14 @@ public class PlayerController : MonoBehaviour
             deadFlag = true;
 
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.transform.tag == "RGravity")
         {
-            Debug.Log("‚«‚¿‚á");
-            Mathf.Lerp(0.0f, -1.0f, gravityTemp);
-            rigidbody.gravityScale = -gravityTemp;
+            rGravityFlag = true;
         }
-
     }
 
     void DeadController()
