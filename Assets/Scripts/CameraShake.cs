@@ -16,7 +16,7 @@ public class CameraShake : MonoBehaviour
     private void Update()
     {
         if(((Input.GetKeyDown(KeyCode.LeftArrow) && StageSelect.StageNum == 1)||
-            (Input.GetKeyDown(KeyCode.RightArrow) && StageSelect.StageNum == 25))&&
+            (Input.GetKeyDown(KeyCode.RightArrow) && StageSelect.StageNum == 45))&&
             pushFlag == false)
         {
             //@ˆ—’†‚Í‰Ÿ‚¹‚È‚­‚·‚é(§ŒÀ)

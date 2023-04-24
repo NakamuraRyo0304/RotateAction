@@ -30,7 +30,8 @@ public class MoveCamera : MonoBehaviour
     {
         // 右へ遷移
         if (Input.GetKeyDown(KeyCode.RightArrow) &&
-            (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21))
+            (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||
+             StageSelect.StageNum == 26 || StageSelect.StageNum == 31 || StageSelect.StageNum == 36||StageSelect.StageNum == 41))
         {
             // 座標が右端の時処理しない
             if (transform.position.x == MoveX * StageSelect.MaxNum) return;
@@ -44,7 +45,9 @@ public class MoveCamera : MonoBehaviour
         }
         // 左へ遷移
         if (Input.GetKeyDown(KeyCode.LeftArrow) &&
-           (StageSelect.StageNum == 5 || StageSelect.StageNum == 10 || StageSelect.StageNum == 15 || StageSelect.StageNum == 20))
+           (StageSelect.StageNum == 5 || StageSelect.StageNum == 10 || StageSelect.StageNum == 15 || StageSelect.StageNum == 20||
+            StageSelect.StageNum == 25|| StageSelect.StageNum == 30|| StageSelect.StageNum == 35 || StageSelect.StageNum == 40 ||
+            StageSelect.StageNum == 45))
         {
             // 座標が左端（0,0,0）の時処理しない
             if (transform.position.x == 0) return;

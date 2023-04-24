@@ -8,7 +8,7 @@ public class StageSelect : MonoBehaviour
     public static StageSelect instance;
 
     public static int StageNum;
-    public static int MaxNum = 25;
+    public static int MaxNum = 45;
 
     GameObject Camera;
     MoveCamera mc;
