@@ -22,6 +22,7 @@ public class RGravity : MonoBehaviour
         if (collision.transform.tag =="Player")
         {
             transform.position += pos;
+            Destroy(this.gameObject);
         }
     }
 }
