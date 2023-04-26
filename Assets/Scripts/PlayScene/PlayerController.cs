@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] GameObject fallEffect;
     [SerializeField] GameObject deadEffect;
+    [SerializeField] GameObject key;
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
-    bool rGravityFlag;
+    bool keyFlag;
+    public static bool openFlag;
 
     public Vector2 rotBeforPos = new(0, 0);
     public Vector2 rotAfterPos;
@@ -29,12 +31,13 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         deadFlag = false;
         rotFlag = false;
-        rGravityFlag = false;
+        keyFlag = false;
+        openFlag = false;
     }
 
     void Update()
     {
-
+        // 回転中出ないときのみ回転可能
         if (!Rotate.instance.coroutineBool)
         {
             rotFlag = false;
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
             effectTimer += 1;
 
         }
-
+        // 一定時間後に削除
         if (effectTimer >= 2)
         {
             rotBeforPos = rotAfterPos;
@@ -72,17 +75,13 @@ public class PlayerController : MonoBehaviour
             effectflag = false;
         }
 
+        // 死んだときの判定
         if(deadFlag == true)
         {
             DeadController();
         }
-
-        if (rGravityFlag == true)
-        {
-            Debug.Log("きちゃ");
-            rigidbody.gravityScale = -1;
-        }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // エフェクト
@@ -96,15 +95,25 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "Spline")
         {
             deadFlag = true;
-
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
         if (collision.transform.tag == "RGravity")
         {
-            rGravityFlag = true;
+            rigidbody.gravityScale = -1;
+        }
+
+        if ((collision.transform.tag == "Key"))
+        {
+            keyFlag = true;
+            Destroy(key);
+        }
+
+        if ((collision.transform.tag == "KeyBlock"))
+        {
+            if (keyFlag == true)
+            {
+                openFlag = true;
+            }
         }
     }
 
