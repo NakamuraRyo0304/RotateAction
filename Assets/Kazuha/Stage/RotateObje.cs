@@ -5,14 +5,6 @@ using UnityEngine;
 public class RotateObje: MonoBehaviour
 {
     [SerializeField] [Header("î{ó¶")] double rate;
-    void Awake()
-    {
-        Application.targetFrameRate = 60; //60FPSÇ…ê›íË
-    }
-    void Start()
-    {
-
-    }
 
     void Update()
     {
