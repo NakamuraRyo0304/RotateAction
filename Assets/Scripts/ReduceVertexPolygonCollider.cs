@@ -8,7 +8,7 @@ using System.Linq;
 
 public class ReduceVertexPolygonCollider2D
 {
-    [MenuItem("GameObject/Reduce Vertex of PolygonCollider", true)]
+    [MenuItem("GameObject/PolygonCollider2D�̍팸", true)]
     static bool ValidateRemoveShapes()
     {
         foreach (GameObject objects in Selection.gameObjects)
@@ -19,7 +19,7 @@ public class ReduceVertexPolygonCollider2D
         return false;
     }
 
-    [MenuItem("GameObject/Reduce Vertex of PolygonCollider")]
+    [MenuItem("GameObject/PolygonCollider2D�̍팸")]
     static void RemoveShapes()
     {
         foreach (GameObject objects in Selection.gameObjects)
