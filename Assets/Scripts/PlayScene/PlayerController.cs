@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
-    bool rGravityFlag;
     bool keyFlag;
     public static bool openFlag;
 
@@ -32,7 +31,6 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         deadFlag = false;
         rotFlag = false;
-        rGravityFlag = false;
         keyFlag = false;
         openFlag = false;
     }
