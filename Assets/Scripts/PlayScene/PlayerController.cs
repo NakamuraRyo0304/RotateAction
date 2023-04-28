@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
-    bool keyFlag;
+    public static bool keyFlag;
     public static bool openFlag;
 
     public Vector2 rotBeforPos = new(0, 0);
@@ -190,6 +190,5 @@ public class PlayerController : MonoBehaviour
 
         SceneManager.LoadScene("PlayScene");
     }
-
 }
 

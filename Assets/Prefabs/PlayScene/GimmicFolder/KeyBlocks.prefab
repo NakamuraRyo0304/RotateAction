@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7398066029827867628}
   - component: {fileID: 7398066029827867635}
   - component: {fileID: 7398066029827867629}
+  - component: {fileID: 2080488155893019647}
   m_Layer: 0
   m_Name: KeyBlock
   m_TagString: KeyBlock
@@ -111,6 +112,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9540365, y: 0.39535528}
   m_EdgeRadius: 0
+--- !u!114 &2080488155893019647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398066029827867634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58dff3dcc33ae644b65376394d3e1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockTexture: {fileID: 2800000, guid: b519bdc5310efac4bb8f204f6ab12472, type: 3}
+  unLockTexture: {fileID: 2800000, guid: 99d2d6efae264504ab5c1cae260cfca8, type: 3}
 --- !u!1 &7398066030053136633
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +205,7 @@ GameObject:
   - component: {fileID: 7398066030241733131}
   - component: {fileID: 7398066030241733125}
   - component: {fileID: 7398066030241733124}
+  - component: {fileID: 5115105900850298608}
   m_Layer: 0
   m_Name: KeyBlock (1)
   m_TagString: KeyBlock
@@ -290,3 +306,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9023275, y: 0.39745682}
   m_EdgeRadius: 0
+--- !u!114 &5115105900850298608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398066030241733130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58dff3dcc33ae644b65376394d3e1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockTexture: {fileID: 2800000, guid: 924e5096ce0e8fa419980d5d108401bc, type: 3}
+  unLockTexture: {fileID: 2800000, guid: 6a485ea9b3c0e4b4eb677e59c03774bf, type: 3}
