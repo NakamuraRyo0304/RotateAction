@@ -74,4 +74,27 @@ public class FadeManager : MonoBehaviour
         fadeImage.color = new Color(red, green, blue, alpha);
     }
 
+    public bool CheckInEnd()
+    {
+        if (!is_In && alpha <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool CheckOutEnd()
+    {
+        if (!is_Out && alpha >= 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }
