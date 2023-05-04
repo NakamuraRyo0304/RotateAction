@@ -1,100 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// UIの追加
 using UnityEngine.UI;
+
 
 public class FadeManager : MonoBehaviour
 {
-    // フェードの速度
-    [SerializeField]
-    [Header("フェード速度")] float speed = 0.01f;
+    // フェードオブジェクトを生成するフラグ
+    public static bool is_FadeInstance = false;
 
-    float red, green, blue, alpha;
+    // フェードインのフラグ
+    public bool is_FadeIn              = false;
+    // フェードアウトのフラグ
+    public bool is_FadeOut             = false;
 
-    [SerializeField]
-    [Header("フェードイン")] public bool is_In = false;
-    [SerializeField]
-    [Header("フェードアウト")] public bool is_Out = false;
-
-    [SerializeField]
-    [Header("フェード使用時:True")] public bool is_Active = false;
-    
-    // パネルイメージ
-    Image fadeImage;
+    // 透明度(これが変化してフェードになる)
+    public float alpha                 = 0.0f;
+    // フェードにかかる時間
+    public float fadeTime              = 0.0f;
 
     void Start()
     {
-        this.gameObject.SetActive(is_Active);
-        fadeImage = GetComponent<Image>();
-        red = fadeImage.color.r;
-        green = fadeImage.color.g;
-        blue = fadeImage.color.b;
-        alpha = fadeImage.color.a;
+        // 一番初めに起動した時作成(破壊不能オブジェクトに設定)
+        if (!is_FadeInstance)
+        {
+            DontDestroyOnLoad(this);
+            is_FadeInstance = true;
+        }
     }
 
     void Update()
     {
-        if(is_In)
+        // フェードインの処理
+        if(is_FadeIn)
         {
-            FadeIn();
+            // フェード処理
+            alpha -= Time.deltaTime / fadeTime;
+            alpha -= Time.deltaTime / fadeTime;
+            
+            // 透明になったら処理終了
+            if(alpha <= 0.0f)
+            {
+                is_FadeIn = false;
+                alpha = 0.0f;
+            }
+            this.GetComponentInChildren<Image>().color = new Color(0.0f, 0.0f, 0.0f, alpha);
         }
-        if(is_Out)
+
+        // フェードアウト処理
+        else if(is_FadeOut)
         {
-            FadeOut();
+            // フェード処理
+            alpha += Time.deltaTime / fadeTime;
+
+            // 暗転したら処理終了
+            if(alpha >= 1.0f)
+            {
+                is_FadeOut = false;
+                alpha = 1.0f;
+            }
+            this.GetComponentInChildren<Image>().color = new Color(0.0f, 0.0f, 0.0f, alpha);
         }
     }
 
-
-    void FadeIn()
+    // 以下、呼び出し用関数
+    public void FadeIn()
     {
-        alpha -= speed;
-        Alpha();
-
-        if(alpha <= 0)
-        {
-            is_In = false;
-            fadeImage.enabled = false;
-        }
+        is_FadeIn = true;
+        is_FadeOut = false;
     }
 
-    void FadeOut()
+    public void FadeOut()
     {
-        fadeImage.enabled = true;
-        alpha += speed;
-        Alpha();
-
-        if(alpha >= 1)
-        {
-            is_Out = false;
-        }
+        is_FadeIn = false;
+        is_FadeOut = true;
     }
 
-    void Alpha()
+    public float Alpha()
     {
-        fadeImage.color = new Color(red, green, blue, alpha);
+        return alpha;
     }
-
-    public bool CheckInEnd()
-    {
-        if (!is_In && alpha <= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    public bool CheckOutEnd()
-    {
-        if (!is_Out && alpha >= 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
 }
