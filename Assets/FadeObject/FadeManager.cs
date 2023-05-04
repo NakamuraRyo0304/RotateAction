@@ -12,15 +12,43 @@ public class FadeManager : MonoBehaviour
     float red, green, blue, alpha;
 
     [SerializeField]
-    [Header("フェードイン")] public bool is_In = false;
-    [SerializeField]
-    [Header("フェードアウト")] public bool is_Out = false;
+    [Header("フェードイン")] bool is_In = false;
 
     [SerializeField]
-    [Header("フェード使用時:True")] public bool is_Active = false;
+    [Header("フェードアウト")] bool is_Out = false;
+
+
+    public int Is_OutAlpha
+    {
+        get
+        {
+            return (int)alpha;
+        }
+        set
+        {
+            alpha = 0;
+            is_Out = true;
+        }
+    }
+    public int Is_InAlpha
+    {
+        get
+        {
+            return (int)alpha;
+        }
+        set
+        {
+            alpha = 1;
+            is_In = true;
+        }
+    }
+
+    [SerializeField]
+    [Header("フェード使用時:True")]  bool is_Active = false;
     
     // パネルイメージ
     Image fadeImage;
+
 
     void Start()
     {
@@ -73,28 +101,4 @@ public class FadeManager : MonoBehaviour
     {
         fadeImage.color = new Color(red, green, blue, alpha);
     }
-
-    public bool CheckInEnd()
-    {
-        if (!is_In && alpha <= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    public bool CheckOutEnd()
-    {
-        if (!is_Out && alpha >= 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
 }

@@ -18,7 +18,8 @@ public class NextScene : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Space))
-        {       // 現在のシーンのビルド番号を＋１（次のシーンのビルド番号になる）
+        {  
+            // 現在のシーンのビルド番号を＋１（次のシーンのビルド番号になる）
             buildIndex = buildIndex + 1;
             // 取得したビルド番号のシーン（現在のシーン）を読み込む
             SceneManager.LoadScene(buildIndex);
