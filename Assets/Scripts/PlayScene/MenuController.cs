@@ -3,15 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public int menuNum;
+    public static int menuNum;
     Vector2[] playerPos = new Vector2[4];
 
     // Start is called before the first frame update
     void Start()
     {
         menuNum = 1;
-        playerPos[0] = new Vector2(0.0f, 2.37f);
-        playerPos[1] = new Vector2(0.0f, 1.06f);
+        playerPos[0] = new Vector2(0.0f, 2.16f);
+        playerPos[1] = new Vector2(0.0f, 0.88f);
         playerPos[2] = new Vector2(0.0f, -0.21f);
         playerPos[3] = new Vector2(0.0f, -1.7f);
     }
