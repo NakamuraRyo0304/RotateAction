@@ -45,7 +45,7 @@ public class CollapseBlock : MonoBehaviour
         // タイマーの加算
         timer++;
 
-        if (timer >= 180)
+        if (timer >= 120)
         {
             effect.SetActive(true);
 
@@ -76,7 +76,7 @@ public class CollapseBlock : MonoBehaviour
             moveCount++;
         }
 
-        if (timer >= 360)
+        if (timer >= 240)
         {
 
             if (scale.x >= 0.5)
@@ -85,7 +85,7 @@ public class CollapseBlock : MonoBehaviour
                 scale.y -= 0.01f;
                 this.transform.localScale = scale;
             }
-            if (timer >= 420)
+            if (timer >= 300)
             {
                 Destroy(gameObject);
                 Destroy(BlockCol);
