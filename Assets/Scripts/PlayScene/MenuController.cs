@@ -5,6 +5,8 @@ public class MenuController : MonoBehaviour
 {
     public static int menuNum;
     Vector2[] playerPos = new Vector2[4];
+    [SerializeField]
+    GameObject menu;
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +35,11 @@ public class MenuController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (menuNum == 1)
-            {
-            }
-            if (menuNum == 2)
-            {
-            }
             if (menuNum == 3)
             {
                 SceneManager.LoadScene("SelectScene");
+                MenuManager.menuFlag = false;
+                menu.SetActive(false);
             }
             if (menuNum == 4)
             {
@@ -51,6 +49,8 @@ public class MenuController : MonoBehaviour
     UnityEngine.Application.Quit();
 #endif            
             }
+
+            menuNum = 1;
         }
     }
 }
