@@ -33,7 +33,7 @@ public class SpownEffectControl : MonoBehaviour
 
     IEnumerator PlayerActiv()
     {
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.7f);
         player.SetActive(true);
         playerFlag = true;
     }
