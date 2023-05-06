@@ -25,28 +25,40 @@ public class SoundManager : MonoBehaviour
         if(collision.transform.tag == "Goal")
         {
             se.clip = GoalSound;
+
+            se.PlayOneShot(se.clip);
         }
         if(collision.transform.tag == "Warp")
         {
             se.clip = WarpSound;
+
+            se.PlayOneShot(se.clip);
         }
-        if(collision.transform.tag == "Sprine")
+        if(collision.transform.tag == "Spline")
         {
             se.clip = SprineSound;
+
+            se.PlayOneShot(se.clip);
         }
         if(collision.transform.tag == "RGravity")
         {
             se.clip = RgravitySound;
+
+            se.PlayOneShot(se.clip);
         }
         if(collision.transform.tag == "KeyBlock")
         {
+            if (!PlayerController.openFlag) return;
+
             se.clip = KeyBlockSound;
+
+            se.PlayOneShot(se.clip);
         }
         if(collision.transform.tag == "Key")
         {
             se.clip = KeySound;
-        }
 
-        se.PlayOneShot(se.clip);
+            se.PlayOneShot(se.clip);
+        }
     }
 }
