@@ -39,6 +39,8 @@ public class CollapseBlock : MonoBehaviour
         if (!hitFlag)
             return;
 
+        // 当ったらポジションの保存
+        pos = this.transform.position;
 
         // タイマーの加算
         timer++;
@@ -95,8 +97,6 @@ public class CollapseBlock : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         hitFlag = true;
-        pos = this.transform.position;
-
     }
 }
 
