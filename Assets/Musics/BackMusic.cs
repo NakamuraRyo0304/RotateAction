@@ -26,7 +26,11 @@ public class BackMusic : MonoBehaviour
         // プレイシーンに行ったら削除する
         if(SceneManager.GetActiveScene().name == "Playscene")
         {
-            Destroy(this.gameObject);
+            First.Stop();
+        }
+        else if(!First.isPlaying)
+        {
+            First.Play();
         }
     }
 }
