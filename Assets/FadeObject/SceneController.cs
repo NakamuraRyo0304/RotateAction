@@ -28,10 +28,8 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if (MenuManager.menuFlag) return;
             // フェードアウト
             fadeCanvas.GetComponent<FadeManager>().FadeOut();
         }
