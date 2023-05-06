@@ -5,16 +5,11 @@ using UnityEngine;
 public class Warp : MonoBehaviour
 {
     [SerializeField]
-    GameObject player;
-    [SerializeField]
     GameObject warpObj;
-    Vector2 warpPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        warpPos = warpObj.transform.position;
-        //warpPos.y += 2.0f;
     }
 
     // Update is called once per frame
@@ -24,7 +19,13 @@ public class Warp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-            player.transform.position = warpPos;
+        if (collision.transform.tag == "Player")
+        {
+            Debug.Log("AAAAAAaa");
+            collision.transform.position = new Vector3(
+                                                        warpObj.transform.position.x,
+                                                        warpObj.transform.position.y, 
+                                                        warpObj.transform.position.z);
+        }
     }
 }
