@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         menuFlag = false;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -20,6 +21,7 @@ public class MenuManager : MonoBehaviour
         {
             menuFlag = !menuFlag;
             menu.SetActive(menuFlag);
+            MenuController.menuNum = 1;
         }
     }
 }

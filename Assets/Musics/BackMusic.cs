@@ -8,6 +8,8 @@ public class BackMusic : MonoBehaviour
     // オーディオソース
     [SerializeField] GameObject music;
     private AudioSource First;
+    public AudioClip title;
+    public AudioClip play;
 
     private void Start()
     {
@@ -17,6 +19,9 @@ public class BackMusic : MonoBehaviour
         // AudioSourceをゲット
         First = music.GetComponent<AudioSource>();
 
+        // AudioClipの設定
+        First.clip = title;
+
         // AudioClipを再生
         First.Play();
 
@@ -24,9 +29,19 @@ public class BackMusic : MonoBehaviour
     private void Update()
     {
         // プレイシーンに行ったら削除する
-        if(SceneManager.GetActiveScene().name == "Playscene")
+        if(SceneManager.GetActiveScene().name == "Playscene"&&
+            First.clip == title)
         {
-            Destroy(this.gameObject);
+            First.Stop();
+            First.clip = play;
+            First.Play();
+        }
+        else if(SceneManager.GetActiveScene().name != "Playscene" &&
+            First.clip == play)
+        {
+            First.Stop();
+            First.clip = title;
+            First.Play();
         }
     }
 }

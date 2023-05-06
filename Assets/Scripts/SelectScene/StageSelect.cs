@@ -31,9 +31,12 @@ public class StageSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // メニューフラグがたっていたら処理しない
+        if (MenuManager.menuFlag) return;
+
         // brief:右キーを押すと＋/左キーを押すとー　例) 3-1右キー　3-2　/　2-1左キー　1-5　/　2-5右キー　3-1
 
-        if(Input.GetKeyDown(KeyCode.RightArrow) && !mc.MoveFlag)
+        if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             if(StageNum < MaxNum)
             {
@@ -41,7 +44,7 @@ public class StageSelect : MonoBehaviour
             }
             Debug.Log(StageNum);
         }
-        if(Input.GetKeyDown(KeyCode.LeftArrow) && !mc.MoveFlag)
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if(StageNum > 1)
             {

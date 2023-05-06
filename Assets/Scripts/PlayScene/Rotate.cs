@@ -25,6 +25,8 @@ public class Rotate : MonoBehaviour
 
     private void Update()
     {
+        if (MenuManager.menuFlag) return;
+
         //　プレイヤーが死んでいないときかつプレイヤーがアクティブのときに回転する
         if (PlayerController.deadFlag == false && SpownEffectControl.playerFlag == true)
         {
