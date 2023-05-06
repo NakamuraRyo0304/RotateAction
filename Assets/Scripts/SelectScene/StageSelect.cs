@@ -11,7 +11,7 @@ public class StageSelect : MonoBehaviour
     public static int MaxNum = 45;
 
     GameObject Camera;
-    MoveCamera mc;
+    MoveStage mc;
 
     public void Awake()
     {
@@ -25,7 +25,7 @@ public class StageSelect : MonoBehaviour
     {
         StageNum = 1;
         Camera = GameObject.Find("Main Camera");
-        mc = Camera.GetComponent<MoveCamera>();
+        mc = Camera.GetComponent<MoveStage>();
     }
 
     // Update is called once per frame
