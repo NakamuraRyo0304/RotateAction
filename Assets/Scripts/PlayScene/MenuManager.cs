@@ -7,8 +7,6 @@ public class MenuManager : MonoBehaviour
     public static bool menuFlag;
     [SerializeField]
     GameObject menu;
-    [SerializeField]
-    GameObject back;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +21,6 @@ public class MenuManager : MonoBehaviour
         {
             menuFlag = !menuFlag;
             menu.SetActive(menuFlag);
-            back.SetActive(menuFlag);
             MenuController.menuNum = 1;
         }
     }

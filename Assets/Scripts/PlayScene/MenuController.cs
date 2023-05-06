@@ -8,40 +8,30 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     GameObject menu;
 
-    int menuNumAnim;
-
-    [SerializeField]
-    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         menuNum = 1;
-        menuNumAnim = 0;
-        playerPos[0] = new Vector2(0f, 1.86f);
-        playerPos[1] = new Vector2(0f, 0.72f);
-        playerPos[2] = new Vector2(0f, -0.2f);
-        playerPos[3] = new Vector2(0f, -1.81f);
+        playerPos[0] = new Vector2(0.0f, 2.16f);
+        playerPos[1] = new Vector2(0.0f, 0.88f);
+        playerPos[2] = new Vector2(0.0f, -0.21f);
+        playerPos[3] = new Vector2(0.0f, -1.7f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        menuNumAnim = animator.GetInteger("menuNum");
-
         menuNum = Mathf.Clamp(menuNum, 1, 4);
-        menuNumAnim = Mathf.Clamp(menuNum, 1, 4);
 
         this.transform.position = playerPos[menuNum -1];
 
         if(Input.GetKeyDown(KeyCode.UpArrow)) 
         {
             menuNum--;
-            menuNumAnim--;
         }        
         if(Input.GetKeyDown(KeyCode.DownArrow)) 
         {
             menuNum++;
-            menuNumAnim++;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -62,8 +52,5 @@ public class MenuController : MonoBehaviour
 
             menuNum = 1;
         }
-
-        animator.SetInteger("menuNum", menuNumAnim);
     }
 }
-
