@@ -28,6 +28,9 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // メニューフラグがたっていたら処理しない
+        if (MenuManager.menuFlag) return;
+
         // 右へ遷移
         if (Input.GetKeyDown(KeyCode.RightArrow) &&
             (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||
