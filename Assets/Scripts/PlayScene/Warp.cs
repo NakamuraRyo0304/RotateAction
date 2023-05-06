@@ -21,7 +21,6 @@ public class Warp : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            Debug.Log("AAAAAAaa");
             collision.transform.position = new Vector3(
                                                         warpObj.transform.position.x,
                                                         warpObj.transform.position.y, 
