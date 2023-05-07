@@ -21,10 +21,7 @@ public class Warp : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            collision.transform.position = new Vector3(
-                                                        warpObj.transform.position.x,
-                                                        warpObj.transform.position.y, 
-                                                        warpObj.transform.position.z);
+            collision.transform.position = warpObj.transform.position;
         }
     }
 }
