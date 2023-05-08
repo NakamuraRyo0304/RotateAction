@@ -58,11 +58,7 @@ public class PlayerController : MonoBehaviour
         if(effectflag == true)
         {
             GetDistance();
-
-            if (posDistance <= 30.0f)
-            {
-
-            }
+          
             effectTimer += 1;
 
         }
