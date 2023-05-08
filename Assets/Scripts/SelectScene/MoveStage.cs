@@ -32,7 +32,7 @@ public class MoveStage : MonoBehaviour
         if (MenuManager.menuFlag) return;
 
         // âEÇ÷ëJà⁄
-        if (Input.GetKeyDown(KeyCode.LeftArrow) &&
+        if (Input.GetKeyDown(KeyCode.RightArrow) &&
             (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||
              StageSelect.StageNum == 26 || StageSelect.StageNum == 31 || StageSelect.StageNum == 36||StageSelect.StageNum == 41))
         {
@@ -43,11 +43,11 @@ public class MoveStage : MonoBehaviour
             if (!MoveFlag)
             {
                 MoveFlag = true;
-                StartCoroutine("LeftMove");
+                StartCoroutine("RightMove");
             }
         }
         // ç∂Ç÷ëJà⁄
-        if (Input.GetKeyDown(KeyCode.RightArrow) &&
+        if (Input.GetKeyDown(KeyCode.LeftArrow) &&
            (StageSelect.StageNum == 5 || StageSelect.StageNum == 10 || StageSelect.StageNum == 15 || StageSelect.StageNum == 20||
             StageSelect.StageNum == 25|| StageSelect.StageNum == 30|| StageSelect.StageNum == 35 || StageSelect.StageNum == 40 ||
             StageSelect.StageNum == 45))
@@ -60,7 +60,7 @@ public class MoveStage : MonoBehaviour
             if (!MoveFlag)
             {
                 MoveFlag = true;
-                StartCoroutine("RightMove");
+                StartCoroutine("LeftMove");
             }
         }
     }
