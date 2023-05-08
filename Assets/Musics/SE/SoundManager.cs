@@ -14,49 +14,68 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip KeySound;
     [SerializeField] AudioClip KeyBlockSound;
 
+    private bool keyFlag;
+
     private void Start()
     {
         // AudioSourceをゲット
         se = music.GetComponent<AudioSource>();
+
+        // 一回だけ鳴らす
+        keyFlag = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if(collision.transform.tag == "Goal")
-        {
-            se.clip = GoalSound;
-
-            se.PlayOneShot(se.clip);
-        }
-        if(collision.transform.tag == "Warp")
-        {
-            se.clip = WarpSound;
-
-            se.PlayOneShot(se.clip);
-        }
-        if(collision.transform.tag == "Spline")
+        //  死亡音
+        if(PlayerController.deadFlag)
         {
             se.clip = SprineSound;
 
             se.PlayOneShot(se.clip);
         }
-        if(collision.transform.tag == "RGravity")
+
+        // ワープ音
+        if(Warp.isWarpFlag)
+        {
+            se.clip = WarpSound;
+
+            se.PlayOneShot(se.clip);
+        }
+
+        // ゴール音
+        if(Goal.isGoalFlag)
+        {
+            se.clip = GoalSound;
+
+            se.PlayOneShot(se.clip);
+        }
+
+        // 重力音
+        if(RGravity.isReverseGravityFlag)
         {
             se.clip = RgravitySound;
 
             se.PlayOneShot(se.clip);
         }
-        if(collision.transform.tag == "KeyBlock")
-        {
-            if (!PlayerController.openFlag) return;
 
-            se.clip = KeyBlockSound;
+        // 鍵入手音
+        if(PlayerController.keyFlag)
+        {
+            // なってなければ早期リターン
+            if (keyFlag) return;
+
+            se.clip = KeySound;
 
             se.PlayOneShot(se.clip);
+
+            keyFlag = true;
         }
-        if(collision.transform.tag == "Key")
+
+        // 鍵開閉音
+        if(PlayerController.openFlag)
         {
-            se.clip = KeySound;
+            se.clip = KeyBlockSound;
 
             se.PlayOneShot(se.clip);
         }
