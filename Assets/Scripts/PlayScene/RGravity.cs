@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RGravity : MonoBehaviour
 {
-    Vector3 pos = new Vector3 (0.0f, -0.3f, 0.0f);
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +16,11 @@ public class RGravity : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag =="Player")
         {
-            transform.position += pos;
+            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale *= -1;
             Destroy(this.gameObject);
         }
     }
