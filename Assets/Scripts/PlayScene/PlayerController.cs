@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
             deadFlag = true;
         }
 
+
         if (collision.transform.tag == "RGravity")
         {
             rigidbody.gravityScale = -1;

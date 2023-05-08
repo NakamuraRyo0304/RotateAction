@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RGravity : MonoBehaviour
 {
+    public static bool isReverseGravityFlag;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isReverseGravityFlag = false;
     }
 
     // Update is called once per frame
@@ -22,6 +24,18 @@ public class RGravity : MonoBehaviour
         {
             collision.gameObject.GetComponent<Rigidbody2D>().gravityScale *= -1;
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            isReverseGravityFlag = true;
+        }
+        else
+        {
+            isReverseGravityFlag = false;
         }
     }
 }
