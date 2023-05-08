@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip KeyBlockSound;
 
     private bool keyFlag;
+    private bool splineFlag;
 
     private void Start()
     {
@@ -23,6 +24,9 @@ public class SoundManager : MonoBehaviour
 
         // 一回だけ鳴らす
         keyFlag = false;
+        splineFlag = false;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -30,9 +34,18 @@ public class SoundManager : MonoBehaviour
         //  死亡音
         if(PlayerController.deadFlag)
         {
+            // なってなければ早期リターン
+            if (splineFlag) return;
+
             se.clip = SprineSound;
 
             se.PlayOneShot(se.clip);
+
+            splineFlag = true;
+        }
+        else 
+        { 
+            splineFlag = false;
         }
 
         // ワープ音
@@ -49,6 +62,10 @@ public class SoundManager : MonoBehaviour
             se.clip = GoalSound;
 
             se.PlayOneShot(se.clip);
+
+            // ゴールしたらリセット
+            keyFlag = false;
+            splineFlag = false;
         }
 
         // 重力音
