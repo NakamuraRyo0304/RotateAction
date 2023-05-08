@@ -17,8 +17,10 @@ public class SESlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (MenuController.menuNum == 2)
         {
+            if (!MenuManager.menuFlag) return;
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {
