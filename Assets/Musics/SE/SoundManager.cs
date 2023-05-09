@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class SoundManager : MonoBehaviour
 
     private bool keyFlag;
     private bool splineFlag;
+    private bool goalFlag;
 
     private void Start()
     {
@@ -25,14 +27,25 @@ public class SoundManager : MonoBehaviour
         // 一回だけ鳴らす
         keyFlag = false;
         splineFlag = false;
+        goalFlag = false;
 
         DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
     {
+        // プレイシーンじゃなければリターン
+        if (SceneManager.GetActiveScene().name != "Playscene")
+        {
+            keyFlag = false;
+            splineFlag = false;
+            goalFlag = false;
+
+            // リセットが終わったらリターン
+            return;
+        }
         //  死亡音
-        if(PlayerController.deadFlag)
+        if (PlayerController.deadFlag)
         {
             // なってなければ早期リターン
             if (splineFlag) return;
@@ -43,13 +56,13 @@ public class SoundManager : MonoBehaviour
 
             splineFlag = true;
         }
-        else 
-        { 
+        else
+        {
             splineFlag = false;
         }
 
         // ワープ音
-        if(Warp.isWarpFlag)
+        if (Warp.isWarpFlag)
         {
             se.clip = WarpSound;
 
@@ -57,19 +70,19 @@ public class SoundManager : MonoBehaviour
         }
 
         // ゴール音
-        if(Goal.isGoalFlag)
+        if (Goal.isGoalFlag)
         {
+            if (goalFlag) return;
+
             se.clip = GoalSound;
 
             se.PlayOneShot(se.clip);
 
-            // ゴールしたらリセット
-            keyFlag = false;
-            splineFlag = false;
+            goalFlag = true;
         }
 
         // 重力音
-        if(RGravity.isReverseGravityFlag)
+        if (RGravity.isReverseGravityFlag)
         {
             se.clip = RgravitySound;
 
@@ -77,7 +90,7 @@ public class SoundManager : MonoBehaviour
         }
 
         // 鍵入手音
-        if(PlayerController.keyFlag)
+        if (PlayerController.keyFlag)
         {
             // なってなければ早期リターン
             if (keyFlag) return;
@@ -90,7 +103,7 @@ public class SoundManager : MonoBehaviour
         }
 
         // 鍵開閉音
-        if(PlayerController.openFlag)
+        if (PlayerController.openFlag)
         {
             se.clip = KeyBlockSound;
 
