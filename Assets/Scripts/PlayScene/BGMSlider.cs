@@ -20,7 +20,7 @@ public class BGMSlider : MonoBehaviour
 
         if (MenuController.menuNum == 1)
         {
-        if (!MenuManager.menuFlag) return;
+            if (!MenuManager.menuFlag) return;
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {

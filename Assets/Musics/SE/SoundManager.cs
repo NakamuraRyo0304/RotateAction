@@ -8,19 +8,33 @@ public class SoundManager : MonoBehaviour
     // オーディオソース
     [SerializeField] GameObject music;
     private AudioSource se;
+    [Header("プレイシーン")]
     [SerializeField] AudioClip GoalSound;
     [SerializeField] AudioClip WarpSound;
     [SerializeField] AudioClip SprineSound;
     [SerializeField] AudioClip RgravitySound;
     [SerializeField] AudioClip KeySound;
     [SerializeField] AudioClip KeyBlockSound;
+    [Header("セレクトシーン")]
+    [SerializeField] AudioClip SelectSound;
+    [Header("メニュー開く音Esc")]
+    [SerializeField] AudioClip OpenMenuSound;
+    [Header("メニュー閉じる音Esc")]
+    [SerializeField] AudioClip CloseMenuSound;
+
+    [Header("クリック音（Space）")]
+    [SerializeField] AudioClip PushSpaceSound;
 
     private bool keyFlag;
     private bool splineFlag;
     private bool goalFlag;
 
+    MenuManager menuManager;
+
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         // AudioSourceをゲット
         se = music.GetComponent<AudioSource>();
 
@@ -29,11 +43,40 @@ public class SoundManager : MonoBehaviour
         splineFlag = false;
         goalFlag = false;
 
-        DontDestroyOnLoad(gameObject);
+        // メニューマネージャーをゲット
+        menuManager  = GetComponent<MenuManager>();
+
     }
 
     private void Update()
     {
+        // 常時なるやつ(Menu)
+        if(Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
+        {
+            se.Stop();
+
+            if(!MenuManager.menuFlag)
+                se.clip = OpenMenuSound;
+            else
+                se.clip = CloseMenuSound;
+
+            se.PlayOneShot(se.clip);
+        }
+
+        // セレクトシーンの処理
+        if (SceneManager.GetActiveScene().name == "SelectScene" && !MenuManager.menuFlag)
+        {        
+            // セレクトシーンのサウンド(ステージ選択音)
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                // セレクト音
+                se.clip = SelectSound;
+
+                se.PlayOneShot(se.clip);
+            }
+        }
+        
+
         // プレイシーンじゃなければリターン
         if (SceneManager.GetActiveScene().name != "Playscene")
         {
@@ -41,9 +84,18 @@ public class SoundManager : MonoBehaviour
             splineFlag = false;
             goalFlag = false;
 
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // 決定音
+                se.clip = PushSpaceSound;
+
+                se.PlayOneShot(se.clip);
+            }
+
             // リセットが終わったらリターン
             return;
         }
+
         //  死亡音
         if (PlayerController.deadFlag)
         {
