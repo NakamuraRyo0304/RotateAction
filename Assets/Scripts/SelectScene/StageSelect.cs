@@ -13,6 +13,8 @@ public class StageSelect : MonoBehaviour
     GameObject Camera;
     MoveStage mc;
 
+    private bool decideFlag;
+
     public void Awake()
     {
         if (instance == null)
@@ -26,6 +28,8 @@ public class StageSelect : MonoBehaviour
         StageNum = 1;
         Camera = GameObject.Find("Main Camera");
         mc = Camera.GetComponent<MoveStage>();
+
+        decideFlag = false;
     }
 
     // Update is called once per frame
@@ -33,6 +37,9 @@ public class StageSelect : MonoBehaviour
     {
         // メニューフラグがたっていたら処理しない
         if (MenuManager.menuFlag) return;
+
+        // 決定フラグがたってたら処理しない
+        if (decideFlag) return;
 
         // brief:右キーを押すと＋/左キーを押すとー　例) 3-1右キー　3-2　/　2-1左キー　1-5　/　2-5右キー　3-1
 
@@ -51,6 +58,12 @@ public class StageSelect : MonoBehaviour
                 StageNum--;
             }
             Debug.Log(StageNum);
+        }
+
+        // 決定する
+        if(Input.GetKeyDown(KeyCode.Space)) 
+        {
+            decideFlag = true;
         }
     }
 }
