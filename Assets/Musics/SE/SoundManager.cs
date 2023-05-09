@@ -22,6 +22,9 @@ public class SoundManager : MonoBehaviour
     [Header("メニュー閉じる音Esc")]
     [SerializeField] AudioClip CloseMenuSound;
 
+    [Header("クリック音（Space）")]
+    [SerializeField] AudioClip PushSpaceSound;
+
     private bool keyFlag;
     private bool splineFlag;
     private bool goalFlag;
@@ -81,9 +84,18 @@ public class SoundManager : MonoBehaviour
             splineFlag = false;
             goalFlag = false;
 
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // 決定音
+                se.clip = PushSpaceSound;
+
+                se.PlayOneShot(se.clip);
+            }
+
             // リセットが終わったらリターン
             return;
         }
+
         //  死亡音
         if (PlayerController.deadFlag)
         {
