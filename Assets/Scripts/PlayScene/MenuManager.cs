@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
     public static bool menuFlag;
 
     // メニューを開くことができるかどうかのフラグ
-    bool Openmenu;
+    public static bool Openmenu;
     // Openmenuを時間で管理するための変数
     int timer;
     // メニューとメニュー背景をコンポーネント
