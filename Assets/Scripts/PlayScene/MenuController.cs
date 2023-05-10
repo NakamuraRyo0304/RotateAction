@@ -17,7 +17,9 @@ public class MenuController : MonoBehaviour
     int menuNumAnim;
     // アニメーションを受け取る
     [SerializeField]
-    Animator Anim;
+    Animator AnimSelect;
+    [SerializeField]
+    Animator AnimOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class MenuController : MonoBehaviour
     void Update()
     {
         // 現在のアニメーションのパラメータの値を受け取る
-        menuNumAnim = Anim.GetInteger("menuNum");
+        menuNumAnim = AnimSelect.GetInteger("menuNum");
 
         // 各変数のクランプ　数はメニューの選択できる数
         menuNum = Mathf.Clamp(menuNum, 1, 4);
@@ -59,14 +61,16 @@ public class MenuController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             if (menuNum == 3)
             {
+                MenuManager.menuFlag = false;
                 // セレクトシーンを読み込む
                 // メニューフラグをリセットしメニューを非表示に
-                SceneManager.LoadScene("SelectScene");
-                MenuManager.menuFlag = false;
-                menu.SetActive(false);
+                //menu.SetActive(false);
                 menuBack.SetActive(false);
+
+                SceneManager.LoadScene("SelectScene");
             }
             if (menuNum == 4)
             {
@@ -79,8 +83,10 @@ public class MenuController : MonoBehaviour
             }
             // メニューの選択を一番上に戻す
             menuNum = 1;
+            AnimOpen.SetBool("menuFlagAnim", MenuManager.menuFlag);
+
         }
         // アニメーションのパラメーターを設定する
-        Anim.SetInteger("menuNum", menuNumAnim);
+        AnimSelect.SetInteger("menuNum", menuNumAnim);
     }
 }

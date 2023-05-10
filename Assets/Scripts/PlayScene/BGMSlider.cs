@@ -17,8 +17,10 @@ public class BGMSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (MenuController.menuNum == 1)
         {
+            if (!MenuManager.menuFlag) return;
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {

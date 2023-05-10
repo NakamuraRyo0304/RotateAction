@@ -10,7 +10,7 @@ public class Goal : MonoBehaviour
     private GameObject fadeCanvas;
 
     // ƒS[ƒ‹”»’è
-    bool isGoalFlag = false;
+    public static bool isGoalFlag = false;
 
     void Start()
     {
