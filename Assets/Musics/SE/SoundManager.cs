@@ -8,22 +8,28 @@ public class SoundManager : MonoBehaviour
     // オーディオソース
     [SerializeField] GameObject music;
     private AudioSource se;
-    [Header("プレイシーン")]
-    [SerializeField] AudioClip GoalSound;
-    [SerializeField] AudioClip WarpSound;
-    [SerializeField] AudioClip SprineSound;
-    [SerializeField] AudioClip RgravitySound;
-    [SerializeField] AudioClip KeySound;
-    [SerializeField] AudioClip KeyBlockSound;
     [Header("セレクトシーン")]
+    [Header("選択音")]
     [SerializeField] AudioClip SelectSound;
     [Header("メニュー開く音Esc")]
     [SerializeField] AudioClip OpenMenuSound;
     [Header("メニュー閉じる音Esc")]
     [SerializeField] AudioClip CloseMenuSound;
-
     [Header("クリック音（Space）")]
     [SerializeField] AudioClip PushSpaceSound;
+    [Header("プレイシーン")]
+    [Header("ゴールの音")]
+    [SerializeField] AudioClip GoalSound;
+    [Header("ワープした時の音")]
+    [SerializeField] AudioClip WarpSound;
+    [Header("死亡音（棘ブロック）")]
+    [SerializeField] AudioClip SprineSound;
+    [Header("重力アイテム獲得音")]
+    [SerializeField] AudioClip RgravitySound;
+    [Header("鍵入手音")]
+    [SerializeField] AudioClip KeySound;
+    [Header("鍵開錠音")]
+    [SerializeField] AudioClip KeyBlockSound;
 
     private bool keyFlag;
     private bool splineFlag;
@@ -33,6 +39,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        // 破壊不能オブジェクトに設定
         DontDestroyOnLoad(gameObject);
 
         // AudioSourceをゲット
@@ -43,7 +50,7 @@ public class SoundManager : MonoBehaviour
         splineFlag = false;
         goalFlag = false;
 
-        // メニューマネージャーをゲット
+        // MenuManagerをゲット
         menuManager  = GetComponent<MenuManager>();
 
     }
@@ -53,10 +60,13 @@ public class SoundManager : MonoBehaviour
         // 常時なるやつ(Menu)
         if(Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
         {
+            // 現在なっているSEを止める
             se.Stop();
 
-            if(!MenuManager.menuFlag)
+            // 閉じているとき
+            if (!MenuManager.menuFlag)
                 se.clip = OpenMenuSound;
+            // 開いているとき
             else
                 se.clip = CloseMenuSound;
 
@@ -75,7 +85,32 @@ public class SoundManager : MonoBehaviour
                 se.PlayOneShot(se.clip);
             }
         }
-        
+
+        // メニュー開いてる時
+        if (MenuManager.menuFlag)
+        {
+            // セレクト時
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                // セレクト音
+                se.clip = SelectSound;
+
+                se.PlayOneShot(se.clip);
+            }
+
+            // スペース音
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                // 現在なっているSEを止める
+                se.Stop();
+
+                // 決定音
+                se.clip = PushSpaceSound;
+
+                se.PlayOneShot(se.clip);
+            }
+        }
+
 
         // プレイシーンじゃなければリターン
         if (SceneManager.GetActiveScene().name != "Playscene")
@@ -86,6 +121,9 @@ public class SoundManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // 現在なっているSEを止める
+                se.Stop();
+
                 // 決定音
                 se.clip = PushSpaceSound;
 
@@ -114,9 +152,17 @@ public class SoundManager : MonoBehaviour
         }
 
         // ワープ音
-        if (Warp.isWarpFlag)
+        if (PlayerController.warpFlag)
         {
             se.clip = WarpSound;
+
+            se.PlayOneShot(se.clip);
+        }
+
+        // 重力音
+        if (PlayerController.rgravityFlag)
+        {
+            se.clip = RgravitySound;
 
             se.PlayOneShot(se.clip);
         }
@@ -131,14 +177,6 @@ public class SoundManager : MonoBehaviour
             se.PlayOneShot(se.clip);
 
             goalFlag = true;
-        }
-
-        // 重力音
-        if (RGravity.isReverseGravityFlag)
-        {
-            se.clip = RgravitySound;
-
-            se.PlayOneShot(se.clip);
         }
 
         // 鍵入手音

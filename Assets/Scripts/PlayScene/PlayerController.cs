@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] GameObject fallEffect;
     [SerializeField] GameObject deadEffect;
-    [SerializeField] GameObject key;
+    //[SerializeField] GameObject key;
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
     public static bool keyFlag;
     public static bool openFlag;
+    public static bool warpFlag;
+    public static bool rgravityFlag;
 
     public Vector2 rotBeforPos = new(0, 0);
     public Vector2 rotAfterPos;
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
         rotFlag = false;
         keyFlag = false;
         openFlag = false;
+        warpFlag = false;
+        rgravityFlag = false;
     }
 
     void Update()
@@ -76,6 +80,9 @@ public class PlayerController : MonoBehaviour
         {
             DeadController();
         }
+
+        warpFlag = false;
+        rgravityFlag = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -93,16 +100,10 @@ public class PlayerController : MonoBehaviour
             deadFlag = true;
         }
 
-
-        if (collision.transform.tag == "RGravity")
-        {
-            rigidbody.gravityScale = -1;
-        }
-
         if ((collision.transform.tag == "Key"))
         {
             keyFlag = true;
-            Destroy(key);
+            Destroy(collision.gameObject);
         }
 
         if ((collision.transform.tag == "KeyBlock"))
@@ -111,6 +112,21 @@ public class PlayerController : MonoBehaviour
             {
                 openFlag = true;
             }
+        }
+    }
+
+    // サウンド用
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // ワープ
+        if (collision.transform.tag == "Warp")
+        {
+            warpFlag = true;
+        }
+        // 重力
+        if(collision.transform.tag == "RGravity")
+        {
+            rgravityFlag = true;
         }
     }
 
