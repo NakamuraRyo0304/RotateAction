@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] GameObject fallEffect;
     [SerializeField] GameObject deadEffect;
-    [SerializeField] GameObject key;
+    //[SerializeField] GameObject key;
     int effectTimer;
     bool effectflag = false;
     public static bool deadFlag;
@@ -94,15 +94,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (collision.transform.tag == "RGravity")
-        {
-            rigidbody.gravityScale = -1;
-        }
-
         if ((collision.transform.tag == "Key"))
         {
             keyFlag = true;
-            Destroy(key);
+            Destroy(collision.gameObject);
         }
 
         if ((collision.transform.tag == "KeyBlock"))
