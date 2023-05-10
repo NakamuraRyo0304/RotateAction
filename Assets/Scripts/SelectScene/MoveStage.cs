@@ -31,6 +31,9 @@ public class MoveStage : MonoBehaviour
         // メニューフラグがたっていたら処理しない
         if (MenuManager.menuFlag) return;
 
+        // 決定してたら処理しない
+        if (StageSelect.decideFlag) return;
+
         // 右へ遷移
         if (Input.GetKeyDown(KeyCode.RightArrow) &&
             (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||

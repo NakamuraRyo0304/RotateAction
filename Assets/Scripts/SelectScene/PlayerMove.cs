@@ -11,6 +11,13 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        // メニューフラグがたっていたら処理しない
+        if (MenuManager.menuFlag) return;
+
+        // 決定してたら動かさない
+        if (StageSelect.decideFlag) return;
+
+
         switch (StageSelect.StageNum)
         {
             case 1:case 6:case 11:case 16:case 21:

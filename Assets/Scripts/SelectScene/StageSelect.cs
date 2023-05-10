@@ -10,10 +10,7 @@ public class StageSelect : MonoBehaviour
     public static int StageNum;
     public static int MaxNum = 45;
 
-    GameObject Camera;
-    MoveStage mc;
-
-    private bool decideFlag;
+    public static bool decideFlag;
 
     public void Awake()
     {
@@ -26,8 +23,6 @@ public class StageSelect : MonoBehaviour
     void Start()    
     {
         StageNum = 1;
-        Camera = GameObject.Find("Main Camera");
-        mc = Camera.GetComponent<MoveStage>();
 
         decideFlag = false;
     }
