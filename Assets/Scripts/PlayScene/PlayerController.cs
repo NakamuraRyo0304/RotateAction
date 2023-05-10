@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public static bool deadFlag;
     public static bool keyFlag;
     public static bool openFlag;
+    public static bool warpFlag;
 
     public Vector2 rotBeforPos = new(0, 0);
     public Vector2 rotAfterPos;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         rotFlag = false;
         keyFlag = false;
         openFlag = false;
+        warpFlag = false;
     }
 
     void Update()
@@ -76,6 +78,8 @@ public class PlayerController : MonoBehaviour
         {
             DeadController();
         }
+
+        warpFlag = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -93,7 +97,6 @@ public class PlayerController : MonoBehaviour
             deadFlag = true;
         }
 
-
         if ((collision.transform.tag == "Key"))
         {
             keyFlag = true;
@@ -106,6 +109,15 @@ public class PlayerController : MonoBehaviour
             {
                 openFlag = true;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // ÉèÅ[Év
+        if (collision.transform.tag == "Warp")
+        {
+            warpFlag = true;
         }
     }
 

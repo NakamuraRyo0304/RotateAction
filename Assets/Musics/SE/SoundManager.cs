@@ -75,7 +75,29 @@ public class SoundManager : MonoBehaviour
                 se.PlayOneShot(se.clip);
             }
         }
-        
+
+        // メニュー開いてる時
+        if (MenuManager.menuFlag)
+        {
+            // セレクト時
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                // セレクト音
+                se.clip = SelectSound;
+
+                se.PlayOneShot(se.clip);
+            }
+
+            // スペース音
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                // 決定音
+                se.clip = PushSpaceSound;
+
+                se.PlayOneShot(se.clip);
+            }
+        }
+
 
         // プレイシーンじゃなければリターン
         if (SceneManager.GetActiveScene().name != "Playscene")
@@ -114,7 +136,7 @@ public class SoundManager : MonoBehaviour
         }
 
         // ワープ音
-        if (Warp.isWarpFlag)
+        if (PlayerController.warpFlag)
         {
             se.clip = WarpSound;
 
