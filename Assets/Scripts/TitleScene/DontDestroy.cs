@@ -8,6 +8,8 @@ public class DontDestroy : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
