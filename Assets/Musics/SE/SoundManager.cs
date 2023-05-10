@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        // 破壊不能オブジェクトに設定
         DontDestroyOnLoad(gameObject);
 
         // AudioSourceをゲット
@@ -49,7 +50,7 @@ public class SoundManager : MonoBehaviour
         splineFlag = false;
         goalFlag = false;
 
-        // メニューマネージャーをゲット
+        // MenuManagerをゲット
         menuManager  = GetComponent<MenuManager>();
 
     }
@@ -59,10 +60,13 @@ public class SoundManager : MonoBehaviour
         // 常時なるやつ(Menu)
         if(Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
         {
+            // 現在なっているSEを止める
             se.Stop();
 
-            if(!MenuManager.menuFlag)
+            // 閉じているとき
+            if (!MenuManager.menuFlag)
                 se.clip = OpenMenuSound;
+            // 開いているとき
             else
                 se.clip = CloseMenuSound;
 
@@ -97,6 +101,9 @@ public class SoundManager : MonoBehaviour
             // スペース音
             if(Input.GetKeyDown(KeyCode.Space))
             {
+                // 現在なっているSEを止める
+                se.Stop();
+
                 // 決定音
                 se.clip = PushSpaceSound;
 
@@ -114,6 +121,9 @@ public class SoundManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // 現在なっているSEを止める
+                se.Stop();
+
                 // 決定音
                 se.clip = PushSpaceSound;
 
@@ -149,6 +159,14 @@ public class SoundManager : MonoBehaviour
             se.PlayOneShot(se.clip);
         }
 
+        // 重力音
+        if (PlayerController.rgravityFlag)
+        {
+            se.clip = RgravitySound;
+
+            se.PlayOneShot(se.clip);
+        }
+
         // ゴール音
         if (Goal.isGoalFlag)
         {
@@ -159,14 +177,6 @@ public class SoundManager : MonoBehaviour
             se.PlayOneShot(se.clip);
 
             goalFlag = true;
-        }
-
-        // 重力音
-        if (RGravity.isReverseGravityFlag)
-        {
-            se.clip = RgravitySound;
-
-            se.PlayOneShot(se.clip);
         }
 
         // 鍵入手音

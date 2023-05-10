@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public static bool keyFlag;
     public static bool openFlag;
     public static bool warpFlag;
+    public static bool rgravityFlag;
 
     public Vector2 rotBeforPos = new(0, 0);
     public Vector2 rotAfterPos;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         keyFlag = false;
         openFlag = false;
         warpFlag = false;
+        rgravityFlag = false;
     }
 
     void Update()
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
         }
 
         warpFlag = false;
+        rgravityFlag = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -112,12 +115,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // サウンド用
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // ワープ
         if (collision.transform.tag == "Warp")
         {
             warpFlag = true;
+        }
+        // 重力
+        if(collision.transform.tag == "RGravity")
+        {
+            rgravityFlag = true;
         }
     }
 
