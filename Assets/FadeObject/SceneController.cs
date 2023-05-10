@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     [Header("次のシーンの名前を入れる")]
     public string sceneName;
+
         
     void Start()
     {
@@ -29,9 +30,10 @@ public class SceneController : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || MenuController.menuSelectFlag == true)
         {
-            if (MenuManager.menuFlag) return;
+            if (MenuManager.menuFlag) { return; }
+
             // フェードアウト
             fadeCanvas.GetComponent<FadeManager>().FadeOut();
         }
@@ -40,6 +42,7 @@ public class SceneController : MonoBehaviour
         if (fadeCanvas.GetComponent<FadeManager>().Alpha() == 1.0f)
         {
             SceneManager.LoadScene(sceneName);
+            MenuController.menuSelectFlag = false;
         }
     }
 

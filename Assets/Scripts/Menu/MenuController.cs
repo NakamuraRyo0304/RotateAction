@@ -5,6 +5,8 @@ public class MenuController : MonoBehaviour
 {
     // メニューのどこを選択しているかの判定
     public static int menuNum;
+    public static bool menuSelectFlag;
+
     // 選択しているメニューによって廻君の位置変更用ベクター
     Vector2[] playerPos = new Vector2[4];
     // キー入力によってアクティブを管理するためのSerializeField
@@ -28,6 +30,7 @@ public class MenuController : MonoBehaviour
     {
         // 変数の初期化
         menuNum = 1;
+        menuSelectFlag = false;
         playerPos[0] = new Vector2(0.0f, 1.88f);
         playerPos[1] = new Vector2(0.0f, 0.701f);
         playerPos[2] = new Vector2(0.0f, -0.203f);
@@ -47,31 +50,36 @@ public class MenuController : MonoBehaviour
         menuNumAnim = Mathf.Clamp(menuNum, 1, 4);
 
         // 選択しているメニューによって廻君の位置変更
-        this.transform.position = playerPos[menuNum -1];
+        this.transform.position = playerPos[menuNum - 1];
 
         // 値の加算
-        if(Input.GetKeyDown(KeyCode.UpArrow)) 
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             menuNum--;
             menuNumAnim--;
         }
         // 値の減算
-        if (Input.GetKeyDown(KeyCode.DownArrow)) 
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             menuNum++;
             menuNumAnim++;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
             if (menuNum == 3)
             {
+                if (SceneManager.GetActiveScene().name == "SelectScene") { return; }
+
+                menuSelectFlag = true;
+
                 MenuManager.menuFlag = false;
+
                 // セレクトシーンを読み込む
+                //SceneManager.LoadScene("SelectScene");
                 // メニューフラグをリセットしメニューを非表示に
                 menuBack.SetActive(false);
 
-                SceneManager.LoadScene("SelectScene");
+                Debug.Log("きちゃ");
             }
             if (menuNum == 4)
             {
@@ -80,15 +88,15 @@ public class MenuController : MonoBehaviour
                 UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_STANDALONE
     UnityEngine.Application.Quit();
-#endif            
+#endif
             }
             // メニューの選択を一番上に戻す
             menuNum = 1;
             AnimOpen.SetBool("menuFlagAnim", MenuManager.menuFlag);
             menuExp.SetBool("menuFlagAnim", MenuManager.menuFlag);
 
+            // アニメーションのパラメーターを設定する
+            AnimSelect.SetInteger("menuNum", menuNumAnim);
         }
-        // アニメーションのパラメーターを設定する
-        AnimSelect.SetInteger("menuNum", menuNumAnim);
     }
 }
