@@ -7,7 +7,7 @@ public class StageSelect : MonoBehaviour
     // インスタンス生成
     public static StageSelect instance;
 
-    public static int StageNum;
+    public static int StageNum = 1;
     public static int MaxNum = 45;
 
     public static bool decideFlag;
@@ -22,8 +22,6 @@ public class StageSelect : MonoBehaviour
 
     void Start()    
     {
-        StageNum = 1;
-
         decideFlag = false;
     }
 
@@ -36,9 +34,11 @@ public class StageSelect : MonoBehaviour
         // 決定フラグがたってたら処理しない
         if (decideFlag) return;
 
-        // brief:右キーを押すと＋/左キーを押すとー　例) 3-1右キー　3-2　/　2-1左キー　1-5　/　2-5右キー　3-1
+        if (MoveStage.MoveFlag) return;
 
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+            // brief:右キーを押すと＋/左キーを押すとー　例) 3-1右キー　3-2　/　2-1左キー　1-5　/　2-5右キー　3-1
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if(StageNum < MaxNum)
             {

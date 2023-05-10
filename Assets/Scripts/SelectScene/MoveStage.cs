@@ -8,8 +8,10 @@ public class MoveStage : MonoBehaviour
     public static MoveStage instance;
 
     int MoveX;
-    public bool MoveFlag;
+    public static bool MoveFlag;
     GameObject stageSelect;
+
+    static Vector3 savePos = Vector3.zero;
 
     public void Awake()
     {
@@ -23,21 +25,28 @@ public class MoveStage : MonoBehaviour
         MoveX = 20;
         MoveFlag = false;
         stageSelect = GameObject.Find("StageSelect");
+
+        transform.position = savePos;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ポジション保存
+        savePos = transform.position;
+
         // メニューフラグがたっていたら処理しない
         if (MenuManager.menuFlag) return;
 
         // 決定してたら処理しない
         if (StageSelect.decideFlag) return;
 
-        // 右へ遷移
-        if (Input.GetKeyDown(KeyCode.RightArrow) &&
-            (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||
-             StageSelect.StageNum == 26 || StageSelect.StageNum == 31 || StageSelect.StageNum == 36||StageSelect.StageNum == 41))
+
+            // 右へ遷移
+       if (Input.GetKeyDown(KeyCode.RightArrow) &&
+       (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||
+        StageSelect.StageNum == 26 || StageSelect.StageNum == 31 || StageSelect.StageNum == 36||StageSelect.StageNum == 41))
         {
             // 座標が左端（0,0,0）の時処理しない
             if (StageSelect.StageNum == 0) return;
@@ -72,6 +81,9 @@ public class MoveStage : MonoBehaviour
         for (int turn = 0; turn < MoveX; turn++)
         {
             transform.Translate(-1, 0, 0);
+
+            savePos.x -= turn;
+
             //　コルーチン再開時間
             yield return new WaitForSeconds(0.01f);
         }
@@ -84,6 +96,9 @@ public class MoveStage : MonoBehaviour
         for (int turn = 0; turn < MoveX; turn++)
         {
             transform.Translate(1, 0, 0);
+
+            savePos.x += turn;
+
             //　コルーチン再開時間
             yield return new WaitForSeconds(0.01f);
         }
