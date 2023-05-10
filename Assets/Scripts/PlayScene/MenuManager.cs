@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] Animator anim;
+    [SerializeField] Animator openAnim;
+    [SerializeField] Animator menuExp;
 
     // メニューが開いているかのフラグ
     public static bool menuFlag;
@@ -39,12 +40,16 @@ public class MenuManager : MonoBehaviour
                 // フラグ反転
                 Openmenu = false;
                 menuFlag = !menuFlag;
-                anim.enabled = true;
 
-                anim.SetBool("menuFlagAnim", menuFlag);
+                // アニメーション開始
+                openAnim.enabled = true;
+                menuExp.enabled = true;
+
+                // アニメーションにフラグをセット
+                menuExp.SetBool("menuFlagAnim", menuFlag);
+                openAnim.SetBool("menuFlagAnim", menuFlag);
 
                 // メニューを非アクティブ
-                //menu.SetActive(true);
                 menuBack.SetActive(menuFlag);
 
                 // メニューで選ばれているところをリセット
@@ -52,7 +57,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        //　1秒のクールタイム
+        //　0.5秒のクールタイム
         if(!Openmenu) 
         {
             timer++;

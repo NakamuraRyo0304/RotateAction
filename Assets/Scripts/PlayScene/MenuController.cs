@@ -20,6 +20,8 @@ public class MenuController : MonoBehaviour
     Animator AnimSelect;
     [SerializeField]
     Animator AnimOpen;
+    [SerializeField]
+    Animator menuExp;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +69,6 @@ public class MenuController : MonoBehaviour
                 MenuManager.menuFlag = false;
                 // セレクトシーンを読み込む
                 // メニューフラグをリセットしメニューを非表示に
-                //menu.SetActive(false);
                 menuBack.SetActive(false);
 
                 SceneManager.LoadScene("SelectScene");
@@ -84,6 +85,7 @@ public class MenuController : MonoBehaviour
             // メニューの選択を一番上に戻す
             menuNum = 1;
             AnimOpen.SetBool("menuFlagAnim", MenuManager.menuFlag);
+            menuExp.SetBool("menuFlagAnim", MenuManager.menuFlag);
 
         }
         // アニメーションのパラメーターを設定する
