@@ -42,7 +42,7 @@ public class Goal : MonoBehaviour
         }
 
         // FIXED: 現在、フェードアウトが終わったらセレクトに戻るようになっている
-        if (fadeCanvas.GetComponent<FadeManager>().Alpha() == 1.0f)
+        if (fadeCanvas.GetComponent<FadeManager>().Alpha() >= 0.9f)
         {
             SceneManager.LoadScene("SelectScene");
         }
