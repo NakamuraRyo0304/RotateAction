@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     // プレハブ化したキャンバスを入れる
-    public GameObject fadeCanvas;
+    GameObject fadeCanvas;
+    [SerializeField]
     FadeManager fadeManager;
 
     // シーンの名前
@@ -19,44 +20,37 @@ public class SceneController : MonoBehaviour
         
     void Start()
     {
-
         // フェードイン
-        fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
+        //fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
 
-        fadeManager = fadeCanvas.GetComponent<FadeManager>();
+        //fadeManager = fadeCanvas.GetComponent<FadeManager>();
 
         fadeManager.FadeIn();
 
-        Debug.Log("おおおおおちんちんﾁｮｷﾁｮｷたーいむ＾＾");
-
         fadeFlag = false;
+
+        Debug.Log("ちょきちょきScene");
     }
 
     void Update()
     {
-
         if(Input.GetKeyDown(KeyCode.Space) || MenuController.menuSelectFlag == true)
         {
+
             if (MenuManager.menuFlag) { return; }
-
-            fadeFlag = true;
-
-            Debug.Log("おおおおおちんちんﾁｮｷﾁｮｷたーいむ＾＾");
-
-        }
-
-        if(fadeFlag)
-        {
+           
             // フェードアウト
             fadeManager.FadeOut();
+            
+            fadeFlag = true;
         }
 
         // フェードアウトが終わったらシーン読み込み
-        if (fadeManager.Alpha() >= 0.9f &&
-            fadeFlag)
+        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
         {
             SceneManager.LoadScene(sceneName);
             MenuController.menuSelectFlag = false;
         }
+
     }
 }
