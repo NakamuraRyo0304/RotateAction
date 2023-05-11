@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class FadeManager : MonoBehaviour
 {
-    // フェードオブジェクトを生成するフラグ
-    public static bool is_FadeInstance = false;
-
     // フェードインのフラグ
     public bool is_FadeIn              = false;
     // フェードアウトのフラグ
@@ -22,12 +19,8 @@ public class FadeManager : MonoBehaviour
 
     void Start()
     {
-        // 一番初めに起動した時作成(破壊不能オブジェクトに設定)
-        if (!is_FadeInstance)
-        {
-            DontDestroyOnLoad(this);
-            is_FadeInstance = true;
-        }
+        Debug.Log("ちょきちょきFade");
+
     }
 
     void Update()
@@ -36,7 +29,6 @@ public class FadeManager : MonoBehaviour
         if(is_FadeIn)
         {
             // フェード処理
-            alpha -= Time.deltaTime / fadeTime;
             alpha -= Time.deltaTime / fadeTime;
             
             // 透明になったら処理終了

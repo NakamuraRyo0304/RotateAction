@@ -3,53 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 // シーン遷移
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
 
 public class SceneController : MonoBehaviour
 {
     // プレハブ化したキャンバスを入れる
-    public GameObject fadeCanvas;
+    GameObject fadeCanvas;
+    [SerializeField]
+    FadeManager fadeManager;
 
     // シーンの名前
     [SerializeField]
     [Header("次のシーンの名前を入れる")]
     public string sceneName;
 
+    bool fadeFlag;
         
     void Start()
     {
-        // 起動して作成
-        if(!FadeManager.is_FadeInstance)
-        {
-            Instantiate(fadeCanvas);
-        }
         // フェードイン
-        StartFadeIn();
+        //fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
+
+        //fadeManager = fadeCanvas.GetComponent<FadeManager>();
+
+        fadeManager.FadeIn();
+
+        fadeFlag = false;
+
+        Debug.Log("ちょきちょきScene");
     }
 
     void Update()
     {
-
         if(Input.GetKeyDown(KeyCode.Space) || MenuController.menuSelectFlag == true)
         {
-            if (MenuManager.menuFlag) { return; }
 
+            if (MenuManager.menuFlag) { return; }
+           
             // フェードアウト
-            fadeCanvas.GetComponent<FadeManager>().FadeOut();
+            fadeManager.FadeOut();
+            
+            fadeFlag = true;
         }
 
         // フェードアウトが終わったらシーン読み込み
-        if (fadeCanvas.GetComponent<FadeManager>().Alpha() == 1.0f)
+        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
         {
             SceneManager.LoadScene(sceneName);
             MenuController.menuSelectFlag = false;
         }
-    }
 
-    void StartFadeIn()
-    {
-        fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
-        // 見つけてフェードスタート
-        fadeCanvas.GetComponent<FadeManager>().FadeIn();
     }
 }
