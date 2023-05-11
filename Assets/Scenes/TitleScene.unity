@@ -3800,10 +3800,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneManager
       objectReference: {fileID: 0}
-    - target: {fileID: 1011128000933564682, guid: f82fd149dddb2e24e906d80f0ee9ff82, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f82fd149dddb2e24e906d80f0ee9ff82, type: 3}
 --- !u!1 &1498031768
@@ -5905,23 +5901,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2075552043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6904419454314478001, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-  m_PrefabInstance: {fileID: 1372843311425742661}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2075552046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075552043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47344dd4b5e24a340839136c1bc25b6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2075934282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,10 +6164,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuManager
       objectReference: {fileID: 0}
-    - target: {fileID: 28382266687481233, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2685652932977511886, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
       propertyPath: menuExp
       value: 
@@ -6198,17 +6173,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1329718531}
     - target: {fileID: 2685652932977511886, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2685652932977511886, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
       propertyPath: AnimSelect
       value: 
       objectReference: {fileID: 368286009}
-    - target: {fileID: 2685652932977511886, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-      propertyPath: fadeCanvas
-      value: 
-      objectReference: {fileID: 2755614220079258750, guid: 351dfb06afbd299498d381955bf0f154, type: 3}
     - target: {fileID: 3367293474742243698, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
       propertyPath: audioSource
       value: 
@@ -6232,18 +6199,6 @@ PrefabInstance:
     - target: {fileID: 4074893984267057221, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
       propertyPath: m_LocalScale.y
       value: 10.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4388586197166175244, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4388586197166175244, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4388586197166175244, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4388586197166175244, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
       propertyPath: m_SortingOrder
@@ -6329,10 +6284,6 @@ PrefabInstance:
       propertyPath: openAnim
       value: 
       objectReference: {fileID: 1329718531}
-    - target: {fileID: 5279045824549502248, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5613145235078855656, guid: e25d5967f8e5a6049b12e1cd9ddd0644, type: 3}
       propertyPath: m_IsActive
       value: 1
