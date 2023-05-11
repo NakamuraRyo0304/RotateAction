@@ -12,8 +12,6 @@ public class Goal : MonoBehaviour
     // ゴール判定
     public static bool isGoalFlag = false;
 
-
-
     void Start()
     {
         // ！追記---------------------------------------------------
@@ -36,20 +34,17 @@ public class Goal : MonoBehaviour
     // ！追記
     void Update()
     {
-
         // FIXED: 現在、ゴールした瞬間フェードアウトが始まる
         if (isGoalFlag)
         {
             // フェードアウト
-            //fadeCanvas.GetComponent<FadeManager>().FadeOut();
+            fadeCanvas.GetComponent<FadeManager>().FadeOut();
         }
 
         // FIXED: 現在、フェードアウトが終わったらセレクトに戻るようになっている
-        //if (fadeCanvas.GetComponent<FadeManager>().Alpha() == 1.0f)
-        //{
-        //    SceneManager.LoadScene("SelectScene");
-        //}
+        if (fadeCanvas.GetComponent<FadeManager>().Alpha() == 1.0f)
+        {
+            SceneManager.LoadScene("SelectScene");
+        }
     }
-
- 
 }
