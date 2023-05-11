@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour
 {
 
-    // ƒtƒF[ƒhƒIƒuƒWƒFƒNƒg‚ğ“ü‚ê‚é
+    // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¥ã‚Œã‚‹
     private GameObject fadeCanvas;
 
-    // ƒS[ƒ‹”»’è
+    // ã‚´ãƒ¼ãƒ«åˆ¤å®š
     public static bool isGoalFlag = false;
+
+
 
     void Start()
     {
-        // I’Ç‹L---------------------------------------------------
+        // ï¼è¿½è¨˜---------------------------------------------------
         fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
-        // Œ©‚Â‚¯‚ÄƒtƒF[ƒhƒXƒ^[ƒg
+        // è¦‹ã¤ã‘ã¦ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¹ã‚¿ãƒ¼ãƒˆ
         fadeCanvas.GetComponent<FadeManager>().FadeIn();
 
         isGoalFlag = false;
@@ -31,20 +33,24 @@ public class Goal : MonoBehaviour
         }
     }
 
-    // I’Ç‹L
+    // ï¼è¿½è¨˜
     void Update()
     {
-        // FIXED: Œ»İAƒS[ƒ‹‚µ‚½uŠÔƒtƒF[ƒhƒAƒEƒg‚ªn‚Ü‚é
+
+        // FIXED: ç¾åœ¨ã€ã‚´ãƒ¼ãƒ«ã—ãŸç¬é–“ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆãŒå§‹ã¾ã‚‹
         if (isGoalFlag)
         {
-            // ƒtƒF[ƒhƒAƒEƒg
-            fadeCanvas.GetComponent<FadeManager>().FadeOut();
+            // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
+            //fadeCanvas.GetComponent<FadeManager>().FadeOut();
         }
 
-        // FIXED: Œ»İAƒtƒF[ƒhƒAƒEƒg‚ªI‚í‚Á‚½‚çƒZƒŒƒNƒg‚É–ß‚é‚æ‚¤‚É‚È‚Á‚Ä‚¢‚é
-        if (fadeCanvas.GetComponent<FadeManager>().Alpha() >= 0.9f)
-        {
-            SceneManager.LoadScene("SelectScene");
-        }
+        // FIXED: ç¾åœ¨ã€ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆãŒçµ‚ã‚ã£ãŸã‚‰ã‚»ãƒ¬ã‚¯ãƒˆã«æˆ»ã‚‹ã‚ˆã†ã«ãªã£ã¦ã„ã‚‹
+
+        //if (fadeCanvas.GetComponent<FadeManager>().Alpha() == 1.0f)
+        //{
+        //    SceneManager.LoadScene("SelectScene");
+        //}
     }
+
+ 
 }
