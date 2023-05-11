@@ -25,7 +25,6 @@ public class FadeManager : MonoBehaviour
         // 一番初めに起動した時作成(破壊不能オブジェクトに設定)
         if (!is_FadeInstance)
         {
-            DontDestroyOnLoad(this);
             is_FadeInstance = true;
         }
     }
