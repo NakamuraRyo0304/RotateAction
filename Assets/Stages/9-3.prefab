@@ -714,7 +714,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!66 &2691895170290012757
 CompositeCollider2D:
@@ -1093,7 +1093,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!66 &2691895171067687507
 CompositeCollider2D:
@@ -1151,7 +1151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e117327799c37444b94d75640fe032a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idx: 0
 --- !u!1 &2691895171221304215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3280,7 +3279,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!66 &2691895171221304211
 CompositeCollider2D:
