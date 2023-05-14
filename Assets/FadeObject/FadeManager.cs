@@ -13,7 +13,7 @@ public class FadeManager : MonoBehaviour
     public bool is_FadeOut             = false;
 
     // 透明度(これが変化してフェードになる)
-    public float alpha                 = 0.0f;
+    public static float alpha          = 0.0f;
     // フェードにかかる時間
     public float fadeTime              = 0.0f;
 

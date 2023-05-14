@@ -33,6 +33,14 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FadeManager.alpha != 0 && FadeManager.alpha != 1)
+        {
+            menuFlag = false;
+            Openmenu = false;
+            menuBack.SetActive(menuFlag);
+            return;
+        }
+
         if (Openmenu)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
