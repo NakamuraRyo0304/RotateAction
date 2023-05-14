@@ -41,14 +41,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // ゴールしたらステージと一緒に落下する
-        if(Goal.isGoalFlag)
+        // ゴールしたらステージの子にする
+        if(Goal.isGoalFlag) 
         {
-            // ステージの子にする
             transform.parent = GameObject.FindGameObjectWithTag("Stage").transform;
-
-            // プレイヤーの重力をステージの重力と統一
-            rigidbody.gravityScale = transform.parent.GetComponent<Rigidbody2D>().gravityScale;
         }
 
         // 回転中出ないときのみ回転可能
