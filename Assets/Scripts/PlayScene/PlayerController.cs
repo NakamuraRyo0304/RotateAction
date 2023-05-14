@@ -41,10 +41,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // ゴールしたらステージの子にする
+        // ゴールしたら見えないところに飛ばす
         if(Goal.isGoalFlag) 
         {
-            transform.parent = GameObject.FindGameObjectWithTag("Stage").transform;
+            transform.position = new Vector3(-13.0f, -3.0f,0.0f);
         }
 
         // 回転中出ないときのみ回転可能
@@ -109,13 +109,13 @@ public class PlayerController : MonoBehaviour
             deadFlag = true;
         }
 
-        if ((collision.transform.tag == "Key"))
+        if (collision.transform.tag == "Key")
         {
             keyFlag = true;
             Destroy(collision.gameObject);
         }
 
-        if ((collision.transform.tag == "KeyBlock"))
+        if (collision.transform.tag == "KeyBlock")
         {
             if (keyFlag == true)
             {
