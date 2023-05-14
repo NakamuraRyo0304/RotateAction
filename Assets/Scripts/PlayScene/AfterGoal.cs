@@ -6,23 +6,22 @@ using UnityEngine.SceneManagement;
 public class AfterGoal : MonoBehaviour
 {
     // フェードオブジェクトを入れる
-    private GameObject fadeCanvas;
+    //private GameObject fadeCanvas;
 
     // クリアテクスチャ
     [SerializeField]
-    GameObject clearTexture;
+    GameObject charTexture;
+
+    bool selectFlag = false;
 
     // 何を選んでいるかの判定用変数
     int menuNum = 1;
-
-    bool selectFlag = false;
-    bool nextFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
         // フェード用キャンバスを受け取る
-        fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
+        //fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
     }
 
     // Update is called once per frame
@@ -34,23 +33,21 @@ public class AfterGoal : MonoBehaviour
         if (Goal.isGoalFlag) 
         {
             transform.position += new Vector3(0.0f, -0.1f, 0.0f);
+            //charTexture.transform.position += new Vector3(0.0f, -0.1f, 0.0f);
 
-            if(transform.position.y <= 0.0f) 
+            if(transform.position.y <= 2.5f) 
             {
-                transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+                transform.position = new Vector3(0.0f, 2.5f, 0.0f);
             }
-            DrawClear();
+
+            //if(charTexture.transform.position.y <= -1.5)
+            //{
+            //    charTexture.transform.position = new Vector3(0.0f, -1.55f, 0.0f);
+            //}
             AfterClear();
-            select();
-            next();
+            CharPos();
         }
 
-    }
-
-    // テクスチャ表示
-    void DrawClear()
-    {
-        clearTexture.SetActive(true);
     }
 
     // シーン遷移
@@ -65,44 +62,62 @@ public class AfterGoal : MonoBehaviour
         {
             menuNum--;
         }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // １の時はセレクト
             if (menuNum == 1)
             {
-                selectFlag = true;   
+                select();
             }
 
             // ２の時は次にステージ
             if (menuNum == 2)
             {
-                nextFlag = true;
                 StageSelect.StageNum++;
+                next();
             }
+        }
+    }
+
+    void CharPos()
+    {
+        if (menuNum == 1 && selectFlag == true)
+        {
+            charTexture.transform.position = new Vector3(-4.0f, -1.55f, 0.0f);
+        }
+
+        // ２の時は次にステージ
+        if (menuNum == 2)
+        {
+            selectFlag = true;
+            charTexture.transform.position = new Vector3(4.0f, -1.55f, 0.0f);
         }
     }
 
     void select()
     {
-        if (!selectFlag) return;
+        //if (!selectFlag) return;
 
-        fadeCanvas.GetComponent<FadeManager>().FadeOut();
+        //fadeCanvas.GetComponent<FadeManager>().FadeOut();
 
-        if (fadeCanvas.GetComponent<FadeManager>().Alpha() >= 0.9f)
-        {
-            SceneManager.LoadScene("SelectScene");
-        }
+        //if (fadeCanvas.GetComponent<FadeManager>().Alpha() >= 0.9f)
+        //{
+        //    SceneManager.LoadScene("SelectScene");
+        //}
+        SceneManager.LoadScene("SelectScene");
     }   
     void next()
     {
-        if (!nextFlag) return;
+        //if (!nextFlag) return;
 
-        fadeCanvas.GetComponent<FadeManager>().FadeOut();
-        Debug.Log("ちんちんﾁｮｷﾁｮｷたーいむ");
+        //fadeCanvas.GetComponent<FadeManager>().FadeOut();
+        //Debug.Log("ちんちんﾁｮｷﾁｮｷたーいむ");
 
-        if (fadeCanvas.GetComponent<FadeManager>().Alpha() >= 0.9f)
-        {
-            SceneManager.LoadScene("PlayScene");
-        }
+        //if (fadeCanvas.GetComponent<FadeManager>().Alpha() >= 0.9f)
+        //{
+        //    SceneManager.LoadScene("PlayScene");
+        //}
+        SceneManager.LoadScene("PlayScene");
     }
 }

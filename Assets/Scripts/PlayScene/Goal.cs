@@ -7,7 +7,7 @@ public class Goal : MonoBehaviour
 {
 
     // フェードオブジェクトを入れる
-    private GameObject fadeCanvas;
+    //private GameObject fadeCanvas;
 
     // ゴール判定
     public static bool isGoalFlag = false;
@@ -17,9 +17,9 @@ public class Goal : MonoBehaviour
     void Start()
     {
         // ！追記---------------------------------------------------
-        fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
-        // 見つけてフェードスタート
-        fadeCanvas.GetComponent<FadeManager>().FadeIn();
+        //fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
+        //// 見つけてフェードスタート
+        //fadeCanvas.GetComponent<FadeManager>().FadeIn();
 
         isGoalFlag = false;
         //----------------------------------------------------------
