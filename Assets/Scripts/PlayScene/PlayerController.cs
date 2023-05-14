@@ -41,6 +41,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // ゴールしたらステージと一緒に落下する
+        if(Goal.isGoalFlag)
+        {
+            // ステージの子にする
+            transform.parent = GameObject.FindGameObjectWithTag("Stage").transform;
+
+            // プレイヤーの重力をステージの重力と統一
+            rigidbody.gravityScale = transform.parent.GetComponent<Rigidbody2D>().gravityScale;
+        }
+
         // 回転中出ないときのみ回転可能
         if (!Rotate.instance.coroutineBool)
         {
@@ -97,6 +107,9 @@ public class PlayerController : MonoBehaviour
         // 針に当たったらプレイヤーを消す
         if (collision.transform.tag == "Spline")
         {
+            // ゴールしてたら処理しない
+            if (Goal.isGoalFlag) return;
+
             deadFlag = true;
         }
 
@@ -134,9 +147,10 @@ public class PlayerController : MonoBehaviour
     {
         // 死亡エフェクト
         Instantiate(deadEffect, transform.position, Quaternion.identity);
-        transform.position = deadPos;
-        StartCoroutine("ReTry");
 
+        transform.position = deadPos;
+
+        StartCoroutine("ReTry");
     }
 
     void GetDistance()
