@@ -23,12 +23,16 @@ public class AfterGoal : MonoBehaviour
 
     bool fadeFlag;
 
+    // 決定済みか判定するフラグ
+    bool decideFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
         fadeManager.FadeIn();
 
         fadeFlag = false;
+        decideFlag = false;
     }
 
     // Update is called once per frame
@@ -47,6 +51,13 @@ public class AfterGoal : MonoBehaviour
                 transform.position = new Vector3(0.0f, 2.5f, 0.0f);
             }
 
+            // 矢印押したらスキップ
+            if(Input.GetKeyDown(KeyCode.RightArrow)||
+                Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                transform.position = new Vector3(0.0f, 2.5f, 0.0f);
+            }
+
             //if(charTexture.transform.position.y <= -1.5)
             //{
             //    charTexture.transform.position = new Vector3(0.0f, -1.55f, 0.0f);
@@ -59,24 +70,31 @@ public class AfterGoal : MonoBehaviour
             if(nextFlag)   
                 next();
         }
-
+        else
+        {
+            decideFlag = false;
+        }
     }
 
     // シーン遷移
     void AfterClear()
     {
+        if (transform.position.y != 2.5f) return;
+
         // 左右キーで遷移先を決める
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !decideFlag) 
         {
             menuNum++;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !decideFlag) 
         {
             menuNum--;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            decideFlag = true;
+
             // １の時はセレクト
             if (menuNum == 1)
             {
