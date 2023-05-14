@@ -62,6 +62,10 @@ public class AfterGoal : MonoBehaviour
             //{
             //    charTexture.transform.position = new Vector3(0.0f, -1.55f, 0.0f);
             //}
+
+            // メニューが開いていたら処理しない
+            if (MenuManager.menuFlag) return;
+
             AfterClear();
             CharPos();
 
