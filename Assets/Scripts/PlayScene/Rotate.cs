@@ -31,7 +31,6 @@ public class Rotate : MonoBehaviour
         }
 
         if (MenuManager.menuFlag) return;
-        if (Goal.isGoalFlag) return;
 
         //　プレイヤーが死んでいないときかつプレイヤーがアクティブのときに回転する
         if (PlayerController.deadFlag == false && SpownEffectControl.playerFlag == true)
