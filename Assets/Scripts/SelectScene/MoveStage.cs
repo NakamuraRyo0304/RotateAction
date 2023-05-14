@@ -22,7 +22,7 @@ public class MoveStage : MonoBehaviour
     }
     void Start()
     {
-        MoveX = 20;
+        MoveX = 10;
         MoveFlag = false;
         stageSelect = GameObject.Find("StageSelect");
 
@@ -80,7 +80,7 @@ public class MoveStage : MonoBehaviour
     {
         for (int turn = 0; turn < MoveX; turn++)
         {
-            transform.Translate(-1, 0, 0);
+            transform.Translate(-2, 0, 0);
 
             savePos.x -= turn;
 
@@ -95,7 +95,7 @@ public class MoveStage : MonoBehaviour
     {
         for (int turn = 0; turn < MoveX; turn++)
         {
-            transform.Translate(1, 0, 0);
+            transform.Translate(2, 0, 0);
 
             savePos.x += turn;
 

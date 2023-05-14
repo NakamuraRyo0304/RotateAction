@@ -25,6 +25,11 @@ public class Rotate : MonoBehaviour
 
     private void Update()
     {
+        if (Goal.isGoalFlag)
+        {
+            MoveStage();
+        }
+
         if (MenuManager.menuFlag) return;
 
         //　プレイヤーが死んでいないときかつプレイヤーがアクティブのときに回転する
@@ -55,12 +60,6 @@ public class Rotate : MonoBehaviour
     //右にゆっくり回転して90°でストップ
     IEnumerator RightRot()
     {
-        //for (int turn = 0; turn < 90; turn++)
-        //{
-        //    transform.Rotate(0, 0, 1);
-        //    //　コルーチン再開時間
-        //    yield return new WaitForSeconds(0.001f);
-        //}
         for (int turn = 0; turn < 90; turn++)
         {
             transform.Rotate(0, 0, 1);
@@ -73,13 +72,6 @@ public class Rotate : MonoBehaviour
     //左にゆっくり回転して90°でストップ
     IEnumerator LeftRot()
     {
-
-        //for (int turn = 0; turn < 90; turn++)
-        //{
-        //    transform.Rotate(0, 0, -1);
-        //    //　コルーチン再開時間
-        //    yield return new WaitForSeconds(0.001f);
-        //}
         for (int turn = 0; turn < 90; turn++)
         {
             transform.Rotate(0, 0, -1);
@@ -87,6 +79,10 @@ public class Rotate : MonoBehaviour
             yield return new WaitForSeconds(rotSpeed);
         }
         coroutineBool = false;
+    }
 
+    void MoveStage()
+    {
+        transform.position += new Vector3(0.0f, -0.2f, 0.0f);
     }
 }
