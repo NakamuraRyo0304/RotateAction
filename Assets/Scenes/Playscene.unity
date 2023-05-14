@@ -1861,6 +1861,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4488064295006981964, guid: 85302854fd1aa2b4daf4db6afb4762d2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4488064296310705264, guid: 85302854fd1aa2b4daf4db6afb4762d2, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1909,9 +1913,17 @@ PrefabInstance:
       propertyPath: fadeManager
       value: 
       objectReference: {fileID: 895428421}
+    - target: {fileID: 4488064296310705267, guid: 85302854fd1aa2b4daf4db6afb4762d2, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 4488064296310705277, guid: 85302854fd1aa2b4daf4db6afb4762d2, type: 3}
       propertyPath: m_Name
       value: CLEAR
+      objectReference: {fileID: 0}
+    - target: {fileID: 4488064296564122793, guid: 85302854fd1aa2b4daf4db6afb4762d2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85302854fd1aa2b4daf4db6afb4762d2, type: 3}

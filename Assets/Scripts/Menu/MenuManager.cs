@@ -33,6 +33,14 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // シーン遷移中は選択不能にする
+        if (FadeManager.alpha != 0 && FadeManager.alpha != 1)
+        {
+            menuFlag = false;
+            Openmenu = false;
+            menuBack.SetActive(menuFlag);
+        }
+
         if (Openmenu)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
