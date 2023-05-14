@@ -46,12 +46,10 @@ public class SoundManager : MonoBehaviour
         se = music.GetComponent<AudioSource>();
 
         // 一回だけ鳴らす
-        keyFlag = false;
-        splineFlag = false;
-        goalFlag = false;
+        ResetSound();
 
-        // MenuManagerをゲット
-        menuManager  = GetComponent<MenuManager>();
+         // MenuManagerをゲット
+         menuManager  = GetComponent<MenuManager>();
 
     }
 
@@ -115,10 +113,6 @@ public class SoundManager : MonoBehaviour
         // プレイシーンじゃなければリターン
         if (SceneManager.GetActiveScene().name != "Playscene")
         {
-            keyFlag = false;
-            splineFlag = false;
-            goalFlag = false;
-
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 // 現在なっているSEを止める
@@ -199,5 +193,12 @@ public class SoundManager : MonoBehaviour
 
             se.PlayOneShot(se.clip);
         }
+    }
+
+    public void ResetSound()
+    {
+        keyFlag = false;
+        splineFlag = false;
+        goalFlag = false;
     }
 }

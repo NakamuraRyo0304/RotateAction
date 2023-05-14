@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         openFlag = false;
         warpFlag = false;
         rgravityFlag = false;
+        GameObject.Find("SE").gameObject.GetComponent<SoundManager>().ResetSound();
     }
 
     void Update()
