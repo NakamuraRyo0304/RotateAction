@@ -1236,7 +1236,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1310,18 +1309,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d63331916d52b4a97fa4ab0973de5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &566515430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1632,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2312,10 +2299,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2260949952073185801, guid: 99184e4b7de2cc34f8196c88761bf5c1, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2260949952073185802, guid: 99184e4b7de2cc34f8196c88761bf5c1, type: 3}
       propertyPath: m_Name
+      value: BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260949952073185802, guid: 99184e4b7de2cc34f8196c88761bf5c1, type: 3}
+      propertyPath: m_TagString
       value: BGM
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6122,6 +6113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SE
       objectReference: {fileID: 0}
+    - target: {fileID: 4959704648018143341, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
+      propertyPath: m_TagString
+      value: SE
+      objectReference: {fileID: 0}
     - target: {fileID: 8438747379199048712, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -6276,7 +6271,15 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8671381661866365773, guid: ec90c58dc570b09489aa36344d258a35, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671381661866365773, guid: ec90c58dc570b09489aa36344d258a35, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671381661866365773, guid: ec90c58dc570b09489aa36344d258a35, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
