@@ -144,7 +144,6 @@ public class AfterGoal : MonoBehaviour
         if (fadeFlag && fadeManager.Alpha() >= 0.9f)
         {
             SceneManager.LoadScene("SelectScene");
-            MenuController.menuSelectFlag = false;
         }
     }
 
@@ -161,7 +160,6 @@ public class AfterGoal : MonoBehaviour
         if (fadeFlag && fadeManager.Alpha() >= 1.0f)
         {
             SceneManager.LoadScene("PlayScene");
-            MenuController.menuSelectFlag = false;
         }
     }
 }

@@ -20,11 +20,6 @@ public class SceneController : MonoBehaviour
         
     void Start()
     {
-        // フェードイン
-        //fadeCanvas = GameObject.FindGameObjectWithTag("Fade");
-
-        //fadeManager = fadeCanvas.GetComponent<FadeManager>();
-
         fadeManager.FadeIn();
 
         fadeFlag = false;
@@ -34,7 +29,7 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || MenuController.menuSelectFlag == true)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
 
             if (MenuManager.menuFlag) { return; }
@@ -49,7 +44,6 @@ public class SceneController : MonoBehaviour
         if (fadeFlag && fadeManager.Alpha() >= 1.0f)
         {
             SceneManager.LoadScene(sceneName);
-            MenuController.menuSelectFlag = false;
         }
 
     }
