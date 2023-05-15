@@ -37,6 +37,7 @@ public class SoundManager : MonoBehaviour
 
     MenuManager menuManager;
 
+    AudioSource audioSource;
     private void Start()
     {
         // 破壊不能オブジェクトに設定
@@ -51,12 +52,16 @@ public class SoundManager : MonoBehaviour
          // MenuManagerをゲット
          menuManager  = GetComponent<MenuManager>();
 
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
     }
 
     private void Update()
     {
+        SEVolume();
+
         // 常時なるやつ(Menu)
-        if(Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
+        if (Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
         {
             // 現在なっているSEを止める
             se.Stop();
@@ -200,5 +205,10 @@ public class SoundManager : MonoBehaviour
         keyFlag = false;
         splineFlag = false;
         goalFlag = false;
+    }
+
+    void SEVolume()
+    {
+        SESlider.volume = audioSource.volume;
     }
 }

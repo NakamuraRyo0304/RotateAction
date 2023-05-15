@@ -42,10 +42,10 @@ public class PlayMenu : MonoBehaviour
         // 変数の初期化
         menuNum = 1;
         menuSelectFlag = false;
-        playerPos[0] = new Vector2(0.0f, 0.865f);
-        playerPos[1] = new Vector2(0.0f, -0.678f);
-        playerPos[2] = new Vector2(0.0f, -1.803f);
-        playerPos[3] = new Vector2(0.0f, -1.803f);
+        playerPos[0] = new Vector2(0.0f, 1.78f);
+        playerPos[1] = new Vector2(0.0f, 0.138f);
+        playerPos[2] = new Vector2(0.0f, -0.831f);
+        playerPos[3] = new Vector2(0.0f, -2.612f);
 
         menuNumAnim = 0;
     }
@@ -54,7 +54,7 @@ public class PlayMenu : MonoBehaviour
     void Update()
     {
         // 現在のアニメーションのパラメータの値を受け取る
-        menuNumAnim = AnimSelect.GetInteger("menuNum");
+        //menuNumAnim = AnimSelect.GetInteger("menuNum");
 
         // 各変数のクランプ　数はメニューの選択できる数
         menuNum = Mathf.Clamp(menuNum, 1, 4);
@@ -100,7 +100,7 @@ public class PlayMenu : MonoBehaviour
         }
 
         // アニメーションのパラメーターを設定する
-        AnimSelect.SetInteger("menuNum", menuNumAnim);
+        //AnimSelect.SetInteger("menuNum", menuNumAnim);
 
     }
 

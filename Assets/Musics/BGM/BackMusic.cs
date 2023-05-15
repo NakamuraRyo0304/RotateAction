@@ -11,6 +11,7 @@ public class BackMusic : MonoBehaviour
     public AudioClip title;
     public AudioClip play;
 
+    AudioSource audioSource;
     private void Start()
     {
         // 破壊不能オブジェクトにする
@@ -25,11 +26,15 @@ public class BackMusic : MonoBehaviour
         // AudioClipを再生
         First.Play();
 
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
     }
     private void Update()
     {
+        BGMVolume();
+
         // プレイシーンに行ったら削除する
-        if(SceneManager.GetActiveScene().name == "Playscene"&&
+        if (SceneManager.GetActiveScene().name == "Playscene"&&
             First.clip == title)
         {
             First.Stop();
@@ -43,5 +48,10 @@ public class BackMusic : MonoBehaviour
             First.clip = title;
             First.Play();
         }
+    }
+
+    void BGMVolume()
+    {
+        BGMSlider.volume = audioSource.volume;
     }
 }
