@@ -138,7 +138,6 @@ public class AfterGoal : MonoBehaviour
 
         fadeFlag = true;
 
-        Debug.Log("きちゃ");
 
         // フェードアウトが終わったらシーン読み込み
         if (fadeFlag && fadeManager.Alpha() >= 0.9f)
@@ -149,16 +148,18 @@ public class AfterGoal : MonoBehaviour
 
     void next()
     {
-        if (MenuManager.menuFlag) { return; }
 
+        if (MenuManager.menuFlag) { return; }
         // フェードアウト
         fadeManager.FadeOut();
 
         fadeFlag = true;
 
         // フェードアウトが終わったらシーン読み込み
-        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
+        if (fadeFlag && fadeManager.Alpha() >= 0.9f)
         {
+
+        Debug.Log("きちゃ");
             SceneManager.LoadScene("PlayScene");
         }
     }
