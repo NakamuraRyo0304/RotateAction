@@ -2213,8 +2213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 806813836}
-  title: {fileID: 8300000, guid: 9f131f39c7a3fed45b9892f435a4d32c, type: 3}
-  play: {fileID: 8300000, guid: 267e984c477b55c4ab5540f5cb3b34dd, type: 3}
+  title: {fileID: 8300000, guid: 7731a754103715d48bb36ccf6d5ab21b, type: 3}
+  play: {fileID: 8300000, guid: ed5e3ab2cfda93044a0345364e89f28a, type: 3}
 --- !u!82 &806813838 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2260949952073185801, guid: 99184e4b7de2cc34f8196c88761bf5c1, type: 3}
@@ -6101,6 +6101,18 @@ PrefabInstance:
       propertyPath: music
       value: 
       objectReference: {fileID: 673968839}
+    - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
+      propertyPath: GoalSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2fbeb20a716c53843a0d1a8fcb262115, type: 3}
+    - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
+      propertyPath: SelectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c869df15e2218f42860ef6c96b65a16, type: 3}
+    - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
+      propertyPath: SprineSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a91c9e19d44cee4ba9d50d68aa97813, type: 3}
     - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
       propertyPath: CloseMenuSound
       value: 
