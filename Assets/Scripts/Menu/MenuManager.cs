@@ -26,8 +26,6 @@ public class MenuManager : MonoBehaviour
         // 変数の初期化
         menuFlag = false;
         Openmenu = true;
-        // シーン間でオブジェクトを破壊しない
-        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
