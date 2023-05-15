@@ -17,19 +17,16 @@ public class BGMSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (MenuController.menuNum == 1)
         {
             if (!MenuManager.menuFlag) return;
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                //this.audioSource.volume -= 0.1f;
                 slider.value -= 0.03f;
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                //this.audioSource.volume += 0.1f;
                 slider.value += 0.03f;
             }
         }
