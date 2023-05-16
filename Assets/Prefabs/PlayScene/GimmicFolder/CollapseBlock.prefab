@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 3089885961608123313}
   - component: {fileID: 4373066043070468762}
   - component: {fileID: 3287284474692078089}
+  - component: {fileID: 785786216}
   m_Layer: 0
   m_Name: CollapseEffect
   m_TagString: Untagged
@@ -4870,6 +4871,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &785786216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425598144550450293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03433a099e5bd794fbb35e90ccc8a89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  block: {fileID: 6786847979941935773}
 --- !u!1 &3682400053511932328
 GameObject:
   m_ObjectHideFlags: 0

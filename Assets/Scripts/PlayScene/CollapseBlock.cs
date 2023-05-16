@@ -14,7 +14,6 @@ public class CollapseBlock : MonoBehaviour
     public float velocity;
     bool hitFlag;
     bool LRFlag;
-    int moveCount;
 
     Vector2 scale = new Vector2(1.0f, 1.0f);
     Vector2 pos = new Vector2(0.0f, 0.0f);
@@ -27,8 +26,6 @@ public class CollapseBlock : MonoBehaviour
         velocity = 0.0f;
         hitFlag = false;
         LRFlag = true;
-
-        moveCount = 0;
     }
 
     // Update is called once per frame
@@ -73,7 +70,6 @@ public class CollapseBlock : MonoBehaviour
 
             pos.x += velocity;
             this.transform.position = pos;
-            moveCount++;
         }
 
         if (timer >= 240)
