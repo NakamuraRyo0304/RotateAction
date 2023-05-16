@@ -166,7 +166,7 @@ public class AfterGoal : MonoBehaviour
         fadeFlag = true;
 
         // フェードアウトが終わったらシーン読み込み
-        if (fadeFlag && fadeManager.Alpha() >= 0.9f)
+        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
         {
 
             Debug.Log("きちゃ");
