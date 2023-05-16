@@ -11,7 +11,7 @@ public class MoveStage : MonoBehaviour
     public static bool MoveFlag;
     GameObject stageSelect;
 
-    static Vector3 savePos = Vector3.zero;
+    public static Vector3 savePos = Vector3.zero;
 
     public void Awake()
     {
@@ -27,7 +27,6 @@ public class MoveStage : MonoBehaviour
         stageSelect = GameObject.Find("StageSelect");
 
         transform.position = savePos;
-
     }
 
     // Update is called once per frame
@@ -43,7 +42,7 @@ public class MoveStage : MonoBehaviour
         if (StageSelect.decideFlag) return;
 
 
-            // 右へ遷移
+       // 右へ遷移
        if (Input.GetKeyDown(KeyCode.RightArrow) &&
        (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||
         StageSelect.StageNum == 26 || StageSelect.StageNum == 31 || StageSelect.StageNum == 36||StageSelect.StageNum == 41))
@@ -82,7 +81,7 @@ public class MoveStage : MonoBehaviour
         {
             transform.Translate(-2, 0, 0);
 
-            savePos.x -= turn;
+            savePos.x -= 2;
 
             //　コルーチン再開時間
             yield return new WaitForSeconds(0.01f);
@@ -97,7 +96,7 @@ public class MoveStage : MonoBehaviour
         {
             transform.Translate(2, 0, 0);
 
-            savePos.x += turn;
+            savePos.x += 2;
 
             //　コルーチン再開時間
             yield return new WaitForSeconds(0.01f);

@@ -27,6 +27,9 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
+        // フェード中にスペースを押せなくする
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
 
