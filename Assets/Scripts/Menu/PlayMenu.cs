@@ -53,6 +53,12 @@ public class PlayMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // リターンされないように上で呼ぶ
+        if (selectFlag)
+        {
+            Select();
+        }
+
         if (!MenuManager.menuFlag) { return; }
 
         // 現在のアニメーションのパラメータの値を受け取る
@@ -96,11 +102,6 @@ public class PlayMenu : MonoBehaviour
             }
         }
 
-        if (selectFlag)
-        {
-            Select();
-        }
-
         // アニメーションのパラメーターを設定する
         AnimSelect.SetInteger("menuNum", menuNumAnim);
     }
@@ -116,6 +117,7 @@ public class PlayMenu : MonoBehaviour
         if (fadeFlag && fadeManager.Alpha() >= 1.0f)
         {
             SceneManager.LoadScene("SelectScene");
+
 
             // メニューの選択を一番上に戻す
             menuNum = 1;
