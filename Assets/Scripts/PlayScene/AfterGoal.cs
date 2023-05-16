@@ -109,7 +109,17 @@ public class AfterGoal : MonoBehaviour
             if (menuNum == 2)
             {
                 StageSelect.StageNum++;
+
+                // 45超えたらクランプ
+                if(StageSelect.StageNum >= 45)
+                {
+                    StageSelect.StageNum = 45;
+                }
+
                 nextFlag = true;
+
+                // エリア移動用関数
+                SelectStageMove();
             }
         }
     }
@@ -159,8 +169,18 @@ public class AfterGoal : MonoBehaviour
         if (fadeFlag && fadeManager.Alpha() >= 0.9f)
         {
 
-        Debug.Log("きちゃ");
+            Debug.Log("きちゃ");
             SceneManager.LoadScene("PlayScene");
+        }
+    }
+
+    void SelectStageMove()
+    {
+        // 右へ遷移
+        if (StageSelect.StageNum == 6 || StageSelect.StageNum == 11 || StageSelect.StageNum == 16 || StageSelect.StageNum == 21 ||
+            StageSelect.StageNum == 26 || StageSelect.StageNum == 31 || StageSelect.StageNum == 36 || StageSelect.StageNum == 41)
+        {
+            MoveStage.savePos.x -= 20;
         }
     }
 }
