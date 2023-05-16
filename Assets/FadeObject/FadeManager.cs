@@ -19,7 +19,6 @@ public class FadeManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("‚¿‚å‚«‚¿‚å‚«Fade");
 
     }
 

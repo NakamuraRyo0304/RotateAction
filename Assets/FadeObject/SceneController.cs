@@ -23,8 +23,6 @@ public class SceneController : MonoBehaviour
         fadeManager.FadeIn();
 
         fadeFlag = false;
-
-        Debug.Log("‚¿‚å‚«‚¿‚å‚«Scene");
     }
 
     void Update()

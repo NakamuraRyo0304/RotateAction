@@ -340,11 +340,6 @@ Transform:
   m_Father: {fileID: 1480402151}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &259117048 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3905472634111429320, guid: 01d3c61ed7193694d9ae9587cc369466, type: 3}
-  m_PrefabInstance: {fileID: 1820617870999253577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &359935570
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +762,7 @@ GameObject:
   - component: {fileID: 541001906}
   - component: {fileID: 541001907}
   m_Layer: 0
-  m_Name: MenuEnd (1)
+  m_Name: MenuSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -781,13 +776,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541001905}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -176, z: 766.8}
-  m_LocalScale: {x: 395.28, y: 108, z: 108}
+  m_LocalPosition: {x: 0, y: -1.6296296, z: 0}
+  m_LocalScale: {x: 3.66, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 629862859}
-  m_Father: {fileID: 259117048}
-  m_RootOrder: 2
+  m_Father: {fileID: 939695646}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &541001907
 SpriteRenderer:
@@ -1543,7 +1538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2755614220079258750, guid: 351dfb06afbd299498d381955bf0f154, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6442479241568890884, guid: 351dfb06afbd299498d381955bf0f154, type: 3}
       propertyPath: m_Pivot.x
@@ -1683,6 +1678,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 2211386208866195673, guid: 01d3c61ed7193694d9ae9587cc369466, type: 3}
   m_PrefabInstance: {fileID: 1820617870999253577}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &939695646 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 985694913660432422, guid: 01d3c61ed7193694d9ae9587cc369466, type: 3}
+  m_PrefabInstance: {fileID: 1820617870999253577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &982951692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,8 +1734,8 @@ MonoBehaviour:
   fadeManager: {fileID: 895428421}
   menu: {fileID: 939695644}
   menuBack: {fileID: 1542360933}
-  AnimSelect: {fileID: 369830958}
-  AnimOpen: {fileID: 939695645}
+  AnimSelect: {fileID: 939695645}
+  AnimOpen: {fileID: 369830958}
   menuExp: {fileID: 2074202891}
 --- !u!1 &1022295415
 GameObject:
@@ -2362,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 985694913660432422, guid: 01d3c61ed7193694d9ae9587cc369466, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1212597964388817669, guid: 01d3c61ed7193694d9ae9587cc369466, type: 3}
       propertyPath: m_Camera
@@ -2420,6 +2420,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2211386208866195673, guid: 01d3c61ed7193694d9ae9587cc369466, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ba27803625b34fb4a8e3ed97bf33b699, type: 2}
     - target: {fileID: 2469245908447201983, guid: 01d3c61ed7193694d9ae9587cc369466, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
