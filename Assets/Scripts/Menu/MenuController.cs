@@ -39,6 +39,8 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!MenuManager.menuFlag) { return; }
+
         // 現在のアニメーションのパラメータの値を受け取る
         //menuNumAnim = AnimSelect.GetInteger("menuNum");
 
