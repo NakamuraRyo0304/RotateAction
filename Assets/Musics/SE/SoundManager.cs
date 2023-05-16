@@ -50,7 +50,7 @@ public class SoundManager : MonoBehaviour
         ResetSound();
 
          // MenuManagerをゲット
-         menuManager  = GetComponent<MenuManager>();
+        menuManager = GetComponent<MenuManager>();
 
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.5f;
@@ -120,6 +120,9 @@ public class SoundManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // もしフェード中なら音を出さない
+                if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
                 // 現在なっているSEを止める
                 se.Stop();
 
