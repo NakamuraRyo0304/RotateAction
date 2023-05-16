@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         // ƒS[ƒ‹‚µ‚½‚çŒ©‚¦‚È‚¢‚Æ‚±‚ë‚É”ò‚Î‚·
         if(Goal.isGoalFlag) 
         {
-            transform.position = new Vector3(-13.0f, -3.0f,0.0f);
+            transform.position = new Vector3(-500.0f, -500.0f,0.0f);
         }
 
         // ‰ñ“]’†o‚È‚¢‚Æ‚«‚Ì‚İ‰ñ“]‰Â”\
