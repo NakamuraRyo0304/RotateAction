@@ -100,8 +100,7 @@ public class PlayMenu : MonoBehaviour
         }
 
         // アニメーションのパラメーターを設定する
-        //AnimSelect.SetInteger("menuNum", menuNumAnim);
-
+        AnimSelect.SetInteger("menuNum", menuNumAnim);
     }
 
     void Select()
