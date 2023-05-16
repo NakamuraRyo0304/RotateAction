@@ -25,6 +25,9 @@ public class Rotate : MonoBehaviour
 
     private void Update()
     {
+        // フェード中は操作不能に
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         if (Goal.isGoalFlag)
         {
             MoveStage();
