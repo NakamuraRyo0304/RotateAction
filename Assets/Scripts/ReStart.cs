@@ -14,8 +14,10 @@ public class ReStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(MenuManager.menuFlag) { return; }
-        if(Goal.isGoalFlag) { return; }
+        if (AfterGoal.decideFlag) return;
+
+        if(MenuManager.menuFlag) return;
+        if(Goal.isGoalFlag)  return;
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
