@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayMenu : MonoBehaviour
 {
+    // フェード関連
     // プレハブ化したキャンバスを入れる
     GameObject fadeCanvas;
     [SerializeField]
     FadeManager fadeManager;
-
     bool fadeFlag;
 
+    // メニューで選ばれたのもを判別するフラグ
     bool selectFlag = false;
+    bool endFlag = false;
 
     // メニューのどこを選択しているかの判定
     public static int menuNum;
@@ -57,6 +59,10 @@ public class PlayMenu : MonoBehaviour
         if (selectFlag)
         {
             Select();
+        } 
+        if (endFlag)
+        {
+            End();
         }
 
         if (!MenuManager.menuFlag) { return; }
@@ -93,12 +99,8 @@ public class PlayMenu : MonoBehaviour
 
             if (menuNum == 4)
             {
-                // ゲーム終了
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_STANDALONE
-    UnityEngine.Application.Quit();
-#endif
+                endFlag = true;
+
             }
         }
 
@@ -126,5 +128,22 @@ public class PlayMenu : MonoBehaviour
 
         }
     }
+    void End()
+    {
+        // フェードアウト
+        fadeManager.FadeOut();
 
+        fadeFlag = true;
+
+        // フェードアウトが終わったらシーン読み込み
+        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
+        {
+            // ゲーム終了
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+    UnityEngine.Application.Quit();
+#endif
+        }
+    }
 }
