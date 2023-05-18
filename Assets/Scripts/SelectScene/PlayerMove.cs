@@ -14,9 +14,6 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        // フェード中は処理しない
-        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
-
         // メニューフラグがたっていたら処理しない
         if (MenuManager.menuFlag) return;
 

@@ -102,7 +102,6 @@ public class AfterGoal : MonoBehaviour
             // １の時はセレクト
             if (menuNum == 1)
             {
-                gameObject.GetComponent<DoorTextureChange>().ResetTexture();
                 selectFlag = true;
             }
 
