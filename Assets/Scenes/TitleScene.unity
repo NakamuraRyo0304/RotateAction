@@ -2213,8 +2213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 806813836}
-  title: {fileID: 8300000, guid: 7731a754103715d48bb36ccf6d5ab21b, type: 3}
-  play: {fileID: 8300000, guid: ed5e3ab2cfda93044a0345364e89f28a, type: 3}
+  title: {fileID: 8300000, guid: 4234ff4aea6873341ad73ac1aabb1ced, type: 3}
+  play: {fileID: 8300000, guid: 9f131f39c7a3fed45b9892f435a4d32c, type: 3}
 --- !u!82 &806813838 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2260949952073185801, guid: 99184e4b7de2cc34f8196c88761bf5c1, type: 3}
@@ -6149,7 +6149,7 @@ PrefabInstance:
     - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
       propertyPath: GoalSound
       value: 
-      objectReference: {fileID: 8300000, guid: 2fbeb20a716c53843a0d1a8fcb262115, type: 3}
+      objectReference: {fileID: 8300000, guid: c95a0dbaa6d015a40a99a380d8b443ef, type: 3}
     - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
       propertyPath: SelectSound
       value: 
@@ -6157,11 +6157,15 @@ PrefabInstance:
     - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
       propertyPath: SprineSound
       value: 
-      objectReference: {fileID: 8300000, guid: 7a91c9e19d44cee4ba9d50d68aa97813, type: 3}
+      objectReference: {fileID: 8300000, guid: cd25a8aeadda1094ab927c724f786ec6, type: 3}
+    - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
+      propertyPath: OpenMenuSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 37c3ab7a794f68a419089611fece0889, type: 3}
     - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
       propertyPath: CloseMenuSound
       value: 
-      objectReference: {fileID: 8300000, guid: b1a218487aeae6f45ba8d96d4076967c, type: 3}
+      objectReference: {fileID: 8300000, guid: 1b99feff42035be4c9c50d10e46112ab, type: 3}
     - target: {fileID: 653545851513317362, guid: c4207e835f3b80a4cb0ab4ffa3c2d884, type: 3}
       propertyPath: PushSpaceSound
       value: 
