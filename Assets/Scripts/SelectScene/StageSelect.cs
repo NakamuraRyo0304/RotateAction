@@ -58,6 +58,27 @@ public class StageSelect : MonoBehaviour
             Debug.Log(StageNum);
         }
 
+        // エリア移動
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if(StageNum < MaxNum - 5)
+            {
+                StageNum += 5;
+                Debug.Log(StageNum);
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if(StageNum > 5)
+            {
+                StageNum -= 5;
+                Debug.Log(StageNum);
+            }
+        }
+
+        // クランプ処理
+        StageNum = Mathf.Clamp(StageNum, 1, MaxNum);
+
         // 決定する
         if(Input.GetKeyDown(KeyCode.Space)) 
         {
