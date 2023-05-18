@@ -8,7 +8,7 @@ public class ReStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.GetComponent<DoorTextureChange>().ResetTexture();
     }
 
     // Update is called once per frame
@@ -21,7 +21,6 @@ public class ReStart : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            gameObject.GetComponent<DoorTextureChange>().ResetTexture(); ;
             SceneManager.LoadScene("Playscene");
         }
     }

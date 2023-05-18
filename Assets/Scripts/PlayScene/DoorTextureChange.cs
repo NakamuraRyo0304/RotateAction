@@ -30,5 +30,6 @@ public class DoorTextureChange : MonoBehaviour
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         sr.sprite = lockImage;
+        PlayerController.keyFlag = false;
     }
 }
