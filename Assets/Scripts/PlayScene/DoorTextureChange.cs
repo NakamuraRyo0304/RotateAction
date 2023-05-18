@@ -15,8 +15,7 @@ public class DoorTextureChange : MonoBehaviour
 
     void Start()
     {
-        sr = gameObject.GetComponent<SpriteRenderer>();
-        sr.sprite = lockImage;
+        ResetTexture();
     }
 
     void Update()
@@ -25,5 +24,12 @@ public class DoorTextureChange : MonoBehaviour
         {
             sr.sprite = unlockImage;
         }
+    }
+
+    public void ResetTexture()
+    {
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        sr.sprite = lockImage;
+        PlayerController.keyFlag = false;
     }
 }

@@ -110,12 +110,6 @@ public class PlayerController : MonoBehaviour
             deadFlag = true;
         }
 
-        if (collision.transform.tag == "Key")
-        {
-            keyFlag = true;
-            Destroy(collision.gameObject);
-        }
-
         if (collision.transform.tag == "KeyBlock")
         {
             if (keyFlag == true)
@@ -128,6 +122,11 @@ public class PlayerController : MonoBehaviour
     // サウンド用
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.transform.tag == "Key")
+        {
+            keyFlag = true;
+            Destroy(collision.gameObject);
+        }
         // ワープ
         if (collision.transform.tag == "Warp")
         {

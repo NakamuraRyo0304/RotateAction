@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4026901875216721523}
   m_Layer: 0
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4026901875283218188}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4026901875667807067}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -431,9 +431,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 4026901876006682159}
-  jumpForce: 200
-  jumpNum: 1
-  warpPoint: {fileID: 0}
+  fallEffect: {fileID: 0}
+  deadEffect: {fileID: 0}
+  rotBeforPos: {x: 0, y: 0}
+  rotAfterPos: {x: 0, y: 0}
+  posDistance: 0
 --- !u!1 &4026901876193549313
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +449,7 @@ GameObject:
   - component: {fileID: 4026901876193549314}
   m_Layer: 0
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -558,7 +560,7 @@ GameObject:
   - component: {fileID: 4026901877162737088}
   m_Layer: 0
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
