@@ -21,6 +21,7 @@ public class ReStart : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            gameObject.GetComponent<DoorTextureChange>().ResetTexture(); ;
             SceneManager.LoadScene("Playscene");
         }
     }
