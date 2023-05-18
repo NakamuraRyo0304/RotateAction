@@ -32,6 +32,9 @@ public class MoveStage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // フェード中は処理しない
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         // ポジション保存
         savePos = transform.position;
 
