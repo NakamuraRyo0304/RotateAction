@@ -15,21 +15,33 @@ public class RotateStageForSelect : MonoBehaviour
         Stage[StageSelect.StageNum - 1].transform.Rotate(0, 0, 1);
 
         //　セレクト切り替えで回転量リセット
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            for (int num = 0; num < StageSelect.StageNum; num++)
+            for (int num = 0; num < StageSelect.MaxNum; num++)
             {
-                if (StageSelect.StageNum - 1 == num) return;
                 Stage[num].transform.rotation = Quaternion.identity;
             }            
         }
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            for (int num = StageSelect.StageNum; num > 0; num--)
+            for (int num = 0; num < StageSelect.MaxNum; num++)
             {
-                if (StageSelect.StageNum - 1 == num) return;
                 Stage[num].transform.rotation = Quaternion.identity;
-            }            
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            for (int num = 0; num < StageSelect.MaxNum; num++)
+            {
+                Stage[num].transform.rotation = Quaternion.identity;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            for (int num = 0; num < StageSelect.MaxNum; num++)
+            {
+                Stage[num].transform.rotation = Quaternion.identity;
+            }
         }
     }
 }
