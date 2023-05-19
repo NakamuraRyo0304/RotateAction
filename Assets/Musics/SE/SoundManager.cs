@@ -77,7 +77,8 @@ public class SoundManager : MonoBehaviour
         }
 
         // セレクトシーンの処理
-        if (SceneManager.GetActiveScene().name == "SelectScene" && !MenuManager.menuFlag)
+        if ((SceneManager.GetActiveScene().name == "SelectScene" && !MenuManager.menuFlag)||
+            SceneManager.GetActiveScene().name == "Playscene" && Goal.isGoalFlag)
         {        
             // セレクトシーンのサウンド(ステージ選択音)
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -115,8 +116,9 @@ public class SoundManager : MonoBehaviour
         }
 
 
-        // プレイシーンじゃなければリターン
-        if (SceneManager.GetActiveScene().name != "Playscene")
+        // プレイシーンじゃないとき、プレイシーンでゴールした時
+        if (SceneManager.GetActiveScene().name != "Playscene" ||
+           (SceneManager.GetActiveScene().name == "Playscene" && Goal.isGoalFlag))
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
