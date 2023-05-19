@@ -1487,16 +1487,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 1, y: -5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -7, y: -4, z: 0}
     second:
       serializedVersion: 2
@@ -2001,13 +1991,13 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 68
+  - m_RefCount: 67
     m_Data: {fileID: 11400000, guid: 447c753ea9a9f0244bc3df22032b8f97, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 68
+  - m_RefCount: 67
     m_Data: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 68
+  - m_RefCount: 67
     m_Data:
       e00: 1
       e01: 0
@@ -2028,7 +2018,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 3.4968e-41, g: 3.4968e-41, b: 3.4968e-41, a: 3.4968e-41}
-  - m_RefCount: 68
+  - m_RefCount: 67
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -2220,12 +2210,14 @@ CompositeCollider2D:
         Y: -23520000
       - X: -6720000
         Y: -13440000
-      - X: 3360000
+      - X: 3359900
         Y: -13440000
-      - X: 3360000
-        Y: -16799900
+      - X: 3359900
+        Y: -13439959
+      - X: 3359959
+        Y: -13439900
       - X: 6720000
-        Y: -16799900
+        Y: -13439900
       - X: 6720000
         Y: -3360000
       - X: 3360000
@@ -2394,9 +2386,7 @@ CompositeCollider2D:
       - {x: 0.6719607, y: -2.35201}
       - {x: -0.672, y: -2.3519707}
       - {x: -0.6719706, y: -1.344}
-      - {x: 0.336, y: -1.3440294}
-      - {x: 0.3360293, y: -1.67999}
-      - {x: 0.672, y: -1.6799608}
+      - {x: 0.672, y: -1.3439608}
       - {x: 0.6719707, y: -0.336}
       - {x: 0.336, y: -0.3360293}
       - {x: 0.3359706, y: -1.008}
