@@ -501,6 +501,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+
   - first: {x: -4, y: -7, z: 0}
     second:
       serializedVersion: 2
@@ -511,6 +512,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+
   - first: {x: 0, y: -7, z: 0}
     second:
       serializedVersion: 2
@@ -1195,6 +1197,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
+
   - m_RefCount: 80
     m_Data: {fileID: 11400000, guid: 447c753ea9a9f0244bc3df22032b8f97, type: 2}
   m_TileSpriteArray:
@@ -1222,7 +1225,9 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 3.5243e-41, g: 3.5243e-41, b: 3.5243e-41, a: 3.5243e-41}
+
   - m_RefCount: 80
+
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -1596,6 +1601,7 @@ CompositeCollider2D:
         Y: -23520041
       - X: -16800041
         Y: -23520100
+
       - X: -10080041
         Y: -23520100
       - X: -10080100
@@ -1603,6 +1609,7 @@ CompositeCollider2D:
       - X: -10080100
         Y: -20159959
       - X: -10080041
+
         Y: -20159900
       - X: -13439900
         Y: -20159900
@@ -1682,9 +1689,11 @@ CompositeCollider2D:
       - {x: -2.3519607, y: -1.68001}
       - {x: -1.68001, y: -1.6800394}
       - {x: -1.6799748, y: -2.35201}
+
       - {x: -1.00801, y: -2.3519747}
       - {x: -1.0080334, y: -2.01599}
       - {x: -1.34399, y: -2.0159607}
+
       - {x: -1.3439606, y: -1.34401}
       - {x: -0.00001, y: -1.3440394}
       - {x: 0.0000252, y: -3.3600101}
