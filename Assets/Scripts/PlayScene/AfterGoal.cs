@@ -71,8 +71,19 @@ public class AfterGoal : MonoBehaviour
 
             if(selectFlag) 
                 select();
-            if(nextFlag)   
-                next();
+            if(nextFlag)
+            {
+                // 通常
+                if (StageSelect.StageNum != StageSelect.MaxNum)
+                {
+                    next();
+                }
+                // 最終ステージにだったらタイトルに戻す(時間があればリザルトにする)
+                else
+                {
+                    AllClear();
+                }
+            }
         }
         else
         {
@@ -171,6 +182,22 @@ public class AfterGoal : MonoBehaviour
 
             Debug.Log("きちゃ");
             SceneManager.LoadScene("PlayScene");
+        }
+    }
+
+    void AllClear()
+    {
+        if (MenuManager.menuFlag) { return; }
+        // フェードアウト
+        fadeManager.FadeOut();
+
+        fadeFlag = true;
+
+        // フェードアウトが終わったらシーン読み込み
+        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
+        {
+            // TODO::リザルトに変える
+            SceneManager.LoadScene("TitleScene");
         }
     }
 
