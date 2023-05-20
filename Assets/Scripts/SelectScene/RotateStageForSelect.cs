@@ -11,6 +11,9 @@ public class RotateStageForSelect : MonoBehaviour
 
     void Update()
     {
+        // メニューを開いているときは処理しない
+        if (MenuManager.menuFlag) return;
+
         //　選んでるときは回転
         Stage[StageSelect.StageNum - 1].transform.Rotate(0, 0, 1);
 
