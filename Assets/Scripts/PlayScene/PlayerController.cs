@@ -24,18 +24,12 @@ public class PlayerController : MonoBehaviour
 
     Vector2 deadPos = new(100, 0);
 
-    private bool rotFlag;
+    public static bool rotFlag;
    
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        deadFlag = false;
-        rotFlag = false;
-        keyFlag = false;
-        openFlag = false;
-        warpFlag = false;
-        rgravityFlag = false;
-        GameObject.Find("SE").gameObject.GetComponent<SoundManager>().ResetSound();
+        Reset();
     }
 
     void Update()
@@ -213,6 +207,17 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         SceneManager.LoadScene("PlayScene");
+    }
+
+    public static void Reset()
+    {
+        deadFlag = false;
+        rotFlag = false;
+        keyFlag = false;
+        openFlag = false;
+        warpFlag = false;
+        rgravityFlag = false;
+        GameObject.Find("SE").gameObject.GetComponent<SoundManager>().ResetSound();
     }
 }
 
