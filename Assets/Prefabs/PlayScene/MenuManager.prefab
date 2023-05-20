@@ -527,6 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8260a7479cf9aed4faba83b05f29ae36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeManager: {fileID: 0}
   menu: {fileID: 573169110397670209}
   menuBack: {fileID: 1524534434409091810}
   AnimSelect: {fileID: 573169110397670210}
@@ -712,7 +713,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 573169108890888500}
-  audioSource: {fileID: 0}
 --- !u!1 &3599053913009644711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1527046207071539427}
-  audioSource: {fileID: 0}
 --- !u!1 &5365333187912535352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,7 +1599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6421282224168943033}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.8542, y: -3.5442, z: 0}
+  m_LocalPosition: {x: -5.8542, y: 0, z: 0}
   m_LocalScale: {x: 0.5875032, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

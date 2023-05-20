@@ -528,7 +528,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131350006
 GameObject:
@@ -6242,7 +6242,7 @@ PrefabInstance:
     - target: {fileID: 868147307870384816, guid: 154b5802f7a70174b9cf6d31802f54af, type: 3}
       propertyPath: fadeManager
       value: 
-      objectReference: {fileID: 1828084104}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 154b5802f7a70174b9cf6d31802f54af, type: 3}
 --- !u!1001 &4669047362016695940
@@ -6436,6 +6436,14 @@ PrefabInstance:
     - target: {fileID: 5436306370060139788, guid: ec90c58dc570b09489aa36344d258a35, type: 3}
       propertyPath: m_SortingOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421282224168943034, guid: ec90c58dc570b09489aa36344d258a35, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421282224168943034, guid: ec90c58dc570b09489aa36344d258a35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.31
       objectReference: {fileID: 0}
     - target: {fileID: 6421282224168943035, guid: ec90c58dc570b09489aa36344d258a35, type: 3}
       propertyPath: m_SortingOrder
