@@ -86,13 +86,22 @@ public class SoundManager : MonoBehaviour
             SceneManager.GetActiveScene().name == "Playscene" && Goal.isGoalFlag)
         {        
             // セレクトシーンのサウンド(ステージ選択音)
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)||
-                Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 // セレクト音
                 se.clip = SelectSound;
 
                 se.PlayOneShot(se.clip);
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (SceneManager.GetActiveScene().name == "SelectScene" && !MenuManager.menuFlag)
+                {                 
+                    // セレクト音
+                    se.clip = SelectSound;
+
+                    se.PlayOneShot(se.clip);
+                }
             }
         }
 
@@ -139,9 +148,6 @@ public class SoundManager : MonoBehaviour
 
                 se.PlayOneShot(se.clip);
             }
-
-            // リセットが終わったらリターン
-            return;
         }
 
         //  死亡音
