@@ -2527,7 +2527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e3e9db146077914287e69bf61d6fa28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coroutineBool: 0
   rotSpeed: 0.001
 --- !u!1001 &62378240139353136
 PrefabInstance:
@@ -2665,6 +2664,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3212841863259636903, guid: e2ca61e7eed25df439c6ace3837f8532, type: 3}
   m_PrefabInstance: {fileID: 143490559011408553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3272860469926759951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3212841863259636902, guid: e2ca61e7eed25df439c6ace3837f8532, type: 3}
+  m_PrefabInstance: {fileID: 143490559011408553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &623559226961682195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2672,6 +2676,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7402961457480126572}
     m_Modifications:
+    - target: {fileID: 1601644396081349431, guid: 522cd726206edde4f8525527609b8f8d, type: 3}
+      propertyPath: warpObj
+      value: 
+      objectReference: {fileID: 3272860469926759951}
     - target: {fileID: 3960208889755179160, guid: 522cd726206edde4f8525527609b8f8d, type: 3}
       propertyPath: m_Name
       value: WarpOut
@@ -2801,6 +2809,10 @@ PrefabInstance:
     - target: {fileID: 2632889183687031992, guid: cc723385b25e6a940b74985b3330ab12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632889183687031994, guid: cc723385b25e6a940b74985b3330ab12, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2632889183687032132, guid: cc723385b25e6a940b74985b3330ab12, type: 3}
       propertyPath: m_Name
