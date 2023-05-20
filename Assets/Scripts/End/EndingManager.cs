@@ -23,6 +23,10 @@ public class EndingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // フェード中は処理しない
+        if (FadeManager.alpha != 0 && FadeManager.alpha != 1) return;
+
+        // カウントアップ
         if(number < GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
         {
             number++;
