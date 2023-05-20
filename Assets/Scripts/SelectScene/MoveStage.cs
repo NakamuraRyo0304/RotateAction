@@ -83,7 +83,7 @@ public class MoveStage : MonoBehaviour
         // 5ˆÚ“®‰E
         if (Input.GetKeyDown(KeyCode.UpArrow) && !MoveFlag)
         {
-            if(savePos.x > -160)
+            if (savePos.x > -160)
             {
                 MoveFlag = true;
                 StartCoroutine("RightMove");
@@ -98,6 +98,9 @@ public class MoveStage : MonoBehaviour
                 StartCoroutine("LeftMove");
             }
         }
+
+        // ƒNƒ‰ƒ“ƒvˆ—
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -160.0f, 0.0f), 0, 0);
 
     }
     IEnumerator RightMove()
