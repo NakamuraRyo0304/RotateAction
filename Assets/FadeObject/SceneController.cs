@@ -57,6 +57,15 @@ public class SceneController : MonoBehaviour
                 // シーン遷移
                 NextScene();
             }
+
+            if(EndingManager.canTitleFlag)
+            {
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    // シーン遷移
+                    NextScene();
+                }
+            }
         }
     }
 
