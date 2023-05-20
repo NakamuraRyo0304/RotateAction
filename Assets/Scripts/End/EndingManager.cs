@@ -30,7 +30,14 @@ public class EndingManager : MonoBehaviour
         {
             SetNum(number % 10);
         }
-
+        if(ten_Flag)
+        {
+            SetNum((number / 10) % 10);
+        }
+        if(han_Flag)
+        {
+            SetNum((number / 100) % 10);
+        }
     }
 
     void SetNum(int num)
