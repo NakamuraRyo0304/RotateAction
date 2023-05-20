@@ -85,4 +85,10 @@ public class StageSelect : MonoBehaviour
             decideFlag = true;
         }
     }
+
+    public void Reset()
+    {
+        decideFlag = false;
+        StageNum = 1;
+    }
 }

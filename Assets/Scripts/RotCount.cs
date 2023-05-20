@@ -9,7 +9,7 @@ public class RotCount : MonoBehaviour
     void Start()
     {
         rotCounter = 0;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
     }
 
     

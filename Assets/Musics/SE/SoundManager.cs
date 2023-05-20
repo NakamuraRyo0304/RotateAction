@@ -35,8 +35,6 @@ public class SoundManager : MonoBehaviour
     private bool splineFlag;
     private bool goalFlag;
 
-    MenuManager menuManager;
-
     AudioSource audioSource;
     private void Start()
     {
@@ -48,9 +46,6 @@ public class SoundManager : MonoBehaviour
 
         // ˆê‰ñ‚¾‚¯–Â‚ç‚·
         ResetSound();
-
-         // MenuManager‚ðƒQƒbƒg
-        menuManager = GetComponent<MenuManager>();
 
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.5f;
