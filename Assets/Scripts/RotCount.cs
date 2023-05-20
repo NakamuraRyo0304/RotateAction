@@ -30,11 +30,8 @@ public class RotCount : MonoBehaviour
         // €‚ñ‚Å‚¢‚½‚çˆ—‚µ‚È‚¢
         if (PlayerController.deadFlag == true) return;
 
-        if(Input.GetKeyUp(KeyCode.RightArrow)||
-            Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            rotCounter++;
-            Debug.Log("‰ñ“]”F" + rotCounter);
-        }
+        // ‰ñ“]”‰ÁZ
+        rotCounter += 1 * Rotate.rotFlagNum;
+        Debug.Log("‰ñ“]”F" + rotCounter);
     }
 }
