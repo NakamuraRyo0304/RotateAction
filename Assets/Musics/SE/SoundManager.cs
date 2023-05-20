@@ -54,34 +54,37 @@ public class SoundManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.5f;
+
     }
 
     private void Update()
     {
         SEVolume();
 
+        // フェード中処理しない
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         // 常時なるやつ(Menu)
         if (Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
         {
-            // 現在なっているSEを止める
-            se.Stop();
-
-            // 閉じているとき
-            if (!MenuManager.menuFlag)
+            // 開いてる時
+            if (MenuManager.menuFlag)
                 se.clip = OpenMenuSound;
-            // 開いているとき
+            // 閉じてる時
             else
                 se.clip = CloseMenuSound;
 
             se.PlayOneShot(se.clip);
         }
 
+
         // セレクトシーンの処理
         if ((SceneManager.GetActiveScene().name == "SelectScene" && !MenuManager.menuFlag)||
             SceneManager.GetActiveScene().name == "Playscene" && Goal.isGoalFlag)
         {        
             // セレクトシーンのサウンド(ステージ選択音)
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)||
+                Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // セレクト音
                 se.clip = SelectSound;
