@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotate : MonoBehaviour
 {
     public static Rotate instance;
-    public bool coroutineBool;
+    public static bool coroutineBool;
     [SerializeField]
     float rotSpeed = 0.001f;
 
