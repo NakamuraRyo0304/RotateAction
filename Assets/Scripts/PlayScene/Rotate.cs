@@ -37,7 +37,11 @@ public class Rotate : MonoBehaviour
             MoveStage();
         }
 
+        // メニューを開いていたら処理しない
         if (MenuManager.menuFlag) return;
+
+        //　ゴールしたら処理しない
+        if (Goal.isGoalFlag) return;
 
         rotFlagNum = 0;
 
