@@ -18,15 +18,12 @@ public class SceneController : MonoBehaviour
 
     bool fadeFlag;
 
-    double endingTime;
         
     void Start()
     {
         fadeManager.FadeIn();
 
         fadeFlag = false;
-
-        endingTime = (double)gameObject.GetComponent<RotCount>().GetCounter() + 600;
     }
 
     void Update()
@@ -53,17 +50,13 @@ public class SceneController : MonoBehaviour
         // Ending‚È‚çŽ©“®‚Å‘JˆÚ‚·‚é
         if (SceneManager.GetActiveScene().name == "EndingScene")
         {
-            endingTime--;
+            EndingManager.endingTime--;
 
-            if (endingTime < 0)
+            if (EndingManager.endingTime < 0)
             {
                 // ƒV[ƒ“‘JˆÚ
                 NextScene();
             }
-        }
-        else
-        {
-            endingTime = (double)gameObject.GetComponent<RotCount>().GetCounter() + 600;
         }
     }
 

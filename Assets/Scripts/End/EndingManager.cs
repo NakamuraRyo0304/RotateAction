@@ -12,12 +12,16 @@ public class EndingManager : MonoBehaviour
     public bool han_Flag = false;
 
     double number;
-                         
+
+    public static double endingTime;
+
 
     void Start()
     {
         // ”’l‚Ìæ“¾
         number = 0;
+
+        endingTime = 6000;
     }
 
     // Update is called once per frame
