@@ -150,6 +150,9 @@ public class SoundManager : MonoBehaviour
             }
         }
 
+        // プレイシーン以外は鳴らさない
+        if (SceneManager.GetActiveScene().name != "Playscene") return;
+
         //  死亡音
         if (PlayerController.deadFlag)
         {
