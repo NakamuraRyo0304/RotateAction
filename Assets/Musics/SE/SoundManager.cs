@@ -69,11 +69,14 @@ public class SoundManager : MonoBehaviour
         {
             // ŠJ‚¢‚Ä‚éŽž
             if (MenuManager.menuFlag)
-                se.clip = OpenMenuSound;
+            {
+                se.clip = CloseMenuSound;
+            }
             // •Â‚¶‚Ä‚éŽž
             else
-                se.clip = CloseMenuSound;
-
+            {
+                se.clip = OpenMenuSound;
+            }
             se.PlayOneShot(se.clip);
         }
 
