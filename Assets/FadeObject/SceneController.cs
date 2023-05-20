@@ -18,7 +18,7 @@ public class SceneController : MonoBehaviour
 
     bool fadeFlag;
 
-    int endingTime;
+    double endingTime;
         
     void Start()
     {
@@ -26,7 +26,7 @@ public class SceneController : MonoBehaviour
 
         fadeFlag = false;
 
-        endingTime = 1200;
+        endingTime = (double)gameObject.GetComponent<RotCount>().GetCounter() + 600;
     }
 
     void Update()
@@ -63,7 +63,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            endingTime = 1200;
+            endingTime = (double)gameObject.GetComponent<RotCount>().GetCounter() + 600;
         }
     }
 
