@@ -137,6 +137,10 @@ public class AfterGoal : MonoBehaviour
 
     void CharPos()
     {
+        // 決定していたら処理しない
+        if (decideFlag) return;
+
+
         if (menuNum == 1 && menuFlag == true)
         {
             charTexture.transform.position = new Vector3(-4.0f, -1.55f, 0.0f);
