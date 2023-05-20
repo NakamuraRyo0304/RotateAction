@@ -23,26 +23,30 @@ public class EndingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 初期値は０表示にする
+        if(FadeManager.alpha > 0.0f) this.gameObject.GetComponent<SpriteRenderer>().sprite = nums[0];
+
         // フェード中は処理しない
         if (FadeManager.alpha != 0 && FadeManager.alpha != 1) return;
-
+    
         // カウントアップ
-        if(number < GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
+        //if(number < GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
+        if(number < 100)
         {
-            number++;
+            number += 1;
         }
 
         if(one_Flag)
         {
-            SetNum(number % 10);
+            SetNum((int)number % 10);
         }
         if(ten_Flag)
         {
-            SetNum((number / 10) % 10);
+            SetNum(((int)number / 10) % 10);
         }
         if(han_Flag)
         {
-            SetNum((number / 100) % 10);
+            SetNum(((int)number / 100) % 10);
         }
     }
 

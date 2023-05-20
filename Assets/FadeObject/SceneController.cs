@@ -26,7 +26,7 @@ public class SceneController : MonoBehaviour
 
         fadeFlag = false;
 
-        endingTime = 500;
+        endingTime = 1200;
     }
 
     void Update()
@@ -63,7 +63,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            endingTime = 500;
+            endingTime = 1200;
         }
     }
 

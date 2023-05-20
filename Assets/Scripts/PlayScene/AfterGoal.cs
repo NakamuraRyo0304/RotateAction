@@ -33,6 +33,8 @@ public class AfterGoal : MonoBehaviour
 
         fadeFlag = false;
         decideFlag = false;
+        
+        Goal.isGoalFlag = false;
     }
 
     // Update is called once per frame
