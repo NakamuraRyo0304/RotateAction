@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour
 
     // メニューのどこを選択しているかの判定
     public static int menuNum;
-    bool endFlag = false;
+    public static bool endFlag = false;
 
     // 選択しているメニューによって廻君の位置変更用ベクター
     Vector2[] playerPos = new Vector2[3];
@@ -47,11 +47,8 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (endFlag)
-        {
-            End();
-        }
         if (!MenuManager.menuFlag) { return; }
+        if (ConManager.conFlag) { return; }
 
         // 現在のアニメーションのパラメータの値を受け取る
         //menuNumAnim = AnimSelect.GetInteger("menuNum");
@@ -83,31 +80,11 @@ public class MenuController : MonoBehaviour
             }
 
             // メニューの選択を一番上に戻す
-            menuNum = 1;
             AnimOpen.SetBool("menuFlagAnim", MenuManager.menuFlag);
             menuExp.SetBool("menuFlagAnim", MenuManager.menuFlag);
 
         }
             // アニメーションのパラメーターを設定する
             AnimSelect.SetInteger("menuNum", menuNumAnim);
-    }
-
-    void End()
-    {
-        // フェードアウト
-        fadeManager.FadeOut();
-
-        fadeFlag = true;
-
-        // フェードアウトが終わったらシーン読み込み
-        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
-        {
-            // ゲーム終了
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_STANDALONE
-    UnityEngine.Application.Quit();
-#endif
-        }
     }
 }
