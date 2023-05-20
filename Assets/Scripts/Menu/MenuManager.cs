@@ -31,6 +31,13 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ConController.endFlag && ConController.closeFlag)
+        {
+            menuExp.SetBool("menuFlagAnim", false);
+            openAnim.SetBool("menuFlagAnim", false);
+            menuBack.SetActive(false);
+        }
+
         // シーン遷移中は選択不能にする
         if (FadeManager.alpha != 0 && FadeManager.alpha != 1)
         {
@@ -43,6 +50,8 @@ public class MenuManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                if (ConManager.conFlag) { return; }
+
                 // フラグ反転
                 Openmenu = false;
                 menuFlag = !menuFlag;

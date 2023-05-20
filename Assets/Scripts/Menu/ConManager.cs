@@ -42,10 +42,8 @@ public class ConManager : MonoBehaviour
 
         if (Openmenu)
         {
-            if (MenuController.endFlag)
+            if (MenuController.endFlag  || PlayMenu.endFlag)
             {
-                Debug.Log("‚«‚¿‚á");
-
                 // ƒtƒ‰ƒO”½“]
                 Openmenu = false;
                 conFlag = !conFlag;
@@ -61,6 +59,7 @@ public class ConManager : MonoBehaviour
                 menuBack.SetActive(conFlag);
 
                 MenuController.endFlag = false;
+                PlayMenu.endFlag = false;
             }
             
         }
