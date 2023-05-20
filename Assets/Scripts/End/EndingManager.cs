@@ -26,7 +26,6 @@ public class EndingManager : MonoBehaviour
 
         canTitleFlag = false;
 
-        PlayerController.Reset();
         GameObject.Find("SE").gameObject.GetComponent<SoundManager>().ResetSound();
     }
 

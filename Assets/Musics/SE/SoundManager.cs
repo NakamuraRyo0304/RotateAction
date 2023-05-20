@@ -35,8 +35,6 @@ public class SoundManager : MonoBehaviour
     private bool splineFlag;
     private bool goalFlag;
 
-    MenuManager menuManager;
-
     AudioSource audioSource;
     private void Start()
     {
@@ -48,9 +46,6 @@ public class SoundManager : MonoBehaviour
 
         // 一回だけ鳴らす
         ResetSound();
-
-         // MenuManagerをゲット
-        menuManager = GetComponent<MenuManager>();
 
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.5f;
@@ -149,6 +144,9 @@ public class SoundManager : MonoBehaviour
                 se.PlayOneShot(se.clip);
             }
         }
+
+        // プレイシーン以外は鳴らさない
+        if (SceneManager.GetActiveScene().name != "Playscene") return;
 
         //  死亡音
         if (PlayerController.deadFlag)
