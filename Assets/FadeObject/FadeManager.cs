@@ -19,7 +19,7 @@ public class FadeManager : MonoBehaviour
 
     void Start()
     {
-
+        alpha = 1.0f;
     }
 
     void Update()
