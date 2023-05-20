@@ -137,6 +137,10 @@ public class AfterGoal : MonoBehaviour
 
     void CharPos()
     {
+        // 決定していたら処理しない
+        if (decideFlag) return;
+
+
         if (menuNum == 1 && menuFlag == true)
         {
             charTexture.transform.position = new Vector3(-4.0f, -1.55f, 0.0f);
@@ -196,8 +200,8 @@ public class AfterGoal : MonoBehaviour
         // フェードアウトが終わったらシーン読み込み
         if (fadeFlag && fadeManager.Alpha() >= 1.0f)
         {
-            // TODO::リザルトに変える
-            SceneManager.LoadScene("TitleScene");
+            // エンディングシーンに切り替え
+            SceneManager.LoadScene("EndingScene");
         }
     }
 
