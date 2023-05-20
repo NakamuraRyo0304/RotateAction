@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
     public Vector2 rotAfterPos;
     public float posDistance;
 
-    float gravityTemp;
-
     Vector2 deadPos = new(100, 0);
 
     private bool rotFlag;
@@ -49,7 +47,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // ‰ñ“]’†o‚È‚¢‚Æ‚«‚Ì‚İ‰ñ“]‰Â”\
-        if (!Rotate.instance.coroutineBool)
+        if (!Rotate.coroutineBool)
         {
             rotFlag = false;
 

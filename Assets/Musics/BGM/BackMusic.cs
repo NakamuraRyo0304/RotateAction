@@ -10,6 +10,7 @@ public class BackMusic : MonoBehaviour
     private AudioSource First;
     public AudioClip title;
     public AudioClip play;
+    public AudioClip ending;
 
     AudioSource audioSource;
     private void Start()
@@ -33,19 +34,28 @@ public class BackMusic : MonoBehaviour
     {
         BGMVolume();
 
-        // プレイシーンに行ったら削除する
-        if (SceneManager.GetActiveScene().name == "Playscene"&&
+        // タイトルの曲
+        if (SceneManager.GetActiveScene().name == "TitleScene" &&
+            (First.clip == null || First.clip == ending))
+        {
+            First.Stop();
+            First.clip = title;
+            First.Play();
+        }
+        // プレイシーンの曲
+        else if (SceneManager.GetActiveScene().name == "Playscene"&&
             First.clip == title)
         {
             First.Stop();
             First.clip = play;
             First.Play();
         }
-        else if(SceneManager.GetActiveScene().name != "Playscene" &&
+        // エンディングの曲
+        else if(SceneManager.GetActiveScene().name == "EndingScene" && 
             First.clip == play)
         {
             First.Stop();
-            First.clip = title;
+            First.clip = ending;
             First.Play();
         }
     }
