@@ -37,9 +37,6 @@ public class SoundManager : MonoBehaviour
 
     MenuManager menuManager;
 
-    // ƒƒjƒ…[‰¹§Œä
-    int menuTime;
-
     AudioSource audioSource;
     private void Start()
     {
@@ -58,7 +55,6 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.5f;
 
-        menuTime = 0;
     }
 
     private void Update()
@@ -69,20 +65,16 @@ public class SoundManager : MonoBehaviour
         if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
 
         // í‚È‚é‚â‚Â(Menu)
-        if (Input.GetKeyDown(KeyCode.Escape) && menuTime == 0)
+        if (Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
         {
             // ŠJ‚¢‚Ä‚é
             if (MenuManager.menuFlag)
-                se.PlayOneShot(OpenMenuSound);
+                se.clip = OpenMenuSound;
             // •Â‚¶‚Ä‚é
             else
-                se.PlayOneShot(CloseMenuSound);
+                se.clip = CloseMenuSound;
 
-            menuTime = 1;
-        }
-        if (MenuManager.Openmenu)
-        {
-            menuTime = 0;
+            se.PlayOneShot(se.clip);
         }
 
 
