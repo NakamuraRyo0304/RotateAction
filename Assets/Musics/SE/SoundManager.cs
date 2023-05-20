@@ -37,6 +37,9 @@ public class SoundManager : MonoBehaviour
 
     MenuManager menuManager;
 
+    // メニュー音制御
+    int menuTime;
+
     AudioSource audioSource;
     private void Start()
     {
@@ -54,34 +57,42 @@ public class SoundManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.5f;
+
+        menuTime = 0;
     }
 
     private void Update()
     {
         SEVolume();
 
+        // フェード中処理しない
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         // 常時なるやつ(Menu)
-        if (Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
+        if (Input.GetKeyDown(KeyCode.Escape) && menuTime == 0)
         {
-            // 現在なっているSEを止める
-            se.Stop();
-
-            // 閉じているとき
-            if (!MenuManager.menuFlag)
-                se.clip = OpenMenuSound;
-            // 開いているとき
+            // 開いてる時
+            if (MenuManager.menuFlag)
+                se.PlayOneShot(OpenMenuSound);
+            // 閉じてる時
             else
-                se.clip = CloseMenuSound;
+                se.PlayOneShot(CloseMenuSound);
 
-            se.PlayOneShot(se.clip);
+            menuTime = 1;
         }
+        if (MenuManager.Openmenu)
+        {
+            menuTime = 0;
+        }
+
 
         // セレクトシーンの処理
         if ((SceneManager.GetActiveScene().name == "SelectScene" && !MenuManager.menuFlag)||
             SceneManager.GetActiveScene().name == "Playscene" && Goal.isGoalFlag)
         {        
             // セレクトシーンのサウンド(ステージ選択音)
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)||
+                Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // セレクト音
                 se.clip = SelectSound;
