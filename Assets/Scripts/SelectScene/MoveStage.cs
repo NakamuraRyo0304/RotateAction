@@ -99,6 +99,9 @@ public class MoveStage : MonoBehaviour
             }
         }
 
+        // ƒNƒ‰ƒ“ƒvˆ—
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -160, 0), 0, 0);
+
     }
     IEnumerator RightMove()
     {
