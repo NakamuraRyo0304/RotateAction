@@ -13,8 +13,10 @@ public class ConController : MonoBehaviour
     bool fadeFlag;
 
     // メニューのどこを選択しているかの判定
-    public static int menuNum;
-    bool endFlag = false;
+    int menuNum;
+
+    public static bool endFlag = false;
+    public static bool closeFlag = false;
 
     // 選択しているメニューによって廻君の位置変更用ベクター
     Vector2[] playerPos = new Vector2[2];
@@ -27,8 +29,8 @@ public class ConController : MonoBehaviour
     // アニメーション用変数
     int menuNumAnim;
     // アニメーションを受け取る
-    //[SerializeField]
-    //Animator AnimSelect;
+    [SerializeField]
+    Animator AnimSelect;
     [SerializeField]
     Animator AnimOpen;
 
@@ -49,6 +51,11 @@ public class ConController : MonoBehaviour
     {
         if (endFlag)
         {
+            AnimOpen.SetBool("menuFlagAnim", false);
+            menuBack.SetActive(false);
+            closeFlag = true;
+
+
             End();
         }
 
@@ -82,7 +89,7 @@ public class ConController : MonoBehaviour
             {
                 if (menuNum == 1)
                 {
-                    MenuController.endFlag = false;
+                    //MenuController.endFlag = false;
                     ConManager.conFlag = false;
 
                     // メニューを非アクティブ
@@ -106,7 +113,7 @@ public class ConController : MonoBehaviour
         }
         
         // アニメーションのパラメーターを設定する
-        //AnimSelect.SetInteger("menuNum", menuNumAnim);
+        AnimSelect.SetInteger("menuNum", menuNumAnim);
     }
 
     void End()

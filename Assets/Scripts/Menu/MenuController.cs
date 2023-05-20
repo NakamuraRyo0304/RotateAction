@@ -80,6 +80,8 @@ public class MenuController : MonoBehaviour
             }
 
             // ƒƒjƒ…[‚Ì‘I‘ğ‚ğˆê”Ôã‚É–ß‚·
+            MenuController.menuNum = 1;
+
             AnimOpen.SetBool("menuFlagAnim", MenuManager.menuFlag);
             menuExp.SetBool("menuFlagAnim", MenuManager.menuFlag);
 

@@ -14,7 +14,7 @@ public class PlayMenu : MonoBehaviour
 
     // メニューで選ばれたのもを判別するフラグ
     bool selectFlag = false;
-    bool endFlag = false;
+    public static bool endFlag = false;
 
     // メニューのどこを選択しているかの判定
     public static int menuNum;
@@ -62,7 +62,6 @@ public class PlayMenu : MonoBehaviour
         } 
         if (endFlag)
         {
-            End();
         }
 
         if (!MenuManager.menuFlag) { return; }
@@ -102,6 +101,7 @@ public class PlayMenu : MonoBehaviour
                 endFlag = true;
 
             }
+        menuNum = 1;
         }
 
         // アニメーションのパラメーターを設定する
@@ -126,24 +126,6 @@ public class PlayMenu : MonoBehaviour
             AnimOpen.SetBool("menuFlagAnim", MenuManager.menuFlag);
             menuExp.SetBool("menuFlagAnim", MenuManager.menuFlag);
 
-        }
-    }
-    void End()
-    {
-        // フェードアウト
-        fadeManager.FadeOut();
-
-        fadeFlag = true;
-
-        // フェードアウトが終わったらシーン読み込み
-        if (fadeFlag && fadeManager.Alpha() >= 1.0f)
-        {
-            // ゲーム終了
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_STANDALONE
-    UnityEngine.Application.Quit();
-#endif
         }
     }
 }
