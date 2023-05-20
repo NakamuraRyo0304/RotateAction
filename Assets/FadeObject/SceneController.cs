@@ -18,15 +18,12 @@ public class SceneController : MonoBehaviour
 
     bool fadeFlag;
 
-    int endingTime;
         
     void Start()
     {
         fadeManager.FadeIn();
 
         fadeFlag = false;
-
-        endingTime = 1200;
     }
 
     void Update()
@@ -53,17 +50,13 @@ public class SceneController : MonoBehaviour
         // Ending‚È‚çŽ©“®‚Å‘JˆÚ‚·‚é
         if (SceneManager.GetActiveScene().name == "EndingScene")
         {
-            endingTime--;
+            EndingManager.endingTime--;
 
-            if (endingTime < 0)
+            if (EndingManager.endingTime < 0)
             {
                 // ƒV[ƒ“‘JˆÚ
                 NextScene();
             }
-        }
-        else
-        {
-            endingTime = 1200;
         }
     }
 

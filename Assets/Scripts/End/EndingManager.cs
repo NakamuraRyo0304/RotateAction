@@ -11,29 +11,29 @@ public class EndingManager : MonoBehaviour
     public bool ten_Flag = false;
     public bool han_Flag = false;
 
-    int number;
-                         
+    double number;
+
+    public static double endingTime;
+
 
     void Start()
     {
         // 数値の取得
         number = 0;
+
+        endingTime = 6000;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 初期値は０表示にする
-        if(FadeManager.alpha > 0.0f) this.gameObject.GetComponent<SpriteRenderer>().sprite = nums[0];
-
         // フェード中は処理しない
-        if (FadeManager.alpha != 0 && FadeManager.alpha != 1) return;
-    
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         // カウントアップ
-        //if(number < GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
-        if(number < 100)
+        if(number < (double)GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
         {
-            number += 1;
+            number += 0.5;
         }
 
         if(one_Flag)

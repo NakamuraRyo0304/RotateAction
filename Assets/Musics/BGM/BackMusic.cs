@@ -34,9 +34,10 @@ public class BackMusic : MonoBehaviour
     {
         BGMVolume();
 
-        // タイトルの曲
-        if (SceneManager.GetActiveScene().name == "TitleScene" &&
-            (First.clip == null || First.clip == ending))
+        // タイトルの曲/セレクトの曲
+        if ((SceneManager.GetActiveScene().name == "TitleScene" ||
+            SceneManager.GetActiveScene().name == "SelectScene")&&
+            (First.clip == null || First.clip == ending || First.clip == play))
         {
             First.Stop();
             First.clip = title;
