@@ -6,6 +6,9 @@ public class Rotate : MonoBehaviour
 {
     public static Rotate instance;
     public static bool coroutineBool;
+
+    public static int rotFlagNum;
+
     [SerializeField]
     float rotSpeed = 0.001f;
 
@@ -21,6 +24,7 @@ public class Rotate : MonoBehaviour
     private void Start()
     {
         coroutineBool = false;
+        rotFlagNum = 0;
     }
 
     private void Update()
@@ -34,6 +38,8 @@ public class Rotate : MonoBehaviour
         }
 
         if (MenuManager.menuFlag) return;
+
+        rotFlagNum = 0;
 
         //　プレイヤーが死んでいないときかつプレイヤーがアクティブのときに回転する
         if (PlayerController.deadFlag == false && SpownEffectControl.playerFlag == true)
@@ -70,6 +76,7 @@ public class Rotate : MonoBehaviour
             yield return new WaitForSeconds(rotSpeed);
         }
         coroutineBool = false;
+        rotFlagNum = 1;
     }
 
     //左にゆっくり回転して90°でストップ
@@ -82,6 +89,7 @@ public class Rotate : MonoBehaviour
             yield return new WaitForSeconds(rotSpeed);
         }
         coroutineBool = false;
+        rotFlagNum = 1;
     }
 
     void MoveStage()
