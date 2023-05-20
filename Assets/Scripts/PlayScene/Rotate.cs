@@ -99,5 +99,10 @@ public class Rotate : MonoBehaviour
     void MoveStage()
     {
         transform.position += new Vector3(0.0f, -0.2f, 0.0f);
+
+        if(transform.position.y < -200)
+        {
+            transform.position = new Vector3(0.0f, -200f);
+        }
     }
 }

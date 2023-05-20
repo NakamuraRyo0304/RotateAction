@@ -17,12 +17,17 @@ public class EndingManager : MonoBehaviour
     void Start()
     {
         // ”’l‚Ìæ“¾
-        number = GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter();
+        number = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(number < GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
+        {
+            number++;
+        }
+
         if(one_Flag)
         {
             SetNum(number % 10);

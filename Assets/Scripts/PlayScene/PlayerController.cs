@@ -40,6 +40,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // ƒS[ƒ‹‚µ‚½‚çâ‘Î‚É‚Ô‚Â‚©‚ç‚È‚¢ˆÊ’u‚ÉˆÚ“®
+        if(Goal.isGoalFlag)
+        {
+            transform.position = new Vector3(2000, 2000);
+        }
+
         // ƒS[ƒ‹‚µ‚½‚çˆ—‚µ‚È‚¢
         if (Goal.isGoalFlag) return;
 
