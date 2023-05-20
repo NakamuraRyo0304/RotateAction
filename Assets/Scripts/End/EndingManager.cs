@@ -15,6 +15,7 @@ public class EndingManager : MonoBehaviour
 
     public static double endingTime;
 
+    public static bool canTitleFlag;
 
     void Start()
     {
@@ -22,6 +23,11 @@ public class EndingManager : MonoBehaviour
         number = 0;
 
         endingTime = 6000;
+
+        canTitleFlag = false;
+
+        PlayerController.Reset();
+        GameObject.Find("SE").gameObject.GetComponent<SoundManager>().ResetSound();
     }
 
     // Update is called once per frame
@@ -34,6 +40,12 @@ public class EndingManager : MonoBehaviour
         if(number < (double)GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
         {
             number += 0.5;
+        }
+
+        // スペース押せるフラグを立てる
+        if(number == (double)GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
+        {
+            canTitleFlag = true;
         }
 
         if(one_Flag)
