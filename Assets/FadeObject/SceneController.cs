@@ -30,15 +30,14 @@ public class SceneController : MonoBehaviour
         // フェード中にスペースを押せなくする
         if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        // スペースを押されていてエンディングじゃなければ操作可能
+        if(Input.GetKeyDown(KeyCode.Space) && 
+           SceneManager.GetActiveScene().name != "EndingScene")
         {
-
             if (MenuManager.menuFlag) { return; }
-           
-            // フェードアウト
-            fadeManager.FadeOut();
-            
-            fadeFlag = true;
+
+            // シーン遷移
+            NextScene();
         }
 
         // フェードアウトが終わったらシーン読み込み
@@ -47,5 +46,20 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
 
+        // Endingなら自動で遷移する
+        if (SceneManager.GetActiveScene().name == "EndingScene")
+        {
+            // シーン遷移
+            NextScene();
+        }
+    }
+
+    // シーンをロードする
+    void NextScene()
+    {
+        // フェードアウト
+        fadeManager.FadeOut();
+
+        fadeFlag = true;
     }
 }
