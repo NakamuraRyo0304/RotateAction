@@ -10,6 +10,7 @@ public class EndingManager : MonoBehaviour
     public bool one_Flag = false;
     public bool ten_Flag = false;
     public bool han_Flag = false;
+    public bool tho_Flag = false;
 
     double number;
 
@@ -58,6 +59,10 @@ public class EndingManager : MonoBehaviour
         if(han_Flag)
         {
             SetNum(((int)number / 100) % 10);
+        }
+        if(tho_Flag)
+        {
+            SetNum(((int)number / 1000) % 10);
         }
     }
 
