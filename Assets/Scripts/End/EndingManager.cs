@@ -56,7 +56,7 @@ public class EndingManager : MonoBehaviour
         }
 
         // ‰æ‘œ‚ğİ’è
-        if (one_Flag)
+        if (one_Flag) 
         {
             SetNum((int)number % 10);
         }
