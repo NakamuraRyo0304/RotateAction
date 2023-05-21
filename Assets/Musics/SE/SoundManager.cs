@@ -92,7 +92,8 @@ public class SoundManager : MonoBehaviour
 
         // セレクトシーンの処理
         if ((SceneManager.GetActiveScene().name == "SelectScene" && !MenuManager.menuFlag)||
-            SceneManager.GetActiveScene().name == "Playscene" && Goal.isGoalFlag)
+            SceneManager.GetActiveScene().name == "Playscene" && Goal.isGoalFlag ||
+            (ConManager.conFlag && !ConManager.concon))
         {        
             // セレクトシーンのサウンド(ステージ選択音)
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
