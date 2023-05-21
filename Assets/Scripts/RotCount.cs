@@ -11,6 +11,10 @@ public class RotCount : MonoBehaviour
 
     private void Awake()
     {
+        if (instance)
+        {
+            Destroy(gameObject);
+        }
         if (!instance)
         {
             // 破壊不能オブジェクトにする
