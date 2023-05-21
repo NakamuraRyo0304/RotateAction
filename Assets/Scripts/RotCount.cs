@@ -6,10 +6,22 @@ using UnityEngine.SceneManagement;
 public class RotCount : MonoBehaviour
 {
     private int rotCounter;
+
+    static bool instance = false;
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            // 破壊不能オブジェクトにする
+            DontDestroyOnLoad(this);
+            instance = true;
+        }
+    }
+
     void Start()
     {
         rotCounter = 0;
-        DontDestroyOnLoad(this);
     }
 
     
