@@ -26,8 +26,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip SprineSound;
     [Header("重力アイテム獲得音")]
     [SerializeField] AudioClip RgravitySound;
-    [Header("鍵入手音")]
-    [SerializeField] AudioClip KeySound;
     [Header("鍵開錠音")]
     [SerializeField] AudioClip KeyBlockSound;
 
@@ -214,19 +212,11 @@ public class SoundManager : MonoBehaviour
             // なってなければ早期リターン
             if (keyFlag) return;
 
-            se.clip = KeySound;
+            se.clip = KeyBlockSound;
 
             se.PlayOneShot(se.clip);
 
             keyFlag = true;
-        }
-
-        // 鍵開閉音
-        if (PlayerController.openFlag)
-        {
-            se.clip = KeyBlockSound;
-
-            se.PlayOneShot(se.clip);
         }
     }
 
