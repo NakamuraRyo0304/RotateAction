@@ -76,7 +76,7 @@ public class AfterGoal : MonoBehaviour
             if(nextFlag)
             {
                 // 通常
-                if (StageSelect.StageNum != StageSelect.MaxNum)
+                if (StageSelect.StageNum <= StageSelect.MaxNum)
                 {
                     next();
                 }
@@ -123,10 +123,10 @@ public class AfterGoal : MonoBehaviour
             {
                 StageSelect.StageNum++;
 
-                // 45超えたらクランプ
-                if(StageSelect.StageNum >= 45)
+                // 最終ステージで次のステージ押したら
+                if(StageSelect.StageNum >= 46)
                 {
-                    StageSelect.StageNum = 45;
+                    StageSelect.StageNum = 46;
                 }
 
                 nextFlag = true;
