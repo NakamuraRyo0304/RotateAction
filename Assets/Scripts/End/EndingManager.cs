@@ -37,9 +37,16 @@ public class EndingManager : MonoBehaviour
         if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
 
         // カウントアップ
-        if(number < (double)GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
+        if(number < (double)GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter()&&
+           number != 9999)
         {
             number += 0.5;
+
+            // 表示番号をクランプ
+            if (number > 9999)
+            {
+                number = 9999;
+            }
         }
 
         // スペース押せるフラグを立てる
@@ -48,7 +55,8 @@ public class EndingManager : MonoBehaviour
             canTitleFlag = true;
         }
 
-        if(one_Flag)
+        // 画像を設定
+        if (one_Flag)
         {
             SetNum((int)number % 10);
         }
