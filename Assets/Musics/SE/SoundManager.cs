@@ -36,11 +36,21 @@ public class SoundManager : MonoBehaviour
     private bool goalFlag;
 
     AudioSource audioSource;
+
+    static bool instance = false;
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            // 破壊不能オブジェクトにする
+            DontDestroyOnLoad(this);
+            instance = true;
+        }
+    }
+
     private void Start()
     {
-        // 破壊不能オブジェクトに設定
-        DontDestroyOnLoad(gameObject);
-
         // AudioSourceをゲット
         se = music.GetComponent<AudioSource>();
 

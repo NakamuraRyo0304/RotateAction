@@ -13,11 +13,21 @@ public class BackMusic : MonoBehaviour
     public AudioClip ending;
 
     AudioSource audioSource;
+
+    static bool instance = false;
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+           // 破壊不能オブジェクトにする
+            DontDestroyOnLoad(this);
+            instance = true;
+        }
+    }
+
     private void Start()
     {
-        // 破壊不能オブジェクトにする
-        DontDestroyOnLoad(this);
-
         // AudioSourceをゲット
         First = music.GetComponent<AudioSource>();
 
