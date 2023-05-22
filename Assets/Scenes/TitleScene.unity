@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 806813836}
   title: {fileID: 8300000, guid: 4234ff4aea6873341ad73ac1aabb1ced, type: 3}
-  play: {fileID: 8300000, guid: 9f131f39c7a3fed45b9892f435a4d32c, type: 3}
+  play: {fileID: 8300000, guid: d25dc665d2acbd6478d4f026a81c7d7f, type: 3}
   ending: {fileID: 8300000, guid: 69c332a3dc3d2ba41b3752b70bb561eb, type: 3}
 --- !u!82 &806813838 stripped
 AudioSource:
@@ -5139,6 +5139,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1871894511
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2880727594730760578, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_Name
+      value: BackEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016487195313599189, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
 --- !u!1 &1874705684
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,6 +5280,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1972747443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880727594730760578, guid: 73eca5edb7c409d4ab486743c7034c70, type: 3}
+  m_PrefabInstance: {fileID: 1871894511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1972747447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972747443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56319883757ce494dbd748391c6612c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2010399208
 GameObject:
   m_ObjectHideFlags: 0
