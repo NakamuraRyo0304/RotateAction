@@ -17,8 +17,8 @@ public class CameraShake : MonoBehaviour
     {
         if (MenuManager.menuFlag) return; 
 
-        if(((Input.GetKeyDown(KeyCode.LeftArrow) && StageSelect.StageNum == 1)||
-            (Input.GetKeyDown(KeyCode.RightArrow) && StageSelect.StageNum == 45))&&
+        if((((Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.DownArrow)) && StageSelect.StageNum == 1)||
+            ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow)) && StageSelect.StageNum == 45))&&
             pushFlag == false)
         {
             //Å@èàóùíÜÇÕâüÇπÇ»Ç≠Ç∑ÇÈ(êßå¿)
