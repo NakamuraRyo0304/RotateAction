@@ -69,7 +69,7 @@ public class StageSelect : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if(StageNum > 5)
+            if(StageNum > 1)
             {
                 StageNum -= 5;
                 Debug.Log(StageNum);
