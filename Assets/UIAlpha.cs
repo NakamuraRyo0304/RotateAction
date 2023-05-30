@@ -25,7 +25,7 @@ public class UIAlpha : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             //‰ñ“]’†‚Å‚Í‚È‚¢ê‡‚ÍÀs 
-            if (!Rotate.instance.coroutineBool)
+            if (!Rotate.coroutineBool)
             {
                 StartCoroutine("LeftAlpha");
             }
@@ -34,7 +34,7 @@ public class UIAlpha : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             //‰ñ“]’†‚Å‚Í‚È‚¢ê‡‚ÍÀs 
-            if (!Rotate.instance.coroutineBool)
+            if (!Rotate.coroutineBool)
             {
                 StartCoroutine("RightAlpha");
             }
