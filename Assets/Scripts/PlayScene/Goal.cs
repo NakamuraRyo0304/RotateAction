@@ -17,7 +17,6 @@ public class Goal : MonoBehaviour
     void Start()
     {
         isGoalFlag = false;
-        //----------------------------------------------------------
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
