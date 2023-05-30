@@ -22,6 +22,10 @@ public class UIAlpha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (MenuManager.menuFlag) return;
+        // フェード中は処理しない
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             //回転中ではない場合は実行 
