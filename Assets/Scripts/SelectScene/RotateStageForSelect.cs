@@ -14,6 +14,9 @@ public class RotateStageForSelect : MonoBehaviour
         // メニューを開いているときは処理しない
         if (MenuManager.menuFlag) return;
 
+        // フェード中は処理しない
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
+
         //　選んでるときは回転
         Stage[StageSelect.StageNum - 1].transform.Rotate(0, 0, 1);
 

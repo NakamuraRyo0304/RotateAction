@@ -15,9 +15,11 @@ public class CameraShake : MonoBehaviour
     }
     private void Update()
     {
-        if (MenuManager.menuFlag) return; 
+        if (MenuManager.menuFlag) return;
+        // フェード中は処理しない
+        if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
 
-        if((((Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.DownArrow)) && StageSelect.StageNum == 1)||
+        if ((((Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.DownArrow)) && StageSelect.StageNum == 1)||
             ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow)) && StageSelect.StageNum == 45))&&
             pushFlag == false)
         {

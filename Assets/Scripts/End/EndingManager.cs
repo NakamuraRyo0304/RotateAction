@@ -49,12 +49,17 @@ public class EndingManager : MonoBehaviour
             }
         }
 
+
         // スペース押せるフラグを立てる
         if(number == (double)GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter())
         {
             canTitleFlag = true;
         }
 
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            number = (double)GameObject.FindGameObjectWithTag("RotateCounter").GetComponent<RotCount>().GetCounter();
+        }
         // 画像を設定
         if (one_Flag) 
         {
