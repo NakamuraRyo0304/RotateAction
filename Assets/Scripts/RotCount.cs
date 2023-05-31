@@ -31,6 +31,12 @@ public class RotCount : MonoBehaviour
     
     void Update()
     {
+        // タイトルでカウンタリセット
+        if (SceneManager.GetActiveScene().name == "TitleScene")
+        {
+            rotCounter = 0;
+        }
+
         // フェード中は操作不能にする
         if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
 
@@ -50,11 +56,6 @@ public class RotCount : MonoBehaviour
         rotCounter += 1 * Rotate.rotFlagNum;
         Debug.Log("回転数：" + rotCounter);
 
-        // タイトルでカウンタリセット
-        if(SceneManager.GetActiveScene().name == "TitleScene")
-        {
-            rotCounter = 0;
-        }
     }
 
     public int GetCounter()
