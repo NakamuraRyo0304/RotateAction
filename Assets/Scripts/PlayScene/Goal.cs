@@ -5,12 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
-    public int idx;
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    // フェードオブジェクトを入れる
+    //private GameObject fadeCanvas;
+
+    // ゴール判定
+    public static bool isGoalFlag = false;
+
+
+
+    void Start()
     {
-        if(collision.transform.tag == "Player")
+        isGoalFlag = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Player")
         {
-            SceneManager.LoadScene(idx);
+            isGoalFlag = true;
         }
+    }
+
+    // ！追記
+    void Update()
+    {
+
     }
 }

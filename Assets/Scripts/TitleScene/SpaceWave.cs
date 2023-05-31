@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SpaceWave : MonoBehaviour
 {
-    void Awake()
-    {
-        Application.targetFrameRate = 60; //60FPSÇ…ê›íË
-    }
     void Update()
     {
         float sin = Mathf.Sin(Time.time * 2);

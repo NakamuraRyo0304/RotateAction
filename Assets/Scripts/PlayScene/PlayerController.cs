@@ -1,44 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] new Rigidbody2D rigidbody;
-    [SerializeField] int jumpForce;
-    [SerializeField] int jumpNum;
-    [SerializeField] GameObject warpPoint;
     [SerializeField] GameObject fallEffect;
-    [SerializeField] int effectTimer;
-    public 
+    [SerializeField] GameObject deadEffect;
+    //[SerializeField] GameObject key;
+    int effectTimer;
     bool effectflag = false;
+    public static bool deadFlag;
+    public static bool keyFlag;
+    public static bool openFlag;
+    public static bool warpFlag;
+    public static bool rgravityFlag;
 
-    int JUMP_NUM;
+    public Vector2 rotBeforPos = new(0, 0);
+    public Vector2 rotAfterPos;
+    public float posDistance;
 
-    private bool rotFlag;
+    Vector2 deadPos = new(100, 0);
+
+    public static bool rotFlag;
    
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        JUMP_NUM = jumpNum;
-        rotFlag = false;
+        Reset();
     }
 
     void Update()
     {
-        if (!Rotate.instance.coroutineBool)
+        // ゴールしたら絶対にぶつからない位置に移動
+        if(Goal.isGoalFlag)
+        {
+            transform.position = new Vector3(2000, 2000);
+        }
+
+        // ゴールしたら処理しない
+        if (Goal.isGoalFlag) return;
+
+        // 回転中出ないときのみ回転可能
+        if (!Rotate.coroutineBool)
         {
             rotFlag = false;
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if(JUMP_NUM > 0)
-                {
-                    Vector2 force = new Vector2(0, jumpForce); 
-                    rigidbody.AddForce(force);
-                    JUMP_NUM--;
-                }
-            }
 
             //　初期化
             transform.Rotate(Vector3.zero);
@@ -52,40 +60,105 @@ public class PlayerController : MonoBehaviour
             transform.parent = GameObject.FindGameObjectWithTag("Stage").transform;
         }
 
+        //　エフェクトの管理
         if(effectflag == true)
         {
-            fallEffect.SetActive(true);
+            GetDistance();
+          
             effectTimer += 1;
+
+        }
+        // 一定時間後に削除
+        if (effectTimer >= 2)
+        {
+            rotBeforPos = rotAfterPos;
+            fallEffect.SetActive(false);
+            effectTimer = 0;
+            effectflag = false;
         }
 
-        if (effectTimer == 2)
+        // 死んだときの判定
+        if(deadFlag == true)
         {
-            effectTimer = 0;
-            fallEffect.SetActive(false);
+            DeadController();
         }
+
+        warpFlag = false;
+        rgravityFlag = false;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // エフェクト
         if (collision.transform.tag == "Block")
         {
-            JUMP_NUM = jumpNum;
             fallEffect.SetActive(true);
-
+            effectflag = true; 
         }
 
-        if (collision.transform.tag == "Warp")
+        // 針に当たったらプレイヤーを消す
+        if (collision.transform.tag == "Spline")
         {
-            transform.position = warpPoint.transform.position;
+            // ゴールしてたら処理しない
+            if (Goal.isGoalFlag) return;
+
+            deadFlag = true;
         }
 
-
-        //エフェクト
-        if (collision.transform.tag == "Block")
+        if (collision.transform.tag == "KeyBlock")
         {
-            effectflag = true;
+            if (keyFlag == true)
+            {
+                openFlag = true;
+            }
         }
     }
 
+    // サウンド用
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Key")
+        {
+            keyFlag = true;
+            Destroy(collision.gameObject);
+        }
+        // ワープ
+        if (collision.transform.tag == "Warp")
+        {
+            warpFlag = true;
+        }
+        // 重力
+        if(collision.transform.tag == "RGravity")
+        {
+            rgravityFlag = true;
+        }
+    }
+
+    void DeadController()
+    {
+        // 死亡エフェクト
+        Instantiate(deadEffect, transform.position, Quaternion.identity);
+
+        transform.position = deadPos;
+
+        StartCoroutine("ReTry");
+    }
+
+    void GetDistance()
+    {
+        rotAfterPos = this.transform.position;
+
+        if(rotBeforPos.y < 1)
+        {
+            rotBeforPos.y *= -1;
+        }
+        if (rotAfterPos.y < 1)
+        {
+            rotAfterPos.y *= -1;
+        }
+
+        posDistance = rotBeforPos.y + rotAfterPos.y;
+    }
 
     void RotCtrl()
     {
@@ -127,6 +200,24 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
         rotFlag = false;
+    }
+
+    IEnumerator ReTry()
+    {
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene("PlayScene");
+    }
+
+    public static void Reset()
+    {
+        deadFlag = false;
+        rotFlag = false;
+        keyFlag = false;
+        openFlag = false;
+        warpFlag = false;
+        rgravityFlag = false;
+        GameObject.Find("SE").gameObject.GetComponent<SoundManager>().ResetSound();
     }
 }
 

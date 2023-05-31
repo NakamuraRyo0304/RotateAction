@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SelectScene : MonoBehaviour
+public class GotoSelect : MonoBehaviour
 {
     void GoSelect ()
     {
