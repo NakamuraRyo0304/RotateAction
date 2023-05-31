@@ -96,6 +96,7 @@ public class AfterGoal : MonoBehaviour
     // シーン遷移
     void AfterClear()
     {
+
         if (transform.position.y != 2.5f) return;
 
         // 左右キーで遷移先を決める
@@ -121,7 +122,10 @@ public class AfterGoal : MonoBehaviour
             // ２の時は次にステージ
             if (menuNum == 2)
             {
-                StageSelect.StageNum++;
+                if (!nextFlag)
+                {
+                    StageSelect.StageNum++;
+                }
 
                 // 最終ステージで次のステージ押したら
                 if(StageSelect.StageNum >= 46)
