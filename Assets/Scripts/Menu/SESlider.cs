@@ -32,6 +32,7 @@ public class SESlider : MonoBehaviour
         if (MenuController.menuNum == 2 || PlayMenu.menuNum == 2)
         {
             if (!MenuManager.menuFlag) return;
+            if (ConManager.conFlag) return;
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {

@@ -72,7 +72,7 @@ public class SoundManager : MonoBehaviour
         if (FadeManager.alpha != 0.0f && FadeManager.alpha != 1.0f) return;
 
         // í‚È‚é‚â‚Â(Menu)
-        if (Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu)
+        if (Input.GetKeyDown(KeyCode.Escape) && MenuManager.Openmenu && !ConManager.conFlag)
         {
             // ŠJ‚¢‚Ä‚é
             if (MenuManager.menuFlag)

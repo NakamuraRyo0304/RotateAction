@@ -55,7 +55,7 @@ public class UIAlpha : MonoBehaviour
         leftArrow.color = new Color(0f, 0f, 0f, 1f);
 
         //　コルーチン再開時間
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
         leftArrow.color = new Color(0f, 0f, 0f, 0.5f);
     }
@@ -65,7 +65,7 @@ public class UIAlpha : MonoBehaviour
         rightArrow.color = new Color(0f, 0f, 0f, 1f);
 
         //　コルーチン再開時間
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
         rightArrow.color = new Color(0f, 0f, 0f, 0.5f);
     }
